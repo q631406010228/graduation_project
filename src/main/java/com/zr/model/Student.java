@@ -1,5 +1,9 @@
 package com.zr.model;
-
+/**
+ * 学生模型
+ * @author Administrator
+ *
+ */
 public class Student {
 	private int sid; //学生编号
 	private int num; //学生学号

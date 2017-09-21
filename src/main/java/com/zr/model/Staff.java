@@ -1,6 +1,10 @@
 package com.zr.model;
-
-public class Employee {
+/**
+ * 教职工模型
+ * @author Administrator
+ *
+ */
+public class Staff {
 	private int eid; //职工id
 	private String ename; //职工姓名
 	private int ecol; //学院id
@@ -42,7 +46,5 @@ public class Employee {
 	}
 	public void setEpsw(String epsw) {
 		this.epsw = epsw;
-	}
-	
-	
+	}	
 }
