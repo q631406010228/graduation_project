@@ -12,17 +12,15 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
-	
-	 <!-- 获得毕业设计进程的内容 -->
+	 <!-- 登录 -->
 	<servlet>
-		<servlet-name>getGP</servlet-name>
-		<servlet-class>com.zr.action.GetGP</servlet-class>
+		<servlet-name>xxx</servlet-name>
+		<servlet-class></servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>getGP</servlet-name>
-		<url-pattern>/getGP</url-pattern>
+		<servlet-name>xxx</servlet-name>
+		<url-pattern></url-pattern>
 	</servlet-mapping>
-	
 	 <!-- 小小少年-->
 	<servlet>
 		<servlet-name>大大</servlet-name>

@@ -43,12 +43,6 @@
 		    required: true,    
 		    showSeconds: false   
 		});
-		
-		$('#gpc').combobox({    
-		    url:'getGP',    
-		    valueField:'id',    
-		    textField:'text'   
-		}); 
  		
 	});
 </script>
@@ -59,7 +53,7 @@
 		<form id="signInForm" method="post">
 			<div>
 				<div style = "margin:20% 0 0 20%;">					
-					毕业设计进程<input id="gpc" name="role" value="aa"> 
+					毕业设计进程<input id="role" name="role" value="aa"> 
 					<br>
 					开始时间<input id="graStartTime" type="text" name="birthday"></input>  
 					结束时间<input id="graEndTime" type="text" name="birthday"></input>  
