@@ -1,25 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-	id="WebApp_ID" version="3.0">
-	<display-name>easyUITree</display-name>
-	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.htm</welcome-file>
-		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>default.html</welcome-file>
-		<welcome-file>default.htm</welcome-file>
-		<welcome-file>default.jsp</welcome-file>
-	</welcome-file-list>
-	 <!-- 登录 -->
-	<servlet>
-		<servlet-name>xxx</servlet-name>
-		<servlet-class></servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>xxx</servlet-name>
-		<url-pattern></url-pattern>
-	</servlet-mapping>
-	
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>graduation_project</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>SelectReplyPricess</servlet-name>
+    <servlet-class>com.zr.action.SelectReplyProcessAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectReplyPricess</servlet-name>
+    <url-pattern>/selectReplyPricess</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SelectStudentByEid</servlet-name>
+    <servlet-class>com.zr.action.SelectStudentByEidAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectStudentByEid</servlet-name>
+    <url-pattern>/selectStudentByEid</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DeleteReplyProcess</servlet-name>
+    <servlet-class>com.zr.action.DeleteReplyProcessAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteReplyProcess</servlet-name>
+    <url-pattern>/deleteReplyProcess</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AddReplyProcess</servlet-name>
+    <servlet-class>com.zr.action.AddReplyProcessAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddReplyProcess</servlet-name>
+    <url-pattern>/addReplyProcess</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>UpdateReplyProcess</servlet-name>
+    <servlet-class>com.zr.action.UpdateReplyProcessAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateReplyProcess</servlet-name>
+    <url-pattern>/updateReplyProcess</url-pattern>
+  </servlet-mapping>
 </web-app>
