@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sun.star.util.DateTime;
 import com.zr.service.GraduationProcessService;
-import com.zr.serviceimpl.GraduationProcessServiceImpl;
+import com.zr.service.impl.GraduationProcessServiceImpl;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;

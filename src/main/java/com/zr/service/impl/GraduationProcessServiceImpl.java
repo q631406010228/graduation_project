@@ -1,4 +1,4 @@
-package com.zr.serviceimpl;
+package com.zr.service.impl;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -8,7 +8,7 @@ import com.zr.service.GraduationProcessService;
 
 public class GraduationProcessServiceImpl implements GraduationProcessService{
 	
-	com.zr.daoimpl.GraduationProcessDaoImpl gpd = new com.zr.daoimpl.GraduationProcessDaoImpl();
+	com.zr.dao.impl.GraduationProcessDaoImpl gpd = new com.zr.dao.impl.GraduationProcessDaoImpl();
 
 	@Override
 	public void setGraduationProcess(String gpContent, String graStartTime, String graEndTime) {

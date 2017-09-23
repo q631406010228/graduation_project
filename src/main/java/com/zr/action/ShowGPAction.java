@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.zr.model.GraduationProcess;
 import com.zr.service.GraduationProcessService;
-import com.zr.serviceimpl.GraduationProcessServiceImpl;
+import com.zr.service.impl.GraduationProcessServiceImpl;
 
 import net.sf.json.JSONObject;
 
