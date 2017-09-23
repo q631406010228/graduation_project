@@ -18,7 +18,7 @@ public class DBConnection {
 	 //1.数据库地址  (根据不同的数据标准是不一样)
 	  private  final  static String DBURL = "jdbc:mysql://172.18.23.54:3306/graduation_project?useUnicode=true&characterEncoding=UTF8";
 	  //2.设置用户和密码
-	  private  final  static String  USERNAME = "root";
+	  private  final  static String  USERNAME = "qinhao";
 	  private  final  static String  PASSWORD = "123456";
 	  //3.设置驱动名称 (根据不同的数据标准是不一样)
 	  private  final  static String  DBDRIVER = "com.mysql.jdbc.Driver";
@@ -56,8 +56,8 @@ public class DBConnection {
 		    }
 		   
 	  }
-//	public static void main(String[] args) {
-//		System.out.println(DBConnection.getConnection());
-//	}
+	public static void main(String[] args) {
+		System.out.println(DBConnection.getConnection());
+	}
 }
 
