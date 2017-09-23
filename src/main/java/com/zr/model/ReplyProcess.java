@@ -9,6 +9,20 @@ public class ReplyProcess {
 	private String ques; //答辩记录问题
 	private String answer; //答辩记录答案
 	private int sid; //学生ID
+	private String sname; //学生姓名
+	public String getSubname() {
+		return subname;
+	}
+	public void setSubname(String subname) {
+		this.subname = subname;
+	}
+	private String subname; //选题名称
+	public String getSname() {
+		return sname;
+	}
+	public void setSname(String sname) {
+		this.sname = sname;
+	}
 	public int getPrid() {
 		return prid;
 	}
