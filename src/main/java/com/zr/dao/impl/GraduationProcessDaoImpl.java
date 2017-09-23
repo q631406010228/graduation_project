@@ -1,4 +1,4 @@
-package com.zr.daoimpl;
+package com.zr.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
