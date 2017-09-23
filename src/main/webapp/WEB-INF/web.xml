@@ -3,7 +3,7 @@
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID" version="3.0">
-	<display-name>easyUITree</display-name>
+	<display-name>graduation_project</display-name>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
@@ -12,23 +12,35 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
-	 <!-- 登录 -->
+	
+	 <!-- 获得毕业设计进程的内容 -->
 	<servlet>
-		<servlet-name>xxx</servlet-name>
-		<servlet-class></servlet-class>
+		<servlet-name>getGP</servlet-name>
+		<servlet-class>com.zr.action.GetGPAction</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>xxx</servlet-name>
-		<url-pattern></url-pattern>
-	</servlet-mapping>
-	 <!-- 小小少年-->
-	<servlet>
-		<servlet-name>大大</servlet-name>
-		<servlet-class>com.zr.action.LoginAction</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Login</servlet-name>
-		<url-pattern>/login</url-pattern>
+		<servlet-name>getGP</servlet-name>
+		<url-pattern>/getGP</url-pattern>
 	</servlet-mapping>
 	
+	 <!-- 保存毕业设计进程的时间、内容 -->
+	<servlet>
+		<servlet-name>setGP</servlet-name>
+		<servlet-class>com.zr.action.SetGPAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>setGP</servlet-name>
+		<url-pattern>/setGP</url-pattern>
+	</servlet-mapping>
+	
+	 <!-- 保存毕业设计进程的时间、内容 -->
+	<servlet>
+		<servlet-name>showGP</servlet-name>
+		<servlet-class>com.zr.action.ShowGPAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>showGP</servlet-name>
+		<url-pattern>/showGP</url-pattern>
+	</servlet-mapping>
+		
 </web-app>
