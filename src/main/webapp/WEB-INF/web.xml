@@ -12,7 +12,38 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
-	<!-- 查询答辩过程请求 -->
+	
+	 <!-- 获得毕业设计进程的内容 -->
+	<servlet>
+		<servlet-name>getGP</servlet-name>
+		<servlet-class>com.zr.action.GetGPAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>getGP</servlet-name>
+		<url-pattern>/getGP</url-pattern>
+	</servlet-mapping>
+	
+	 <!-- 保存毕业设计进程的时间、内容 -->
+	<servlet>
+		<servlet-name>setGP</servlet-name>
+		<servlet-class>com.zr.action.SetGPAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>setGP</servlet-name>
+		<url-pattern>/setGP</url-pattern>
+	</servlet-mapping>
+	
+	 <!-- 保存毕业设计进程的时间、内容 -->
+	<servlet>
+		<servlet-name>showGP</servlet-name>
+		<servlet-class>com.zr.action.ShowGPAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>showGP</servlet-name>
+		<url-pattern>/showGP</url-pattern>
+	</servlet-mapping>
+	
+		<!-- 查询答辩过程请求 -->
 	<servlet>
 		<servlet-name>SelectReplyPricess</servlet-name>
 		<servlet-class>com.zr.action.SelectReplyProcessAction</servlet-class>
@@ -60,5 +91,5 @@
 	<servlet-mapping>
 		<servlet-name>UpdateReplyProcess</servlet-name>
 		<url-pattern>/updateReplyProcess</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping>	
 </web-app>
