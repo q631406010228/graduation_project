@@ -21,7 +21,7 @@ public class ReplyProcessDaoImpl implements ReplyProcessDao{
 	public List<ReplyProcess> selectReplyProcess(int eid) {
 		// TODO Auto-generated method stub
 		StringBuffer sql = new StringBuffer();
-		sql.append("select reply_process.pr_id,reply_process.s_id,sub.sub_name,s_name,ques,answer from reply_process,student,sub  ");
+		sql.append("select reply_process.s_id,sub.sub_name,s_name,ques,answer from reply_process,student,sub  ");
 		sql.append("where reply_process.s_id = student.s_id and student.sub_id = sub.sub_id ");
 		sql.append("and sub.e_id = ? ");
 		List<ReplyProcess> list = new ArrayList<ReplyProcess>();
@@ -37,7 +37,6 @@ public class ReplyProcessDaoImpl implements ReplyProcessDao{
 				rp.setSubname(res.getString("sub_name"));
 				rp.setQues(res.getString("ques"));
 				rp.setAnswer(res.getString("answer"));
-				rp.setPrid(res.getInt("pr_id"));
 				list.add(rp);
 			}
 		} catch (SQLException e) {
@@ -75,7 +74,7 @@ public class ReplyProcessDaoImpl implements ReplyProcessDao{
 		// TODO Auto-generated method stub
 		StringBuffer sql = new StringBuffer();
 		sql.append("delete from reply_process ");
-		sql.append("where pr_id=? ");
+		sql.append("where s_id=? ");
 		Connection con = DBConnection.getConnection();
 		try {
 			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
