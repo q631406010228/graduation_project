@@ -11,6 +11,4 @@ public interface StudentService {
 	 * @return 返回学生对象
 	 */
 	public List<Student> selectStudentByEid(int eid);
-	
-	public List<Student> selectStudentFormByEid(int eid);
 }

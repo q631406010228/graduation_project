@@ -9,6 +9,7 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
+import com.sun.star.io.IOException;
 import com.zr.model.Notice;
 import com.zr.service.NoticeService;
 import com.zr.service.impl.NoticeServiceImpl;

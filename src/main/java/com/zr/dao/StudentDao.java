@@ -11,6 +11,4 @@ public interface StudentDao {
 	 * @return 返回学生对象集合
 	 */
 	public List<Student> selectStudentByEid(int eid);
-	
-	public List<Student> selectStudentFormByEid(int eid);
 }
