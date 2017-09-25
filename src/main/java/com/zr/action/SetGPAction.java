@@ -30,5 +30,3 @@ public class SetGPAction extends HttpServlet{
 
 }
 
-
-
