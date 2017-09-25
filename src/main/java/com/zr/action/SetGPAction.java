@@ -28,5 +28,7 @@ public class SetGPAction extends HttpServlet{
 	    gps.setGraduationProcess(gpContent, graStartTime, graEndTime);
 	}
 
-	
 }
+
+
+
