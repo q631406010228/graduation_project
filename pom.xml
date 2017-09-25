@@ -57,10 +57,11 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.artofsolving.jodconverter/jodconverter-core -->
 		<dependency>
-			<groupId>com.artofsolving</groupId>
-			<artifactId>jodconverter</artifactId>
-			<version>2.2.1</version>
+			<groupId>org.artofsolving.jodconverter</groupId>
+			<artifactId>jodconverter-core</artifactId>
+			<version>3.0-beta-3</version>
 		</dependency>
 		<dependency>
 			<groupId>javax</groupId>
@@ -68,9 +69,5 @@
 			<version>7.0</version>
 			<scope>provided</scope>
 		</dependency>
-<<<<<<< HEAD
-=======
-
->>>>>>> qinaho
 	</dependencies>
 </project>

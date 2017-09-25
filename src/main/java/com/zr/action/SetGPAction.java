@@ -29,8 +29,4 @@ public class SetGPAction extends HttpServlet{
 	}
 
 	
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> qinaho
