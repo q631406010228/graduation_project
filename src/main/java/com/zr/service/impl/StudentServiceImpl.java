@@ -15,5 +15,11 @@ public class StudentServiceImpl implements StudentService{
 		List list = studao.selectStudentByEid(eid);
 		return list;
 	}
+	@Override
+	public List<Student> selectStudentFormByEid(int eid) {
+		// TODO Auto-generated method stub
+		List list = studao.selectStudentFormByEid(eid);
+		return list;
+	}
 
 }
