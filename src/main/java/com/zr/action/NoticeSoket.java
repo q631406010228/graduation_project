@@ -14,7 +14,6 @@ import com.zr.model.Notice;
 import com.zr.service.NoticeService;
 import com.zr.service.impl.NoticeServiceImpl;
 
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 /**
