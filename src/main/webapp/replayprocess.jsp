@@ -34,9 +34,18 @@ $(document).ready(function(){
 	        {field:'sname',title:'学生姓名',width:100},
 	        {field:'subname',title:'选题',width:100},
 	        {field:'prid',title:'答辩记录id',width:100,hidden:true},    
-	        {field:'ques',title:'答辩问题',width:100},
-	        {field:'answer',title:'答辩答案',width:100}    
+	        {field:'ques',title:'答辩问题',width:100,editor:'text'},
+	        {field:'answer',title:'答辩答案',width:100,editor:'text'}    
 	    ]],
+	    onCheck:function(index,row){//选中单元格事件
+        	$('#tb').datagrid('beginEdit', index);
+			 //var ed =  $("#dg").datagrid('getEditor',{index:index,field:row.tpassword});
+		},
+		onBeforeUncheck:function(index,row)
+		{
+			$('#tb').datagrid('selectRow',index).datagrid('endEdit', index);
+			$('#tb').datagrid('reload');    
+		},
 		toolbar: [{
 			iconCls: 'icon-edit',
 			text:'修改',
@@ -58,8 +67,8 @@ $(document).ready(function(){
 				var rows = $("#tb").datagrid('getSelections');
 				var sids = new Array();
 				for (var i = 0; i < rows.length; i++) {
-					console.log(rows[i].sid);
-					sids.push(rows[i].sid);
+					console.log(rows[i].prid);
+					sids.push(rows[i].prid);
 				}
 				$.messager.confirm('提醒', '确认删除这几条记录吗？', function(r){
 					if (r){
@@ -234,7 +243,7 @@ $(document).ready(function(){
 	<div id="upwin">
 		<form id="ff" method="post">
 			<div style="margin-left: 150px;margin-top: 50px; ">
-			    <div>
+			    <div style="margin-left: 7px">
 					<label >学生ID :</label> <input id="sid1" name="sid"
 						type="text" style="width: 200px">
 				</div>
