@@ -47,10 +47,10 @@ public class DeleteReplyProcessAction extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		String [] sids = request.getParameterValues("sid");
+		String [] prids = request.getParameterValues("sid");
 		List<Integer> sid = new ArrayList<Integer>();
-		for (int i = 0; i < sids.length; i++) {
-			sid.add(Integer.parseInt(sids[i]));
+		for (int i = 0; i < prids.length; i++) {
+			sid.add(Integer.parseInt(prids[i]));
 		}
 		int flag[] = new int[20];
 		flag = rpservice.deletReplyProcess(sid);
