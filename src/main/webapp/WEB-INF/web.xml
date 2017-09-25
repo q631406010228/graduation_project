@@ -92,4 +92,25 @@
 		<servlet-name>UpdateReplyProcess</servlet-name>
 		<url-pattern>/updateReplyProcess</url-pattern>
 	</servlet-mapping>	
+	
+	<!-- 获得学生、教师两种角色 -->
+	<servlet>
+		<servlet-name>getRoles</servlet-name>
+		<servlet-class>com.zr.action.GetRolesAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>getRoles</servlet-name>
+		<url-pattern>/getRoles</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 保存通知的信息 -->
+	<servlet>
+		<servlet-name>setNotice</servlet-name>
+		<servlet-class>com.zr.action.SetNoticeAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>setNotice</servlet-name>
+		<url-pattern>/setNotice</url-pattern>
+	</servlet-mapping>
+	
 </web-app>
