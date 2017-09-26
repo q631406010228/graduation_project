@@ -12,8 +12,8 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
-	
-	 <!-- 获得毕业设计进程的内容 -->
+
+	<!-- 获得毕业设计进程的内容 -->
 	<servlet>
 		<servlet-name>getGP</servlet-name>
 		<servlet-class>com.zr.action.GetGPAction</servlet-class>
@@ -22,8 +22,8 @@
 		<servlet-name>getGP</servlet-name>
 		<url-pattern>/getGP</url-pattern>
 	</servlet-mapping>
-	
-	 <!-- 显示毕业设计进程的时间、内容 -->
+
+	<!-- 显示毕业设计进程的时间、内容 -->
 	<servlet>
 		<servlet-name>setGP</servlet-name>
 		<servlet-class>com.zr.action.SetGPAction</servlet-class>
@@ -32,8 +32,8 @@
 		<servlet-name>setGP</servlet-name>
 		<url-pattern>/setGP</url-pattern>
 	</servlet-mapping>
-	
-	 <!-- 保存毕业设计进程的时间、内容 -->
+
+	<!-- 保存毕业设计进程的时间、内容 -->
 	<servlet>
 		<servlet-name>showGP</servlet-name>
 		<servlet-class>com.zr.action.ShowGPAction</servlet-class>
@@ -42,8 +42,8 @@
 		<servlet-name>showGP</servlet-name>
 		<url-pattern>/showGP</url-pattern>
 	</servlet-mapping>
-	
-		<!-- 查询答辩过程请求 -->
+
+	<!-- 查询答辩过程请求 -->
 	<servlet>
 		<servlet-name>SelectReplyPricess</servlet-name>
 		<servlet-class>com.zr.action.SelectReplyProcessAction</servlet-class>
@@ -91,9 +91,9 @@
 	<servlet-mapping>
 		<servlet-name>UpdateReplyProcess</servlet-name>
 		<url-pattern>/updateReplyProcess</url-pattern>
-	</servlet-mapping>	
+	</servlet-mapping>
 
-<!-- 查看学生论文请求 -->
+	<!-- 查看学生论文请求 -->
 	<servlet>
 		<servlet-name>ShowPapersOfStudent</servlet-name>
 		<servlet-class>com.zr.action.ShowPapersOfStudentAction</servlet-class>
@@ -101,8 +101,8 @@
 	<servlet-mapping>
 		<servlet-name>ShowPapersOfStudent</servlet-name>
 		<url-pattern>/showpapersofstudent</url-pattern>
-	</servlet-mapping>	
-  
+	</servlet-mapping>
+
 	<!-- 老师下载学生已上传论文 -->
 	<servlet>
 		<servlet-name>downloadfile</servlet-name>
@@ -112,7 +112,7 @@
 		<servlet-name>downloadfile</servlet-name>
 		<url-pattern>/downloadfile</url-pattern>
 	</servlet-mapping>
-  
+
 	<!-- 已批改论文回传 -->
 	<servlet>
 		<servlet-name>fileupload</servlet-name>
@@ -122,8 +122,8 @@
 		<servlet-name>fileupload</servlet-name>
 		<url-pattern>/fileupload</url-pattern>
 	</servlet-mapping>
-  
-  <!-- 保存通知的信息 -->
+
+	<!-- 保存通知的信息 -->
 	<servlet>
 		<servlet-name>setNotice</servlet-name>
 		<servlet-class>com.zr.action.SetNoticeAction</servlet-class>
@@ -132,8 +132,8 @@
 		<servlet-name>setNotice</servlet-name>
 		<url-pattern>/setNotice</url-pattern>
 	</servlet-mapping>
-  
-  <!-- 获得学生、教师两种角色 -->
+
+	<!-- 获得学生、教师两种角色 -->
 	<servlet>
 		<servlet-name>getRoles</servlet-name>
 		<servlet-class>com.zr.action.GetRolesAction</servlet-class>
@@ -142,27 +142,25 @@
 		<servlet-name>getRoles</servlet-name>
 		<url-pattern>/getRoles</url-pattern>
 	</servlet-mapping>
-</web-app>
-  
-  <!-- 上传文件zy -->
-	 <servlet>
-	    <servlet-name>Student_SubmitOpenReport</servlet-name>
-	    <servlet-class>com.zr.action.Student_SubmitOpenReportAction</servlet-class>
- 	 </servlet>
-	  <servlet-mapping>
-	    <servlet-name>Student_SubmitOpenReport</servlet-name>
-	    <url-pattern>/Student_SubmitOpenReport</url-pattern>
-	  </servlet-mapping>
-    
-  <!-- 下载文件zy  -->
-	 <servlet>
-	    <servlet-name>DownFile</servlet-name>
-	    <servlet-class>com.zr.action.DownFileAction</servlet-class>
- 	 </servlet>
-	  <servlet-mapping>
-	    <servlet-name>DownFile</servlet-name>
-	    <url-pattern>/DownFile</url-pattern>
-	  </servlet-mapping>
-  
-</web-app>
 
+
+	<!-- 上传文件zy -->
+	<servlet>
+		<servlet-name>Student_SubmitOpenReport</servlet-name>
+		<servlet-class>com.zr.action.Student_SubmitOpenReportAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Student_SubmitOpenReport</servlet-name>
+		<url-pattern>/Student_SubmitOpenReport</url-pattern>
+	</servlet-mapping>
+
+	<!-- 下载文件zy -->
+	<servlet>
+		<servlet-name>DownFile</servlet-name>
+		<servlet-class>com.zr.action.DownFileAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DownFile</servlet-name>
+		<url-pattern>/DownFile</url-pattern>
+	</servlet-mapping>
+</web-app>
