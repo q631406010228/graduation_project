@@ -22,7 +22,7 @@
 		})
 		
 		//添加通知的信息程的提交按钮
-		$('#keep').linkbutton({    
+	 	$('#keep').linkbutton({    
 		    iconCls: 'icon-ok',
 		    onClick:function(){
 		    	$('#gpForm').form('submit', {    
