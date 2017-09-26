@@ -4,6 +4,8 @@ import com.zr.dao.SubDao;
 import com.zr.dao.impl.SubDaoImpl;
 import com.zr.service.SubService;
 
+import net.sf.json.JSONArray;
+
 public class SubServiceImpl implements SubService{
 	SubDao subdao = new SubDaoImpl();
 	@Override
@@ -12,5 +14,12 @@ public class SubServiceImpl implements SubService{
 		int i = subdao.insertSub(subname, subcontent, subcount, eid, state);
 		return i;
 	}
-	
+	 @Override
+	public JSONArray selectSubBySid(int c_id) { 
+		 //通过学院id，来获取对应的全部信息
+		 JSONArray json_arr = new JSONArray();
+		 json_arr=subdao.selectSubByTeacherEcol(c_id);
+		 
+		return null;
+	}
 }
