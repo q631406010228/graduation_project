@@ -1,165 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-	id="WebApp_ID" version="3.0">
-	<display-name>graduation_project</display-name>
-	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.htm</welcome-file>
-		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>default.html</welcome-file>
-		<welcome-file>default.htm</welcome-file>
-		<welcome-file>default.jsp</welcome-file>
-	</welcome-file-list>
-
-	<!-- 获得毕业设计进程的内容 -->
-	<servlet>
-		<servlet-name>getGP</servlet-name>
-		<servlet-class>com.zr.action.GetGPAction</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>getGP</servlet-name>
-		<url-pattern>/getGP</url-pattern>
-	</servlet-mapping>
-
-	<!-- 显示毕业设计进程的时间、内容 -->
-	<servlet>
-		<servlet-name>setGP</servlet-name>
-		<servlet-class>com.zr.action.SetGPAction</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>setGP</servlet-name>
-		<url-pattern>/setGP</url-pattern>
-	</servlet-mapping>
-
-	<!-- 保存毕业设计进程的时间、内容 -->
-	<servlet>
-		<servlet-name>showGP</servlet-name>
-		<servlet-class>com.zr.action.ShowGPAction</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>showGP</servlet-name>
-		<url-pattern>/showGP</url-pattern>
-	</servlet-mapping>
-
-	<!-- 查询答辩过程请求 -->
-	<servlet>
-		<servlet-name>SelectReplyPricess</servlet-name>
-		<servlet-class>com.zr.action.SelectReplyProcessAction</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>SelectReplyPricess</servlet-name>
-		<url-pattern>/selectReplyPricess</url-pattern>
-	</servlet-mapping>
-
-	<!-- 根据选题查询学生请求 -->
-	<servlet>
-		<servlet-name>SelectStudentByEid</servlet-name>
-		<servlet-class>com.zr.action.SelectStudentByEidAction</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>SelectStudentByEid</servlet-name>
-		<url-pattern>/selectStudentByEid</url-pattern>
-	</servlet-mapping>
-
-	<!-- 删除答辩过程请求 -->
-	<servlet>
-		<servlet-name>DeleteReplyProcess</servlet-name>
-		<servlet-class>com.zr.action.DeleteReplyProcessAction</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>DeleteReplyProcess</servlet-name>
-		<url-pattern>/deleteReplyProcess</url-pattern>
-	</servlet-mapping>
-
-	<!-- 添加答辩过程请求 -->
-	<servlet>
-		<servlet-name>AddReplyProcess</servlet-name>
-		<servlet-class>com.zr.action.AddReplyProcessAction</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>AddReplyProcess</servlet-name>
-		<url-pattern>/addReplyProcess</url-pattern>
-	</servlet-mapping>
-
-	<!-- 答辩过程修改请求 -->
-	<servlet>
-		<servlet-name>UpdateReplyProcess</servlet-name>
-		<servlet-class>com.zr.action.UpdateReplyProcessAction</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>UpdateReplyProcess</servlet-name>
-		<url-pattern>/updateReplyProcess</url-pattern>
-	</servlet-mapping>
-
-	<!-- 查看学生论文请求 -->
-	<servlet>
-		<servlet-name>ShowPapersOfStudent</servlet-name>
-		<servlet-class>com.zr.action.ShowPapersOfStudentAction</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>ShowPapersOfStudent</servlet-name>
-		<url-pattern>/showpapersofstudent</url-pattern>
-	</servlet-mapping>
-
-	<!-- 老师下载学生已上传论文 -->
-	<servlet>
-		<servlet-name>downloadfile</servlet-name>
-		<servlet-class>com.zr.action.FileDownloadAction</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>downloadfile</servlet-name>
-		<url-pattern>/downloadfile</url-pattern>
-	</servlet-mapping>
-
-	<!-- 已批改论文回传 -->
-	<servlet>
-		<servlet-name>fileupload</servlet-name>
-		<servlet-class>com.zr.action.FileUploadAction</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>fileupload</servlet-name>
-		<url-pattern>/fileupload</url-pattern>
-	</servlet-mapping>
-
-	<!-- 保存通知的信息 -->
-	<servlet>
-		<servlet-name>setNotice</servlet-name>
-		<servlet-class>com.zr.action.SetNoticeAction</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>setNotice</servlet-name>
-		<url-pattern>/setNotice</url-pattern>
-	</servlet-mapping>
-
-	<!-- 获得学生、教师两种角色 -->
-	<servlet>
-		<servlet-name>getRoles</servlet-name>
-		<servlet-class>com.zr.action.GetRolesAction</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>getRoles</servlet-name>
-		<url-pattern>/getRoles</url-pattern>
-	</servlet-mapping>
-
-	<!-- 上传文件zy -->
-	<servlet>
-		<servlet-name>Student_SubmitOpenReport</servlet-name>
-		<servlet-class>com.zr.action.Student_SubmitOpenReportAction</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Student_SubmitOpenReport</servlet-name>
-		<url-pattern>/Student_SubmitOpenReport</url-pattern>
-	</servlet-mapping>
-
-	<!-- 下载文件zy -->
-	<servlet>
-		<servlet-name>DownFile</servlet-name>
-		<servlet-class>com.zr.action.DownFileAction</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>DownFile</servlet-name>
-		<url-pattern>/DownFile</url-pattern>
-	</servlet-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>graduation_project</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>getGP</servlet-name>
+    <servlet-class>com.zr.action.GetGPAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>getGP</servlet-name>
+    <url-pattern>/getGP</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>setGP</servlet-name>
+    <servlet-class>com.zr.action.SetGPAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>setGP</servlet-name>
+    <url-pattern>/setGP</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>showGP</servlet-name>
+    <servlet-class>com.zr.action.ShowGPAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>showGP</servlet-name>
+    <url-pattern>/showGP</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SelectReplyPricess</servlet-name>
+    <servlet-class>com.zr.action.SelectReplyProcessAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectReplyPricess</servlet-name>
+    <url-pattern>/selectReplyPricess</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SelectStudentByEid</servlet-name>
+    <servlet-class>com.zr.action.SelectStudentByEidAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectStudentByEid</servlet-name>
+    <url-pattern>/selectStudentByEid</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DeleteReplyProcess</servlet-name>
+    <servlet-class>com.zr.action.DeleteReplyProcessAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteReplyProcess</servlet-name>
+    <url-pattern>/deleteReplyProcess</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AddReplyProcess</servlet-name>
+    <servlet-class>com.zr.action.AddReplyProcessAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddReplyProcess</servlet-name>
+    <url-pattern>/addReplyProcess</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>UpdateReplyProcess</servlet-name>
+    <servlet-class>com.zr.action.UpdateReplyProcessAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateReplyProcess</servlet-name>
+    <url-pattern>/updateReplyProcess</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ShowPapersOfStudent</servlet-name>
+    <servlet-class>com.zr.action.ShowPapersOfStudentAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowPapersOfStudent</servlet-name>
+    <url-pattern>/showpapersofstudent</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>downloadfile</servlet-name>
+    <servlet-class>com.zr.action.FileDownloadAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>downloadfile</servlet-name>
+    <url-pattern>/downloadfile</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>fileupload</servlet-name>
+    <servlet-class>com.zr.action.FileUploadAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>fileupload</servlet-name>
+    <url-pattern>/fileupload</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>setNotice</servlet-name>
+    <servlet-class>com.zr.action.SetNoticeAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>setNotice</servlet-name>
+    <url-pattern>/setNotice</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>getRoles</servlet-name>
+    <servlet-class>com.zr.action.GetRolesAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>getRoles</servlet-name>
+    <url-pattern>/getRoles</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Student_SubmitOpenReport</servlet-name>
+    <servlet-class>com.zr.action.Student_SubmitOpenReportAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Student_SubmitOpenReport</servlet-name>
+    <url-pattern>/Student_SubmitOpenReport</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DownFile</servlet-name>
+    <servlet-class>com.zr.action.DownFileAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DownFile</servlet-name>
+    <url-pattern>/DownFile</url-pattern>
+  </servlet-mapping>
 </web-app>
