@@ -53,7 +53,7 @@ ul.test li span {
 		</div>
 	</div>
     <script type="text/javascript">  
-        var webSocket = new WebSocket('ws://172.18.23.54:8080/graduation_project/websocket');  
+    	var webSocket = new WebSocket("ws://localhost:8080/graduation_project/websocket");  
         webSocket.onerror = function(event) {  
             alert(event.data);  
         };  
@@ -73,7 +73,7 @@ ul.test li span {
         };  
         function start() {  
             //向服务器发送请求  
-            webSocket.send('我是jCuckoo');  
+            webSocket.send('我是秦皓');  
         }  
         
         function showContent(){

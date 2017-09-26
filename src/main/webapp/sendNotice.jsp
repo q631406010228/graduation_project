@@ -37,7 +37,7 @@
 		    	    	var date=myDate.getDate(); 
 		    	    	var now=year+'-'+month+"-"+date;
 		    	    	param.data = now;
-		    	    	param.sendID = 4;	//系主任的ID
+		    	    	param.sendID = 1;	//系主任的ID
 		    	    },    
 		    	    success:function(data){  
 		    	    	$.messager.alert('警告','提交成功','info',function(){

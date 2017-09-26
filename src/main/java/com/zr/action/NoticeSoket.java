@@ -14,7 +14,6 @@ import com.zr.model.Notice;
 import com.zr.service.NoticeService;
 import com.zr.service.impl.NoticeServiceImpl;
 
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 /**
@@ -36,7 +35,7 @@ public class NoticeSoket {
 		int n = 0;
 		while (true) {
 			Thread.sleep(1000);
-			List<Notice> ln = ns.getNotices(2, 1);
+			List<Notice> ln = ns.getNotices(2,1406010001);
 			JSONObject ja = new JSONObject();
 			ja.put("Notice", ln);
 			if(ln.size() != n){
