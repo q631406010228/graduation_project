@@ -1,5 +1,7 @@
 package com.zr.service;
 
-public class TeacherService {
+import net.sf.json.JSONObject;
 
+public interface TeacherService {
+	public JSONObject getPapers();
 }
