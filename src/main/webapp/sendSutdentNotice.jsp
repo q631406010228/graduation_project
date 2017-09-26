@@ -7,15 +7,11 @@
 <title>Insert title here</title>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- 引入主题样式 -->
-<link href="themes/gray/easyui.css" rel="stylesheet">
-<!-- 引入图标的样式 -->
-<link href="themes/icon.css" rel="stylesheet">
-<!-- 先引入jquery -->
-<script type="text/javascript" src="js/jquery-1.7.2.js"></script>
-<!-- 引入easyui -->
-<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="js/easyui-lang-zh_CN.js"></script>
+<link href="themes/metro/easyui.css" rel="stylesheet" />
+<link href="themes/icon.css" rel="stylesheet" />
+<script type="text/javascript" src="jquery1.7.2/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="jquery1.7.2/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="jquery1.7.2/jquery.easyui.min.js"></script>
 <title>学生名单</title>
 </head>
 <script type="text/javascript">
@@ -75,6 +71,22 @@
 		    iconCls: 'icon-ok',	
 		});	
 		
+		$('#sids').textbox({    
+			width: 300,          
+		})
+		
+		$('#subname1').textbox({    
+			width: 300,          
+		})
+		
+		$('#ques1').textbox({    
+			width:300,
+			height:100,
+		    iconAlign:'left',
+		    multiline:true
+		})
+		
+		//
 		$(function(){    
 		    $('#btnExport').bind('click', function(){    
 		    	var rows = $('#tb').datagrid('getSelections');
@@ -84,9 +96,9 @@
 				var sids = [];
 				for(var i = 0;i < rows.length;i++){
 					sids[i] = rows[i].num;
-				} 
-				$('#sid1').textbox('setText',sids.join(","));
-				$('#sendStudentWin').window('open');  
+				} 				
+				$('#sendStudentWin').window('open');
+				$('#sids').textbox('setValue',sids.join());
 		    });    
 		});
 	
@@ -95,20 +107,20 @@
 <body>
 	<div id="sendStudentWin">
 		<form id="ff" method="post">
-			<div style="margin-left: 150px;margin-top: 50px; ">
+			<div style="margin-left: 100px;margin-top: 50px; ">
 			    <div style="margin-left: 7px">
-					<label >学生ID :</label> <input id="sid1" name="sid"
-						type="text" style="width: 200px">
+					<label >学生ID :</label> <input id="sids" name="sid"
+						type="text">
 				</div>
 				<br>
 				<div>
-					<label >选题名称:</label> <input id="subname1" name="subname"
-						type="text" style="width: 200px">
+					<label >通知题目:</label> <input id="subname1" name="subname"
+						type="text">
 				</div>
 				<br>
 				<div>
-					<label for="password">答辩问题:</label> <input id="ques1"
-						name="ques" type="text" style="width: 200px">
+					<label for="password">通知内容:</label> <input id="ques1"
+						name="ques" type="text">
 				</div>
 				<br> 
 				<div style="margin-left: 120px;">
