@@ -92,7 +92,6 @@ public JSONArray selectSubByTeacherEcol(int e_col) {
 
 	return null;
 }
-}
 
 	@Override
 	public Sub selectSubByEid(int eid) {
