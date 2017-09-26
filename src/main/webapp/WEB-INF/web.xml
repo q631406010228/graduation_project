@@ -23,7 +23,7 @@
 		<url-pattern>/getGP</url-pattern>
 	</servlet-mapping>
 	
-	 <!-- 保存毕业设计进程的时间、内容 -->
+	 <!-- 显示毕业设计进程的时间、内容 -->
 	<servlet>
 		<servlet-name>setGP</servlet-name>
 		<servlet-class>com.zr.action.SetGPAction</servlet-class>
@@ -102,6 +102,7 @@
 		<servlet-name>ShowPapersOfStudent</servlet-name>
 		<url-pattern>/showpapersofstudent</url-pattern>
 	</servlet-mapping>	
+  
 	<!-- 老师下载学生已上传论文 -->
 	<servlet>
 		<servlet-name>downloadfile</servlet-name>
@@ -111,6 +112,7 @@
 		<servlet-name>downloadfile</servlet-name>
 		<url-pattern>/downloadfile</url-pattern>
 	</servlet-mapping>
+  
 	<!-- 已批改论文回传 -->
 	<servlet>
 		<servlet-name>fileupload</servlet-name>
@@ -119,5 +121,25 @@
 	<servlet-mapping>
 		<servlet-name>fileupload</servlet-name>
 		<url-pattern>/fileupload</url-pattern>
+	</servlet-mapping>
+  
+  <!-- 保存通知的信息 -->
+	<servlet>
+		<servlet-name>setNotice</servlet-name>
+		<servlet-class>com.zr.action.SetNoticeAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>setNotice</servlet-name>
+		<url-pattern>/setNotice</url-pattern>
+	</servlet-mapping>
+  
+  <!-- 获得学生、教师两种角色 -->
+	<servlet>
+		<servlet-name>getRoles</servlet-name>
+		<servlet-class>com.zr.action.GetRolesAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>getRoles</servlet-name>
+		<url-pattern>/getRoles</url-pattern>
 	</servlet-mapping>
 </web-app>

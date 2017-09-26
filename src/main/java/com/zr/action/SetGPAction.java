@@ -1,22 +1,15 @@
 package com.zr.action;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sun.star.util.DateTime;
 import com.zr.service.GraduationProcessService;
 import com.zr.service.impl.GraduationProcessServiceImpl;
 
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 
 public class SetGPAction extends HttpServlet{
 	

@@ -14,6 +14,5 @@ public interface StudentDao {
 	 */
 	public List<Student> selectStudentByEid(int eid);
 	
-	
-	
+	public List<Student> selectStudentFormByEid(int eid);
 }

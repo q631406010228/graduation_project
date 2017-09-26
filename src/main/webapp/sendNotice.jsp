@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link href="themes/metro/easyui.css" rel="stylesheet" />
@@ -12,24 +13,31 @@
 <script type="text/javascript">
 	$(function() {
 		
-		//构建  添加毕业设计进程   窗口
+		//构建  添加通知的信息  窗口
 		$('#gpIn').window({
-			title:'添加毕业设计进程窗口',
+			title:'添加学生通知窗口',
 			width : 600,
 			height : 400,
 			modal : true
 		})
 		
-		//添加毕业设计进程的提交按钮
+		//添加通知的信息程的提交按钮
 		$('#keep').linkbutton({    
 		    iconCls: 'icon-ok',
 		    onClick:function(){
 		    	$('#gpForm').form('submit', {    
-		    	    url:'setGP',    
+		    	    url:'setNotice',    
 		    	    onSubmit: function(param){ 
-		    	    	param.gpContent = $('#gpc').combobox("getText");
-		    	    	param.graStartTime = $('#graStartTime').datebox("getText");
-		    	    	param.graEndTime = $('#graEndTime').datebox("getText");
+		    	    	var myDate = new Date();
+		    	    	//获取当前年
+		    	    	var year=myDate.getFullYear();	//相较于getYear兼容性更好，可以兼容火狐
+		    	    	//获取当前月
+		    	    	var month=myDate.getMonth()+1;
+		    	    	//获取当前日
+		    	    	var date=myDate.getDate(); 
+		    	    	var now=year+'-'+month+"-"+date;
+		    	    	param.data = now;
+		    	    	param.sendID = 4;	//系主任的ID
 		    	    },    
 		    	    success:function(data){  
 		    	    	$.messager.alert('警告','提交成功','info',function(){
@@ -40,46 +48,41 @@
 		    }
 		});	
 		
-		
-		//毕业设计进程开始时间设置
-		$('#graStartTime').datebox({    
-		    value: '3/4/2017 2:3',    
-		    required: true,    
-		    showSeconds: false   
-		});
-			
-		//毕业设计进程结束时间设置
-		$('#graEndTime').datebox({    
-		    value: '3/5/2017 2:3',    
-		    required: true,    
-		    showSeconds: false   
+		//通知的内容
+		$('#sendNoticText').textbox({    
+			width:300,
+			height:100,
+		    iconAlign:'left',
+		    multiline:true
 		});
 		
-		//毕业设计进程内容的下拉选框
-		$('#gpc').combobox({    
-		    url:'getGP',    
+		//通知的标题
+		$('#sendNoticTitle').textbox({    
+			width:300,
+		    iconAlign:'left',
+		});
+		
+		//通知角色的下拉选框
+		$('#selectRole').combobox({    
+		    url:'getRoles',    
 		    valueField:'id',    
 		    textField:'text'   
 		});
  		
 	});
 </script>
-
 </head>
 <body>
 	<div id="gpIn">
 		<form id="gpForm" method="post">
 			<div>
-				<div style = "margin:10% 0 0 20%;">					
-					毕业设计进程&nbsp;&nbsp;<input id="gpc" name="role" value="毕业设计开题"> 
-					<br>
-					<br>
-					开始时间&nbsp;&nbsp;<input id="graStartTime" type="text" name="birthday"></input> &nbsp;&nbsp;&nbsp;&nbsp;
-					<br>
-					<br>
-					结束时间&nbsp;&nbsp;<input id="graEndTime" type="text" name="birthday"></input>  
+				<div style = "margin:10% 0 0 20%;">	
+					选择角色&nbsp;&nbsp;<input id="selectRole" name="role" value="学生"> 		
+					<br><br>
+					<input id="sendNoticTitle" name="snTitle" type="text"  >
+					<br><br>		
+					<input id="sendNoticText" name="snContent" type="text"  >					
 				</div>
-				<br>
 				<br>
 				<br>	
 				<div>

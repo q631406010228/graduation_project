@@ -20,7 +20,7 @@ public class GraduationProcessDaoImpl implements GraduationProcessDao{
 	//保存毕业设计进程信息
 	@Override
 	public void setGraduationProcess(String gpContent,String graStartTime,String graEndTime) {
-		SimpleDateFormat sdf =   new SimpleDateFormat( "yyyy-MM-dd" );
+		SimpleDateFormat sdf =   new SimpleDateFormat( "yyyy-MM-dd" );	//日期的格式
 		Connection conn = DBConnection.getConnection();
 		StringBuffer s = new StringBuffer();
 		s.append("insert into graduation_process(gp_starttime,gp_endtime,gp_content) values(?,?,?);");
@@ -28,7 +28,7 @@ public class GraduationProcessDaoImpl implements GraduationProcessDao{
 			String[] start = graStartTime.split("/");	//将easyuir的datebox的日期转化为mysql的日期
 			StringBuffer s1 = new StringBuffer();
 			s1.append(start[start.length-1]);
-			for(int i = start.length-2;i >= 0;i--){
+			for(int i = start.length-2;i >= 0;i--){		//反转开始日期的年月日
 				s1.append("-"+start[i]);
 			}
 			PreparedStatement ps = conn.prepareStatement(s.toString());
