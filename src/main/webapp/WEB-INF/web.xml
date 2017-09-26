@@ -35,7 +35,7 @@
 	 <!-- 展现角色的权限 -->
 	<servlet>
 		<servlet-name>showRoles</servlet-name>
-		<servlet-class>com.zr.action.ShowRolesAction</servlet-class>
+		<servlet-class>com.zr.action.ShowFunctionAction</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>showRoles</servlet-name>
