@@ -72,5 +72,58 @@ public class StudentDaoImpl implements StudentDao{
 		}
 		return list;
 	}
-
+	@Override
+	public boolean setSubidBySid(int sub_id, int s_id) {
+		System.out.println("进入StudentDaoImpl.setSubidBySid,sub_id="+sub_id+"s_id="+s_id);
+		Connection con = DBConnection.getConnection();
+		//定义数据库语句
+		StringBuffer sql = new StringBuffer();
+		sql.append("update student set sub_id =?");
+		sql.append(" where s_id =?");
+		try {
+			//预编译
+			PreparedStatement pre = (PreparedStatement)con.prepareStatement(sql.toString());
+			//赋值
+			pre.setInt(1, sub_id);
+			pre.setInt(2, s_id);
+			//获取结果
+			int i= pre.executeUpdate();
+			if(i==1){
+				System.out.println("获取结果(1为成功)StudentDaoImpl.setSubidBySid.i="+i);
+				con.close();
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	@Override
+	public Integer getStudentNumberBySubid(int sub_id){
+		Connection con = DBConnection.getConnection();
+		//定义数据库语句
+		StringBuffer sql = new StringBuffer();
+		sql.append("select COUNT(s_id)as number ");
+		sql.append("from student");
+		sql.append(" where sub_id=? ");
+		try {
+			//预编译
+			PreparedStatement pre =(PreparedStatement)con.prepareStatement(sql.toString());
+			//赋值
+			pre.setInt(1, sub_id);
+			//获取值
+			ResultSet set = pre.executeQuery();
+			if(set.next()){
+				Integer i =set.getInt("number");
+				System.out.println("选择该课题的人数StudentDaoImpl.getStudentNumberBySubid.i="+i);
+				return i;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
