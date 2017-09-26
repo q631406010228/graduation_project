@@ -1,19 +1,25 @@
 package com.zr.service;
 
-import net.sf.json.JSONArray;
+import com.zr.model.Sub;
 
 public interface SubService {
 	/**
-	 * 添加选题信息
-	 * @param subname
-	 * @param subcontent
-	 * @param subcount
-	 * @param eid
-	 * @param state
-	 * @return
+	 * 选题申报
+	 * @param subname 课题名称
+	 * @param subcontent 课题描述
+	 * @param subcount 课题容量
+	 * @param eid 提交教师ID
+	 * @param state 课题状态
+	 * @return 是否成功的标志位
 	 */
 	public int addSub(String subname,String subcontent,int subcount,int eid,int state);
 	/**
+	 * 根据教师查询选题申报
+	 * @param eid 教师ID
+	 * @return 选题申报（sub）对象
+	 */
+	public Sub selectSubByEid(int eid);
+  	/**
 	 * 根据学生的id，查询学生可选的毕设题目
 	 * @param s_id 学生id（用户的id）
 	 * @return 选题信息的json数组

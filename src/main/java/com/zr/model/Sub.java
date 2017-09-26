@@ -7,7 +7,7 @@ package com.zr.model;
 public class Sub {
 	private int subid; //选题id
 	private String subname; //选题名称
-	private String subcount; //选题容量
+	private int subcount; //选题容量
 	private String subcontent; //选题内容
 	private int substate; //选题状态
 	private int eid;//选题提交者
@@ -30,10 +30,10 @@ public class Sub {
 	public void setSubname(String subname) {
 		this.subname = subname;
 	}
-	public String getSubcount() {
+	public int getSubcount() {
 		return subcount;
 	}
-	public void setSubcount(String subcount) {
+	public void setSubcount(int subcount) {
 		this.subcount = subcount;
 	}
 	public String getSubcontent() {

@@ -51,18 +51,26 @@
 		    iconCls: 'icon-ok',
 		    onClick:function(){
 		    	$('#ff').form('submit', {    
-		    	    url:'setSN',    
-		    	    onSubmit: function(param){ 
-		    	    	param.gpContent = $('#gpc').combobox("getText");
-		    	    	param.graStartTime = $('#graStartTime').datebox("getText");
-		    	    	param.graEndTime = $('#graEndTime').datebox("getText");
+		    	    url:'sendStudentNotice',    
+		    	    onSubmit: function(param){  
+		    	    	var myDate = new Date();
+		    	    	//获取当前年
+		    	    	var year=myDate.getFullYear();	//相较于getYear兼容性更好，可以兼容火狐
+		    	    	//获取当前月
+		    	    	var month=myDate.getMonth()+1;
+		    	    	//获取当前日
+		    	    	var date=myDate.getDate(); 
+		    	    	var now=year+'-'+month+"-"+date;
+		    	    	param.data = now;
+		    	    	param.eID = '2';  	//教师的eID    
 		    	    },    
-		    	    success:function(data){  
-		    	    	$.messager.alert('警告','提交成功','info',function(){
-				    		
-				    	});   				    	    	
+		    	    success:function(data){    
+		    	    	$.messager.alert('警告','添加成功','info',function(){
+				    		$('#ff').form('clear');
+				    		$('#sendStudentWin').window('close');
+				    	}); 
 		    	    }    
-		    	});
+			    });
 		    }
 		});	
 		
@@ -86,7 +94,6 @@
 		    multiline:true
 		})
 		
-		//
 		$(function(){    
 		    $('#btnExport').bind('click', function(){    
 		    	var rows = $('#tb').datagrid('getSelections');
@@ -98,7 +105,7 @@
 					sids[i] = rows[i].num;
 				} 				
 				$('#sendStudentWin').window('open');
-				$('#sids').textbox('setValue',sids.join());
+				$('#sids').textbox('setValue',sids.join());				
 		    });    
 		});
 	
