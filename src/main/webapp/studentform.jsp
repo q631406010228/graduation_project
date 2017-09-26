@@ -27,7 +27,7 @@
 		    pagination:true,
 		    rownumbers:true,
 		    columns:[[    
-		        {field:'ck',title:'ck',checkbox:true,width:100},    
+		        //{field:'ck',title:'ck',checkbox:true,width:100},    
 		        {field:'num',title:'学生学号',width:100}, 
 		        {field:'sname',title:'学生姓名',width:100},
 		        {field:'colname',title:'学院',width:100},
