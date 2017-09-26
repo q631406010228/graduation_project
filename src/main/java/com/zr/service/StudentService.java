@@ -11,6 +11,10 @@ public interface StudentService {
 	 * @return 返回学生对象
 	 */
 	public List<Student> selectStudentByEid(int eid);
-	
+	/**
+	 * 查询学生名单
+	 * @param eid 教师id
+	 * @return 学生类型的集合
+	 */
 	public List<Student> selectStudentFormByEid(int eid);
 }

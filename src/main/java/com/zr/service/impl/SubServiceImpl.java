@@ -1,7 +1,9 @@
+
 package com.zr.service.impl;
 
 import com.zr.dao.SubDao;
 import com.zr.dao.impl.SubDaoImpl;
+import com.zr.model.Sub;
 import com.zr.service.SubService;
 
 public class SubServiceImpl implements SubService{
@@ -12,5 +14,12 @@ public class SubServiceImpl implements SubService{
 		int i = subdao.insertSub(subname, subcontent, subcount, eid, state);
 		return i;
 	}
+	@Override
+	public Sub selectSubByEid(int eid) {
+		// TODO Auto-generated method stub
+		Sub sub = subdao.selectSubByEid(eid);
+		return sub;
+	}
 	
 }
+
