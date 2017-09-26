@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.zr.model.Student;
 
+import net.sf.json.JSONObject;
+
 public interface StudentDao {
 	/**
 	 * 查询学生根据选题发布者
@@ -11,4 +13,7 @@ public interface StudentDao {
 	 * @return 返回学生对象集合
 	 */
 	public List<Student> selectStudentByEid(int eid);
+	
+	
+	
 }

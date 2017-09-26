@@ -92,4 +92,32 @@
 		<servlet-name>UpdateReplyProcess</servlet-name>
 		<url-pattern>/updateReplyProcess</url-pattern>
 	</servlet-mapping>	
+
+<!-- 查看学生论文请求 -->
+	<servlet>
+		<servlet-name>ShowPapersOfStudent</servlet-name>
+		<servlet-class>com.zr.action.ShowPapersOfStudentAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShowPapersOfStudent</servlet-name>
+		<url-pattern>/showpapersofstudent</url-pattern>
+	</servlet-mapping>	
+	<!-- 老师下载学生已上传论文 -->
+	<servlet>
+		<servlet-name>downloadfile</servlet-name>
+		<servlet-class>com.zr.action.FileDownloadAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>downloadfile</servlet-name>
+		<url-pattern>/downloadfile</url-pattern>
+	</servlet-mapping>
+	<!-- 已批改论文回传 -->
+	<servlet>
+		<servlet-name>fileupload</servlet-name>
+		<servlet-class>com.zr.action.FileUploadAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>fileupload</servlet-name>
+		<url-pattern>/fileupload</url-pattern>
+	</servlet-mapping>
 </web-app>
