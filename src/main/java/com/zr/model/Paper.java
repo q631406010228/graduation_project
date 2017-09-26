@@ -6,7 +6,7 @@ package com.zr.model;
  */
 public class Paper {
 	private int lwid; //论文ID 
-	private String lwcontent; //论文内容
+	private String lwname; //论文名称
 	private int sid; //学生id
 	private int lwstate; //论文状态
 	private int lwcount; //论文提交次数
@@ -16,11 +16,11 @@ public class Paper {
 	public void setLwid(int lwid) {
 		this.lwid = lwid;
 	}
-	public String getLwcontent() {
-		return lwcontent;
+	public String getLwname() {
+		return lwname;
 	}
-	public void setLwcontent(String lwcontent) {
-		this.lwcontent = lwcontent;
+	public void setLwname(String lwname) {
+		this.lwname = lwname;
 	}
 	public int getSid() {
 		return sid;
