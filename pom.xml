@@ -80,6 +80,45 @@
 			<artifactId>tomcat-websocket-api</artifactId>
 			<version>8.5.9</version>
 		</dependency>
+		
+		<!--zy -->
+<dependency>
+    <groupId>commons-fileupload</groupId>
+    <artifactId>commons-fileupload</artifactId>
+    <version>1.2.2</version>
+</dependency>
+		
+	<!-- zy -->
+<dependency>
+    <groupId>com.cedarsoft.commons</groupId>
+    <artifactId>io</artifactId>
+    <version>6.0.1</version>
+</dependency>
+		
+<!-- zy -->
+<dependency>
+    <groupId>org.openoffice</groupId>
+    <artifactId>ridl</artifactId>
+    <version>3.2.1</version>
+</dependency>
+<!-- zy -->
+<dependency>
+    <groupId>org.openoffice</groupId>
+    <artifactId>juh</artifactId>
+    <version>3.2.1</version>
+</dependency>
+<!-- zy -->
+<dependency>
+    <groupId>org.openoffice</groupId>
+    <artifactId>unoil</artifactId>
+    <version>3.2.1</version>
+</dependency>
 
+<!--zy-->
+<dependency>
+    <groupId>org.openoffice</groupId>
+    <artifactId>jurt</artifactId>
+    <version>3.2.1</version>
+</dependency>
 	</dependencies>
 </project>

@@ -143,3 +143,25 @@
 		<url-pattern>/getRoles</url-pattern>
 	</servlet-mapping>
 </web-app>
+  
+  <!-- 上传文件zy -->
+	 <servlet>
+    <servlet-name>Student_SubmitOpenReport</servlet-name>
+    <servlet-class>com.zr.action.Student_SubmitOpenReportAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Student_SubmitOpenReport</servlet-name>
+    <url-pattern>/Student_SubmitOpenReport</url-pattern>
+  </servlet-mapping>
+    
+  <!-- 下载文件zy  -->
+	 <servlet>
+    <servlet-name>DownFile</servlet-name>
+    <servlet-class>com.zr.action.DownFileAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DownFile</servlet-name>
+    <url-pattern>/DownFile</url-pattern>
+  </servlet-mapping>
+</web-app>
+
