@@ -53,6 +53,21 @@ public class StaffRoleDaoImpl implements StaffRoleDao {
 			e.printStackTrace();
 		}
 	}
+	public void insertTeacerRole(int eid) {
+		StringBuffer sql = new StringBuffer();
+		sql.append("insert into staff_role(e_id,r_id)  ");
+		sql.append("values(?,?);");
+		System.out.println(eid);
+		Connection con = DBConnection.getConnection();
+		try {
+			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
+			pst.setInt(1, eid);
+			pst.setInt(2, 3);
+			pst.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 	@Override
 	public void deleteDeanRole(int[] eid) {
