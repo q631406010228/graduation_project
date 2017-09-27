@@ -14,7 +14,9 @@
 </head>
 <body>
 <form action="Student_SubmitOpenReport" enctype="multipart/form-data" method="post">
-  		<input type="file" name="file"/></br>
+  		<input type="file" name="file"/>
+  		<br>
+  		<br>
   		<input type="submit" value="在线预览">
   	</form>
   	

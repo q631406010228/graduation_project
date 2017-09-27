@@ -31,6 +31,7 @@ public class SubServiceImpl implements SubService{
 		 System.out.println("SubServiceImpl.selectSubBySid.json_arr"+json_arr);
 		return json_arr;
 	}
+
 	 
 	 @Override
 	public synchronized boolean addSubToStudent(int s_id, int sub_id) {
@@ -61,7 +62,6 @@ public class SubServiceImpl implements SubService{
 	
 		return false;
 	}
-
 
 	@Override
 	public Sub selectSubByEid(int eid) {

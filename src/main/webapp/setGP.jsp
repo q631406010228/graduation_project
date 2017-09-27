@@ -26,7 +26,12 @@
 		    onClick:function(){
 		    	$('#gpForm').form('submit', {    
 		    	    url:'setGP',    
-		    	    onSubmit: function(param){ 
+		    	    onSubmit: function(param){
+		    	    	if($('#graStartTime').datebox('getValue') >= $('#graEndTime').datebox('getValue')){
+		    	    		$("#tip").css("display","inline");
+		    	    		return false;
+		    	    	}
+		    	    	$("#tip").css("display","none");
 		    	    	param.gpContent = $('#gpc').combobox("getText");
 		    	    	param.graStartTime = $('#graStartTime').datebox("getText");
 		    	    	param.graEndTime = $('#graEndTime').datebox("getText");
@@ -77,7 +82,8 @@
 					开始时间&nbsp;&nbsp;<input id="graStartTime" type="text" name="birthday"></input> &nbsp;&nbsp;&nbsp;&nbsp;
 					<br>
 					<br>
-					结束时间&nbsp;&nbsp;<input id="graEndTime" type="text" name="birthday"></input>  
+					结束时间&nbsp;&nbsp;<input id="graEndTime" type="text" name="birthday"></input>
+					<p id="tip" style="color:red;display:none;">结束时间必须大于开始时间</p>  
 				</div>
 				<br>
 				<br>
