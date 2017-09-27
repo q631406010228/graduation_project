@@ -54,10 +54,15 @@ public class SelectSubAction extends HttpServlet {
 		int eid = (int) session.getAttribute("e_id");
 		Sub sub = subservice.selectSubByEid(eid);
 		JSONObject json = new JSONObject();
-		System.out.println("aaaa"+eid);
-		session.setAttribute("subname", sub.getSubname());
-		session.setAttribute("subcontent", sub.getSubcontent());
-		session.setAttribute("subcount", sub.getSubcount());
+		if("".equals(sub.getSubname())){
+			session.setAttribute("subname", "");
+			session.setAttribute("subcontent", "");
+			session.setAttribute("subcount", "");
+		}else{
+			session.setAttribute("subname", sub.getSubname());
+			session.setAttribute("subcontent", sub.getSubcontent());
+			session.setAttribute("subcount", sub.getSubcount());
+		}
 		if(sub.getSubstate()==0){
 			session.setAttribute("state", "未审核");
 		}else if(sub.getSubstate()==1){
