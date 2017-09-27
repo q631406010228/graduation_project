@@ -1,0 +1,221 @@
+/**
+ * 学生查询选题信息
+ */
+$(document).ready(function(){
+	   
+	
+	$("#tb").datagrid({    
+	    url:'selectReplyPricess',
+	    title:'学生答辩过程信息',
+	    striped:true,
+	    fitColumns:true,
+	    pageSize:10,
+	    pageList:[10,20,30],
+	    pagination:true,
+	    rownumbers:true,
+	    columns:[[    
+	        {field:'ck',title:'ck',checkbox:true,width:100},    
+	        {field:'sid',title:'学生id',width:100}, 
+	        {field:'sname',title:'学生姓名',width:100},
+	        {field:'subname',title:'选题',width:100},
+	        {field:'prid',title:'答辩记录id',width:100,hidden:true},    
+	        {field:'ques',title:'答辩问题',width:100,editor:'text'},
+	        {field:'answer',title:'答辩答案',width:100,editor:'text'}    
+	    ]],
+	    onCheck:function(index,row){//选中单元格事件
+        	$('#tb').datagrid('beginEdit', index);
+			 //var ed =  $("#dg").datagrid('getEditor',{index:index,field:row.tpassword});
+		},
+		onBeforeUncheck:function(index,row)
+		{
+			$('#tb').datagrid('selectRow',index).datagrid('endEdit', index);
+			$('#tb').datagrid('reload');    
+		},
+		toolbar: [{
+			iconCls: 'icon-edit',
+			text:'修改',
+			handler: function(){
+				var rows = $("#tb").datagrid('getSelected');
+				$('#upwin').window('open');
+				$('#ff').form('load',rows);
+			}
+		},'-',{
+			iconCls: 'icon-add',
+			text:'添加',
+			handler: function(){
+				$('#addwin').window('open');
+			}
+		},'-',{
+			iconCls: 'icon-remove',
+			text:'删除',
+			handler: function(){
+				var rows = $("#tb").datagrid('getSelections');
+				var sids = new Array();
+				for (var i = 0; i < rows.length; i++) {
+					console.log(rows[i].prid);
+					sids.push(rows[i].prid);
+				}
+				$.messager.confirm('提醒', '确认删除这几条记录吗？', function(r){
+					if (r){
+						$.ajax({
+							url:'deleteReplyProcess',
+							data:"sid=" + sids,
+							datatype:'json',
+							type:'post',
+							success:function(data){
+								var datas = eval('('+data+')');
+								console.log(datas.exce);
+								$.messager.alert('提示',datas.exce,'info',function(){
+									$('#tb').datagrid('reload');
+			        			});
+							}
+						})
+					}
+				});
+			}
+		}]
+
+	});
+	//配置修改信息窗口
+	$("#upwin").window({
+		width : 600,
+		height : 400,
+		title : '修改信息',
+		closable :true,
+		collapsible : true
+	})
+	//配置添加信息窗口
+	$("#addwin").window({
+		width : 600,
+		height : 400,
+		title : '添加信息',
+		closable :true,
+		collapsible : true
+	})
+	$('#upwin').window('close'); 
+	$('#addwin').window('close'); 
+	$('#sid').combobox({    
+	    url:'selectStudentByEid',    
+	    valueField:'id',  
+	    prompt:"请选择学生",
+	    textField:'text',
+	    height:30,
+	});
+	$('#sid1').textbox({
+		readonly:true,
+		prompt:"请录入答辩问题",
+		height : 30
+	})
+	$('#sname1').textbox({
+		readonly:true,
+		prompt:"请录入答辩问题",
+		height : 30
+	})
+	$('#subname1').textbox({
+		readonly:true,
+		prompt:"请录入答辩问题",
+		height : 30
+	})
+	$('#ques').textbox({
+		multiline:true,
+		prompt:"请录入答辩问题",
+		height : 30
+	})
+	$('#ques1').textbox({
+		prompt:"请录入答辩问题",
+		multiline:true,
+		height : 30
+	})
+	$('#answer').textbox({
+		prompt:"请录入学生答案",
+		multiline:true,
+		height : 30
+	})
+	$('#answer1').textbox({
+		prompt:"请录入学生答案",
+		multiline:true,
+		height : 30
+	})
+	//配置修改提交按钮
+	$('#btn').linkbutton({
+		iconCls : 'icon-ok',
+		onClick:function(){
+		    $('#ff').form('submit'); 
+		}
+	});
+	//配置添加提交按钮
+	$('#btn1').linkbutton({
+		iconCls : 'icon-ok',
+		onClick:function(){
+		    $('#ff1').form('submit'); 
+		}
+	});
+	//配置修改表单
+	$('#ff').form({    
+	    url:'updateReplyProcess',    
+	    onSubmit: function(){    
+	        // do some check    
+	        // return false to prevent submit; 
+	         var sid = $("#sid1").val();
+	    	 var ques = $("#ques1").val();
+		     var answer = $("#answer1").val();
+		     console.log(name);
+		     if(""==ques||""==answer||""==sid){
+		    	 //cosole.log(name);
+		        $.messager.alert('提示',"修改失败",'info',function(){
+		        });
+		        return false;
+		     }
+	    },    
+	    success:function(data){
+	    	var datas = eval('('+data+')');
+	    	//console.log(datas);
+	    	if(datas.exception == "1"){
+	    		$.messager.alert('提示',"修改成功！",'info',function(){
+	    			$('#ff').form('clear');
+		    		$('#upwin').window('close');
+		    		$('#tb').datagrid('reload');
+	        	});
+	    		
+	    	}else{
+	    		$.messager.alert('提示',"修改失败！",'info',function(){
+	    			$('#ff').form('clear');
+		    		$('#upwin').window('close');
+	        	});
+	    	}	
+	    }    
+	});
+	//配置添加信息表单
+	$('#ff1').form({    
+	    url:'addReplyProcess',    
+	    onSubmit: function(){    
+	        // do some check    
+	        // return false to prevent submit;
+	        var ques = $("#ques").val();
+	        var answer = $("#answer").val();
+	        console.log(name);
+	        if(""==ques||""==answer){
+	        	$.messager.alert('提示',"添加失败",'info',function(){
+	        	});
+	        	return false;
+	        }
+	    },    
+	    success:function(data){
+	    	var datas = eval('('+data+')');
+	    	//console.log(datas);
+	    	if(datas.exception=="1"){
+	    		$.messager.alert('提示',"添加成功！",'info',function(){
+	    			$('#ff1').form('clear');
+		    		$('#addwin').window('close');
+		    		$('#tb').datagrid('reload');
+	        	});
+	    		
+	    	}else{
+	    		$.messager.alert('提示',"添加失败！",'info',function(){
+	    			$('#ff1').form('clear');
+		    		$('#addwin').window('close');
+	        	});
+	    	}	
+	    }    
+	});
+})

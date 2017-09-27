@@ -1,8 +1,7 @@
-
 package com.zr.dao;
-
 import com.zr.model.Sub;
 
+import net.sf.json.JSONArray;
 public interface SubDao {
 	/**
 	 * 选题申报
@@ -20,5 +19,11 @@ public interface SubDao {
 	 * @return 选题申报（sub）对象
 	 */
 	public Sub selectSubByEid(int eid);
+	/**
+	 * 通过专业id 获取全部该专业的教师毕设课题
+	 * @param e_col 专业id
+	 * @return
+	 */
+	public JSONArray selectSubByTeacherEcol(int e_col);
 }
 
