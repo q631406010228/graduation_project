@@ -18,6 +18,6 @@ public interface DeanService {
 	 * @param ecol	学院的外键
 	 * @param e_num	系主任的员工号
 	 */
-	public void updateDean(String ename,int ecol,int e_num,String epsw);
+	public void updateDean(String ename,int ecol,int e_num,String epsw,int eid);
 	
 }

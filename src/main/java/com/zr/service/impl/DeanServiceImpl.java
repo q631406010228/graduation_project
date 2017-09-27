@@ -20,8 +20,8 @@ public class DeanServiceImpl implements DeanService {
 	}
 
 	@Override
-	public void updateDean(String ename, int ecol, int e_num,String epsw) {
-		dd.updateDean(ename, ecol, e_num,epsw);
+	public void updateDean(String ename, int ecol, int e_num,String epsw,int eid) {
+		dd.updateDean(ename, ecol, e_num,epsw,eid);
 	}
 
 }

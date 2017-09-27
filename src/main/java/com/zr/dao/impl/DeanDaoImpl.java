@@ -20,7 +20,7 @@ public class DeanDaoImpl implements DeanDao{
 	public List<Staff> getDean() {
 		StringBuffer sql = new StringBuffer();
 		sql.append("select * from staff s,staff_role sr,college c ");
-		sql.append("where s.e_col = c.c_id and s.e_id = sr.e_id and sr.r_id = 3 ");
+		sql.append("where s.e_col = c.c_id and s.e_id = sr.e_id and sr.r_id = 4 ");
 		List<Staff> list = new ArrayList<Staff>();
 		Connection con = DBConnection.getConnection();
 		try {
@@ -43,7 +43,7 @@ public class DeanDaoImpl implements DeanDao{
 	}
 
 	@Override
-	public void updateDean(String ename, int ecol, int e_num,String epsw) {
+	public void updateDean(String ename, int ecol, int e_num,String epsw,int eid) {
 		StringBuffer sql = new StringBuffer();
 		sql.append("update staff   ");
 		sql.append("set e_name = ?,e_col = ?,e_num = ?,e_psw = ? where e_id = ?;");
@@ -54,11 +54,23 @@ public class DeanDaoImpl implements DeanDao{
 			pst.setInt(2, ecol);
 			pst.setInt(3, e_num);
 			pst.setString(4, epsw);
-			pst.setInt(5, 1);
+			pst.setInt(5, eid);
 			pst.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void insertDean(String ename, int ecol, int e_num) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteDean(int eid) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

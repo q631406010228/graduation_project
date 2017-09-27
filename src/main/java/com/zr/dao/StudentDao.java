@@ -63,5 +63,12 @@ public interface StudentDao {
 	 * @param preNum	旧学号
 	 */
 	public void updateStudent(int num, String name, int cID, int mID,int preNum);
-
+	
+	/**
+     * 获取学生编号及其密码
+     * snum 编号
+     * spsw 密码
+     */
+	Student getStudent(int snum, String spsw);
 }
+
