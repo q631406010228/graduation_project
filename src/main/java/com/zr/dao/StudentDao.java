@@ -13,7 +13,11 @@ public interface StudentDao {
 	 * @return 返回学生对象集合
 	 */
 	public List<Student> selectStudentByEid(int eid);
-	
+	/**
+	 * 查询学生名单
+	 * @param eid 教师id
+	 * @return 学生类型的集合
+	 */
 	public List<Student> selectStudentFormByEid(int eid);
 	/**
 	 * 通过学生的id，设置学生表的选题id

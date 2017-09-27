@@ -150,4 +150,10 @@ public boolean setSelectnumByStudentNum(int number,int sub_id) {
 	}
 	return false;
 }
+@Override
+public Sub selectSubByEid(int eid) {
+	// TODO Auto-generated method stub
+	return null;
 }
+}
+

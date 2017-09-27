@@ -4,11 +4,16 @@ import com.zr.dao.StudentDao;
 import com.zr.dao.SubDao;
 import com.zr.dao.impl.StudentDaoImpl;
 import com.zr.dao.impl.SubDaoImpl;
+
 import com.zr.model.Sub;
+
+
+
 import com.zr.service.SubService;
 
 import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
+
+
 
 public class SubServiceImpl implements SubService{
 	SubDao subdao = new SubDaoImpl();
@@ -56,4 +61,14 @@ public class SubServiceImpl implements SubService{
 	
 		return false;
 	}
+
+
+	@Override
+	public Sub selectSubByEid(int eid) {
+		// TODO Auto-generated method stub
+		Sub sub = subdao.selectSubByEid(eid);
+		return sub;
+	}
+	
 }
+
