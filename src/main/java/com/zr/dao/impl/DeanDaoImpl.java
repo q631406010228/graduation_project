@@ -63,14 +63,65 @@ public class DeanDaoImpl implements DeanDao{
 
 	@Override
 	public void insertDean(String ename, int ecol, int e_num) {
-		// TODO Auto-generated method stub
-		
+		StringBuffer sql = new StringBuffer();
+		sql.append("insert into staff(e_name,e_col,e_num,e_psw)  ");
+		sql.append("values(?,?,?,?);");
+		Connection con = DBConnection.getConnection();
+		try {
+			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
+			pst.setString(1, ename);
+			pst.setInt(2, ecol);
+			pst.setInt(3, e_num);
+			pst.setInt(4, 123);
+			pst.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
-	public void deleteDean(int eid) {
-		// TODO Auto-generated method stub
+	public void deleteDean(int[] eid) {
+		Connection conn = DBConnection.getConnection();
+		try {
+			conn.setAutoCommit(false);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}	//禁止自动提交
+		StringBuffer s = new StringBuffer();
+		s.append("delete from staff where e_id = ?;");
+		try {
+			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(s.toString());
+			for(int i = 0;i < eid.length;i++){
+				ps.setInt(1, eid[i]);	
+				ps.addBatch();	
+			}
 		
+			ps.executeBatch();	//批量执行上面的语句
+			conn.commit();		//一起提交	
+			ps.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public int getDean(int num) {
+		StringBuffer sql = new StringBuffer();
+		sql.append("select * from staff ");
+		sql.append("where e_num = ?");
+		int eid = 0;
+		Connection con = DBConnection.getConnection();
+		try {
+			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
+			pst.setInt(1, num);
+			ResultSet res = pst.executeQuery();
+			while(res.next()){
+				eid = res.getInt("e_id");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return eid;
 	}
 
 }

@@ -30,8 +30,15 @@ public interface DeanDao {
 	
 	/**
 	 * 删除系主任的信息
-	 * @param eid	系主任的主键
+	 * @param eid	系主任的主键数组
 	 */
-	public void deleteDean(int eid);
+	public void deleteDean(int[] eid);
+	
+	/**
+	 * 返回系主任的主键
+	 * @param num	系主任的工号
+	 * @return	系主任的主键
+	 */
+	public int getDean(int num);
 	
 }

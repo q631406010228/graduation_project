@@ -1,9 +1,7 @@
 package com.zr.dao;
-
 import com.zr.model.Sub;
 
 import net.sf.json.JSONArray;
-
 public interface SubDao {
 	/**
 	 * 选题申报
@@ -27,6 +25,7 @@ public interface SubDao {
 	 * @return
 	 */
 	public JSONArray selectSubByTeacherEcol(int e_col);
+
 	/**
 	 * 删除选题
 	 * @param eid 教师ID
@@ -46,5 +45,6 @@ public interface SubDao {
 	 * @return 赋值的结果
 	 */
 	public boolean setSelectnumByStudentNum(int number,int sub_id);
+
 }
 

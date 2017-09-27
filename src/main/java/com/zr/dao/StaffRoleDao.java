@@ -13,5 +13,16 @@ public interface StaffRoleDao {
 	 * @return 用户的角色id
 	 */
 	public int getRidByEid(int e_id);
+	
+	/**
+	 * 添加系主任角色
+	 * @param eid
+	 */
+	public void insertDeanRole(int eid);
+	
+	/**
+	 * 删除指定系主任
+	 */
+	public void deleteDeanRole(int[] eid);
 
 }
