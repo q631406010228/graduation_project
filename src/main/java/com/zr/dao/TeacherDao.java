@@ -49,4 +49,28 @@ public interface TeacherDao {
 	 * @return 是否成功的标志位
 	 */
 	public int deleteTeacherRole(int eid);
+	/**
+	 * 修改教师信息
+	 * @param eid 教师编号
+	 * @param ename 教师姓名
+	 * @param colid 学院号
+	 * @param emnum 教师号
+	 * @return 是否成功的标志位
+	 */
+	public int updateTeacher(int eid,String ename,int colid,int emnum);
+	/**
+	 * 添加教师
+	 * @param ename 教师姓名
+	 * @param colid 学院号
+	 * @param emnum 教师号
+	 * @param epsw 密码
+	 * @return 是否成功的标志位
+	 */
+	public int insertTeacher(String ename,int colid,int emnum,String epsw);
+	/**
+	 * 根据教师号查询教师编号
+	 * @param e_num 教师号
+	 * @return 教师编号
+	 */
+	public int selectTeacherEidByEnum(int e_num);
 }

@@ -101,14 +101,14 @@ $(document).ready(function(){
 	$('#upwin').window('close'); 
 	$('#addwin').window('close'); 
 	$('#cid').combobox({    
-	    url:'selectCollege',    
+	    url:'getCollege',    
 	    valueField:'id',  
 	    prompt:"请选择学院",
 	    textField:'text',
 	    height:30,
 	});
 	$('#cid1').combobox({    
-	    url:'selectCollege',    
+	    url:'getCollege',    
 	    valueField:'id',  
 	    prompt:"请选择学院",
 	    textField:'text',
@@ -124,7 +124,12 @@ $(document).ready(function(){
 	$('#ename').textbox({
 		height : 30
 	})
+	$('#ename1').textbox({
+		prompt:"请输入教师姓名",
+		height : 30
+	})
 	$('#emnum1').textbox({
+		prompt:"请输入教师号",
 		height : 30
 	})
 	$('#epsw1').textbox({
@@ -148,7 +153,7 @@ $(document).ready(function(){
 	});
 	//配置修改表单
 	$('#ff').form({    
-	    url:'updateStudent',    
+	    url:'updateTeacher',    
 	    onSubmit: function(){    
 	        // do some check    
 	        // return false to prevent submit; 
@@ -165,10 +170,13 @@ $(document).ready(function(){
 	    success:function(data){
 	    	var datas = eval('('+data+')');
 	    	//console.log(datas);
-	    	if(datas==1){
-	    		$('#ff').form('clear');
-	    		$('#upwin').window('close');
-	    		$('#tb').datagrid('reload');
+	    	if(datas.exception == "1"){
+	    		$.messager.alert('提示',"修改成功",'info',function(){
+	    			$('#ff').form('clear');
+		    		$('#upwin').window('close');
+		    		$('#tb').datagrid('reload');
+	        	});
+	    		
 	    	}else{
 	    		$.messager.alert('提示',"修改失败",'info',function(){
 	    			$('#ff').form('clear');
@@ -179,14 +187,14 @@ $(document).ready(function(){
 	});
 	//配置添加信息表单
 	$('#ff1').form({    
-	    url:'addStudent',    
+	    url:'addTeacher',    
 	    onSubmit: function(){    
 	        // do some check    
 	        // return false to prevent submit;
-	        var name = $("#sname1").val();
-	        var age = $("#sage1").val();
+	        var emnum = $("#emnum1").val();
+	        var ename = $("#ename1").val();
 	        console.log(name);
-	        if(""==name||""==age){
+	        if(""==emnum||""==ename){
 	        	$.messager.alert('提示',"添加失败",'info',function(){
 	        	});
 	        	return false;
@@ -195,10 +203,13 @@ $(document).ready(function(){
 	    success:function(data){
 	    	var datas = eval('('+data+')');
 	    	//console.log(datas);
-	    	if(datas.exception==1){
-	    		$('#ff1').form('clear');
-	    		$('#addwin').window('close');
-	    		$('#tb').datagrid('reload');
+	    	if(datas.exception == "1"){
+	    		$.messager.alert('提示',"添加失败！",'info',function(){
+	    			$('#ff1').form('clear');
+		    		$('#addwin').window('close');
+		    		$('#tb').datagrid('reload');
+	        	});
+	    		
 	    	}else{
 	    		$.messager.alert('提示',"添加失败！",'info',function(){
 	    			$('#ff1').form('clear');

@@ -192,6 +192,72 @@ public class TeacherDaoImpl implements TeacherDao{
  			e.printStackTrace();
  		}
  		return 0;
- 	}	
+ 	}
+
+	@Override
+	public int updateTeacher(int eid, String ename, int colid, int emnum) {
+		// TODO Auto-generated method stub
+		StringBuffer sql = new StringBuffer();
+		sql.append("update staff ");
+		sql.append("set e_name=?,e_col=?,e_num=? ");
+		sql.append("where e_id=? ");
+		Connection con = DBConnection.getConnection();
+		try {
+			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
+			pst.setString(1, ename);
+			pst.setInt(2, colid);
+			pst.setInt(3, emnum);
+			pst.setInt(4, eid);
+			int i = pst.executeUpdate();
+			return i;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	@Override
+	public int insertTeacher(String ename, int colid, int emnum, String epsw) {
+		// TODO Auto-generated method stub
+		StringBuffer sql = new StringBuffer();
+		sql.append("insert into staff (e_name,e_col,e_num,e_psw) ");
+		sql.append("value (?,?,?,?) ");
+		Connection con = DBConnection.getConnection();
+		try {
+			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
+			pst.setString(1, ename);
+			pst.setInt(2, colid);
+			pst.setInt(3, emnum);
+			pst.setString(4, epsw);
+			int i = pst.executeUpdate();
+			return i;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	@Override
+	public int selectTeacherEidByEnum(int e_num) {
+		// TODO Auto-generated method stub
+		StringBuffer sql = new StringBuffer();
+		sql.append("select e_id from staff where e_num=? ");
+		Connection con = DBConnection.getConnection();
+		try {
+			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
+			pst.setInt(1, e_num);
+			ResultSet res = pst.executeQuery();
+			if(res.next()){
+				int eid = res.getInt("e_id");
+				return eid;
+			}	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}	
 }
 

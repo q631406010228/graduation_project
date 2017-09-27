@@ -24,5 +24,9 @@ public interface StaffRoleDao {
 	 * 删除指定系主任
 	 */
 	public void deleteDeanRole(int[] eid);
-
+	/**
+	 * 添加教师角色
+	 * @param eid
+	 */
+	public void insertTeacerRole(int eid);
 }
