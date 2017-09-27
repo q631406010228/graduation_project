@@ -187,8 +187,8 @@ public class SubDaoImpl implements SubDao {
 				sub.setSubcount(res.getInt("sub_count"));
 				sub.setSubname(res.getString("sub_name"));
 				sub.setSubstate(res.getInt("sub_state"));
+				return sub;
 			}
-			return sub;
 		}catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -196,3 +196,4 @@ public class SubDaoImpl implements SubDao {
 		return null;
 	}
 }
+

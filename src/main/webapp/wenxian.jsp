@@ -85,5 +85,9 @@
 </script>
 <body>
 	<table id ="tb"></table>
+<<<<<<< HEAD
 </body>
+=======
+</body>
+>>>>>>> ad5fbb7fe39a96654dfd0b4c9bce6c3558b2a6da
 </html>
