@@ -9,27 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.zr.service.SubService;
-import com.zr.service.impl.SubServiceImpl;
+import com.zr.service.LiteratureService;
+import com.zr.service.impl.LiteratureServiceImpl;
 
 import net.sf.json.JSONObject;
 
 /**
- * Servlet implementation class AddSubAction
+ * Servlet implementation class UpdateLiterature
  */
-/**
- * 选题申报action层
- * @author 欧小峰
- *
- */
-@WebServlet("/AddSubAction")
-public class AddSubAction extends HttpServlet {
+@WebServlet("/shenhe")
+public class UpdateLiterature extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    SubService sservice = new SubServiceImpl();   
+	LiteratureService liservice = new LiteratureServiceImpl();      
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddSubAction() {
+    public UpdateLiterature() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -49,16 +44,22 @@ public class AddSubAction extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		String subname = request.getParameter("subname");
-		String subcontent = request.getParameter("subcontent");
-		int subcount = Integer.parseInt(request.getParameter("subcount"));
-		int eid = Integer.parseInt(request.getParameter("eid"));
-		int state = 0;
-		int i = sservice.addSub(subname, subcontent, subcount, eid, state);
+		String Wxid = request.getParameter("wxid");
+		int wxid = Integer.parseInt(Wxid);
+		String statename = request.getParameter("state");
+		int state;
+		System.out.println("wxid:"+wxid+"state:"+statename);
+		if("通过".equals(statename)){
+			state = 1;
+		}else{
+			state = 2;
+		}
+		int i = liservice.updateLiterature(wxid, state);
 		JSONObject json = new JSONObject();
-		json.put("exception", i);
+		json.put("ok", i);
 		PrintWriter pw = response.getWriter();
 		pw.write(json.toString());
+		
 	}
 
 }

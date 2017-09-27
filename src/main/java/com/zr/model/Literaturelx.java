@@ -4,7 +4,7 @@ package com.zr.model;
  * @author Administrator
  *
  */
-public class Lierature {
+public class Literaturelx {
 	private int welxid; //文献类型ID
 	private String wxlxname; //文献类型名称
 }

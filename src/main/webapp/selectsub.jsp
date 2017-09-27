@@ -23,7 +23,7 @@
 			type:'post',
 			dataType:'json',
 			sucess:function(data){
-				
+				location.href="selectsub.jsp"
 			}
 		})
 		
@@ -76,5 +76,4 @@
 		</div>
 	</div>
 </body>
-
 </html>

@@ -9,27 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.zr.service.SubService;
-import com.zr.service.impl.SubServiceImpl;
-
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 /**
- * Servlet implementation class AddSubAction
+ * Servlet implementation class SelectState
  */
-/**
- * 选题申报action层
- * @author 欧小峰
- *
- */
-@WebServlet("/AddSubAction")
-public class AddSubAction extends HttpServlet {
+@WebServlet("/selectState")
+public class SelectState extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    SubService sservice = new SubServiceImpl();   
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddSubAction() {
+    public SelectState() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -49,16 +42,16 @@ public class AddSubAction extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		String subname = request.getParameter("subname");
-		String subcontent = request.getParameter("subcontent");
-		int subcount = Integer.parseInt(request.getParameter("subcount"));
-		int eid = Integer.parseInt(request.getParameter("eid"));
-		int state = 0;
-		int i = sservice.addSub(subname, subcontent, subcount, eid, state);
+		String[] sta= {"通过","驳回"};
 		JSONObject json = new JSONObject();
-		json.put("exception", i);
+		JSONArray js = new JSONArray();
 		PrintWriter pw = response.getWriter();
-		pw.write(json.toString());
+		for (int i = 0; i < 2; i++) {
+			json.put("id", i);
+			json.put("text", sta[i]);
+			js.add(json);
+		}
+		pw.write(js.toString());
 	}
 
 }

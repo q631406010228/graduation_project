@@ -2,6 +2,7 @@ package com.zr.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,27 +10,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.zr.service.SubService;
-import com.zr.service.impl.SubServiceImpl;
+import com.zr.service.LiteratureService;
+import com.zr.service.impl.LiteratureServiceImpl;
 
 import net.sf.json.JSONObject;
 
 /**
- * Servlet implementation class AddSubAction
+ * Servlet implementation class SelectWwnXianAction
  */
-/**
- * 选题申报action层
- * @author 欧小峰
- *
- */
-@WebServlet("/AddSubAction")
-public class AddSubAction extends HttpServlet {
+@WebServlet("/selectLiteratureAction")
+public class SelectLiteratureAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    SubService sservice = new SubServiceImpl();   
+    LiteratureService liservice = new LiteratureServiceImpl();   
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddSubAction() {
+    public SelectLiteratureAction() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -49,16 +45,13 @@ public class AddSubAction extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		String subname = request.getParameter("subname");
-		String subcontent = request.getParameter("subcontent");
-		int subcount = Integer.parseInt(request.getParameter("subcount"));
-		int eid = Integer.parseInt(request.getParameter("eid"));
-		int state = 0;
-		int i = sservice.addSub(subname, subcontent, subcount, eid, state);
+		int eid = 1;
+		List list = liservice.selectLiteratureByEid(eid);
 		JSONObject json = new JSONObject();
-		json.put("exception", i);
+		//json.put("total", count);
+		//json.put("total",1);
+		json.put("rows", list);
 		PrintWriter pw = response.getWriter();
 		pw.write(json.toString());
 	}
-
 }

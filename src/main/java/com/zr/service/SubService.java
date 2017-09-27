@@ -1,7 +1,8 @@
-
 package com.zr.service;
 
 import com.zr.model.Sub;
+
+import net.sf.json.JSONArray;
 
 public interface SubService {
 	/**
@@ -20,4 +21,10 @@ public interface SubService {
 	 * @return 选题申报（sub）对象
 	 */
 	public Sub selectSubByEid(int eid);
+  	/**
+	 * 根据学生的id，查询学生可选的毕设题目
+	 * @param s_id 学生id（用户的id）
+	 * @return 选题信息的json数组
+	 */
+	public JSONArray selectSubBySid(int s_id);
 }
