@@ -7,13 +7,10 @@ import java.sql.SQLException;
 import com.mysql.jdbc.PreparedStatement;
 import com.zr.connection.DBConnection;
 import com.zr.dao.SubDao;
-
+import com.zr.model.Sub;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-
-import com.zr.model.Sub;
-
 
 public class SubDaoImpl implements SubDao{
 
@@ -39,7 +36,6 @@ public class SubDaoImpl implements SubDao{
 		}
 		return 0;
 	}
-
 @Override
 	public JSONArray selectSubByTeacherEcol(int e_col) {
 	//创建连接
@@ -61,6 +57,8 @@ public class SubDaoImpl implements SubDao{
 		
 		while (set.next()) {
 			JSONObject json = new JSONObject();
+			//获取选题id 
+			int sub_id= set.getInt("sub_id");
 			//获取选题名
 			String sub_name = set.getString("sub_name");
 			//获取选题内容
@@ -74,6 +72,7 @@ public class SubDaoImpl implements SubDao{
 			//计算剩余名额
 			Integer number = sub_count-selectnum;
 			//存入json对象
+			json.put("sub_id", sub_id);
 			json.put("sub_name", sub_name);
 			json.put("sub_content", sub_content);
 			json.put("e_name", e_name);
@@ -83,6 +82,7 @@ public class SubDaoImpl implements SubDao{
 			json_arr.add(json);
 		}
 		System.out.println("SubDaoImpl.selectSubByTeacherEcol返回数据："+json_arr);
+		return json_arr;
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -93,30 +93,60 @@ public class SubDaoImpl implements SubDao{
 	return null;
 }
 
-	@Override
-	public Sub selectSubByEid(int eid) {
-		// TODO Auto-generated method stub
-		StringBuffer sql = new StringBuffer();
-		Sub sub = new Sub();
-		sql.append("select sub_name,sub_count,sub_content,sub_state ");
-		sql.append("from sub ");
-		sql.append("where e_id=? ");
-		Connection con = DBConnection.getConnection();
-		try {
-			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
-			pst.setInt(1, eid);
-			ResultSet res = pst.executeQuery();
-			while(res.next()){
-				sub.setSubcontent(res.getString("sub_content"));
-				sub.setSubcount(res.getInt("sub_count"));
-				sub.setSubname(res.getString("sub_name"));
-				sub.setSubstate(res.getInt("sub_state"));
+
+@Override
+public Sub getSelectnumSub_countBySubid(int sub_id) {
+	Sub sub = new Sub();
+	//创建连接
+	Connection con = DBConnection.getConnection();
+	//定义数据库语句
+	StringBuffer sql = new StringBuffer();
+	sql.append("select sub_count , selectnum ");
+	sql.append(" from sub");
+	sql.append(" where sub_id =?");
+			try {
+				//进行预编译
+				PreparedStatement pre = (PreparedStatement)con.prepareStatement(sql.toString());
+				//赋值
+				pre.setInt(1,sub_id);
+				//获取值
+				ResultSet set = pre.executeQuery();
+				if(set.next()){
+					int selectnum = set.getInt("selectnum");
+					sub.setSelectnum(selectnum);
+					int sub_count=set.getInt("sub_count");
+					sub.setSubcount(sub_count);
+					System.out.println("SubDaoImpl.getSelectnumSub_countBySubid.selectnum="+selectnum+"sub_count="+sub_count);
+				}
+				return sub;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	return null;
+}
+
+@Override
+public boolean setSelectnumByStudentNum(int number,int sub_id) {
+	Connection con = DBConnection.getConnection();
+	//定义数据库语句
+	StringBuffer sql = new StringBuffer();
+	sql.append("UPDATE sub set selectnum=? ");
+	sql.append(" where sub_id=? ");
+	try {
+		//进行预编译
+		PreparedStatement pre = (PreparedStatement)con.prepareStatement(sql.toString());
+		//赋值
+		pre.setInt(1,number );
+		pre.setInt(2,sub_id);
+		//获取结果
+		int i = pre.executeUpdate();
+		if(i==1){
+			return true;
 		}
-		return sub;
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
 	}
 
 	@Override
@@ -138,5 +168,13 @@ public class SubDaoImpl implements SubDao{
 		return 0;
 	}
 
+
+	return false;
+}
+@Override
+public Sub selectSubByEid(int eid) {
+	// TODO Auto-generated method stub
+	return null;
+}
 }
 
