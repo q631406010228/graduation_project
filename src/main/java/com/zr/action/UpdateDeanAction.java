@@ -27,10 +27,11 @@ public class UpdateDeanAction extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {	
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
-		int e_num = Integer.parseInt(req.getParameter("num"));
-		String ename = req.getParameter("sname");
-		int ecol = Integer.parseInt(req.getParameter("cname"));
+		int e_num = Integer.parseInt(req.getParameter("emnum"));
+		String ename = req.getParameter("ename");
+		int ecol = Integer.parseInt(req.getParameter("ecol"));
 		String epsw = req.getParameter("epsw");
-		ds.updateDean(ename, ecol, e_num,epsw);
+		int eid = Integer.parseInt(req.getParameter("eid"));
+		ds.updateDean(ename, ecol, e_num,epsw,eid);
 	}
 }
