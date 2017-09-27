@@ -20,6 +20,7 @@ public interface StudentDao {
 	 */
 	public List<Student> selectStudentFormByEid(int eid);
 	/**
+
 	 * 通过学生的id，设置学生表的选题id
 	 * @param sub_id 选题id
 	 * @param s_id 学生id
@@ -32,4 +33,35 @@ public interface StudentDao {
 	 * @return 人数
 	 */
 	public Integer getStudentNumberBySubid(int sub_id);
+=======
+	 * 查询所有学生名单
+	 * @return 学生类型的集合
+	 */
+	public List<Student> selectStudentAll();
+	
+	/**
+	 * 添加学生信息
+	 * @param num	学号
+	 * @param name	姓名
+	 * @param cID	学院
+	 * @param mID	专业
+	 */
+	public void insertStudent(int num,String name,int cID,int mID);
+	
+	/**
+	 * 删除学生信息
+	 * @param sID	学生的学号
+	 */
+	public void deleteStudent(int[] num);
+	
+	/**
+	 * 修改学生的信息
+	 * @param num	新学号
+	 * @param name	姓名
+	 * @param cID	学院
+	 * @param mID	专业
+	 * @param preNum	旧学号
+	 */
+	public void updateStudent(int num, String name, int cID, int mID,int preNum);
+
 }
