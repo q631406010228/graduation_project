@@ -15,13 +15,13 @@ import com.zr.service.upFileService;
 public class upFileServiceImpl implements upFileService{
 	@Override
 	@SuppressWarnings({"unchecked", "deprecation"})
-	public String uploadFile(HttpServletRequest request) 
+	public String uploadFile(HttpServletRequest request,String upFilePath) 
 	{
 	
 		//获得磁盘文件条目工厂
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 		//获取文件需要上传到的路径
-		String path = request.getRealPath("/upload");
+		String path = request.getRealPath(upFilePath);
 		factory.setRepository(new File(path));
 		//设置 缓存的大小，当上传文件的容量超过该缓存时，直接放到 暂时存储室
 		factory.setSizeThreshold(1024*1024) ;
