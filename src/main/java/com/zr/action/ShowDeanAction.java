@@ -38,7 +38,7 @@ public class ShowDeanAction extends HttpServlet{
 		JSONObject json = new JSONObject();
 		json.put("rows", list);
 		PrintWriter pw = resp.getWriter();
-		pw.write(json.toString());
+		pw.write(json.toString());	
 	}
 
 }
