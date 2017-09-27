@@ -97,7 +97,7 @@ $(document).ready(function() {
 		},
 		 url:'login',
 		 success:function(data){ 
-		    	alert("验证成功");
+		    	//alert("验证成功");
 		    	console.log(data);
 		    	var obj=eval( '(' +data + ')' );
 		    	if(obj.ok==true){
@@ -128,7 +128,7 @@ $(document).ready(function() {
 	//配置提交按钮
 	$('#dl').linkbutton({    
 	    onClick:function(){
-	    	alert("dj");
+	    	//alert("dj");
 	    	var yzmvalue = $("#yzm").val();
 			if (yzmvalue != t) {
 				$.messager.confirm('提示', "验证码错误", function(r){
