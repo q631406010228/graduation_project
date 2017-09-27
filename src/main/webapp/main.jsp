@@ -24,7 +24,7 @@
 						{
 							url : 'showRoles',
 							onClick : function(node) {
-								if (node.attributes.fpath) {
+								if (node.attributes.src) {
 									if ($('#tabs').tabs('exists', node.text)) {
 										$('#tabs').tabs('select', node.text)
 									} else {
@@ -35,7 +35,7 @@
 															title : node.text,
 															closable : true,
 															content : "<iframe  width='100%' height='100%' frameborder='0' src='"
-																	+ node.attributes.fpath
+																	+ node.attributes.src
 																	+ "'></iframe>"
 														});
 									}
@@ -58,6 +58,7 @@
 	<div data-options="region:'center',border:false"
 		style="padding: 5px; background: #eee;">
 		<div id="tabs" class="easyui-tabs" data-options="fit:true"></div>
+		
 	</div>
 </body>
 </html>
