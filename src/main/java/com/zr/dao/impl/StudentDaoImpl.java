@@ -93,7 +93,12 @@ public class StudentDaoImpl implements StudentDao{
 				System.out.println("获取结果(1为成功)StudentDaoImpl.setSubidBySid.i="+i);
 				con.close();
 				return true;
-
+			}
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+		return false;
+	}
 
 	@Override
 	public List<Student> selectStudentAll() {
@@ -126,9 +131,11 @@ public class StudentDaoImpl implements StudentDao{
 			e.printStackTrace();
 		}
 
-		
-		return false;
-	}
+	
+
+	return list;
+}
+	
 	@Override
 	public Integer getStudentNumberBySubid(int sub_id){
 		Connection con = DBConnection.getConnection();
@@ -154,9 +161,6 @@ public class StudentDaoImpl implements StudentDao{
 			e.printStackTrace();
 		}
 		return null;
-	}
-
-		return list;
 	}
 	
 	@Override
