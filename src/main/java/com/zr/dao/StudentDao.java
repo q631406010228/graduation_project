@@ -33,7 +33,7 @@ public interface StudentDao {
 	 * @return 人数
 	 */
 	public Integer getStudentNumberBySubid(int sub_id);
-=======
+/**
 	 * 查询所有学生名单
 	 * @return 学生类型的集合
 	 */
