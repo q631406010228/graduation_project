@@ -33,6 +33,7 @@ public interface SubDao {
 	 * @return 是否成功的标志位
 	 */
 	public int deleteSub(int eid);
+	/**
 	 * 根据选题id 获取选题的最大容量及已选人数
 	 * @param sub_id 选题的id
 	 * @return 选题的最大容量以及已选人数
