@@ -1,7 +1,9 @@
 package com.zr.dao;
+
 import com.zr.model.Sub;
 
 import net.sf.json.JSONArray;
+
 public interface SubDao {
 	/**
 	 * 选题申报
@@ -31,5 +33,18 @@ public interface SubDao {
 	 * @return 是否成功的标志位
 	 */
 	public int deleteSub(int eid);
+    /**
+	 * 根据选题id 获取选题的最大容量及已选人数
+	 * @param sub_id 选题的id
+	 * @return 选题的最大容量以及已选人数
+	 */
+	public Sub getSelectnumSub_countBySubid(int sub_id);
+	/**
+	 * 通过学生选择统一选题id数，设置选题的已选人数
+	 * @param number 学生选择统一选题id数
+	 * @param sub_id 选题的id数
+	 * @return 赋值的结果
+	 */
+	public boolean setSelectnumByStudentNum(int number,int sub_id);
 }
 

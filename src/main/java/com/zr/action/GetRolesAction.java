@@ -32,10 +32,12 @@ public class GetRolesAction extends HttpServlet {
 		JSONObject jb1 = new JSONObject();
 		jb1.put("id", 2);
 		jb1.put("text","学生");
+		jb1.put("selected", true);
 		ja.add(jb1);
-		jb1.put("id", 3);
-		jb1.put("text","教师");
-		ja.add(jb1);
+		JSONObject jb2 = new JSONObject();
+		jb2.put("id", 3);
+		jb2.put("text","教师");	
+		ja.add(jb2);
 		resp.setCharacterEncoding("UTF-8");
 		PrintWriter pw = resp.getWriter();
 		pw.write(ja.toString());

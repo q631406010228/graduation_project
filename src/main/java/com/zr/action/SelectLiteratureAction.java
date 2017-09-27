@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.zr.service.LiteratureService;
 import com.zr.service.impl.LiteratureServiceImpl;
@@ -45,7 +46,9 @@ public class SelectLiteratureAction extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		int eid = 1;
+		HttpSession session = request.getSession();
+		int eid = (int) session.getAttribute("e_id");
+		System.out.println("sds:"+eid);
 		List list = liservice.selectLiteratureByEid(eid);
 		JSONObject json = new JSONObject();
 		//json.put("total", count);

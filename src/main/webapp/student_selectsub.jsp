@@ -14,69 +14,28 @@
 <!-- 引入easyui -->
 <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="js/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="js/student_selectsub.js"></script>
 </head>
 <body>
-	<div>
-		<h4>学生选题</h4>
-		<table id = "tb"></table>
+<table id="dg"></table> 
+
+<!-- 修改的窗口 -->
 	<div id="upwin">
-		<form id="ff" method="post">
-			<div style="margin-left: 150px;margin-top: 50px; ">
-			    <div style="margin-left: 7px">
-					<label >选题:</label> <input id="sid1" name="sid"
-						type="text" style="width: 200px">
-				</div>
+		<form id="ff" method="post">  
+				<div  style="margin-left: 120px;margin-top: 100px">
+				选题的id: <input id="sub_id" name="sub_id" type="text" style="width:300px">
 				<br>
-				<div>
-					<label >选题内容:</label> <input id="sname1" name="sname"
-						type="text" style="width: 200px">
-				</div>
 				<br>
-				<div>
-					<label >负责教师:</label> <input id="subname1" name="subname"
-						type="text" style="width: 200px">
-				</div>
+				选题：<input id="sub_name" name="sub_name"  type="text" style="width:300px">
 				<br>
-				<div>
-					<label for="password">限选人数:</label> <input id="ques1"
-						name="ques" type="text" style="width: 200px">
+				<br>
+				负责教师：<input id="e_name" name="e_name"  type="text" style="width:300px">
+				<br>
+				<br>
+				<a id="btn" href="#">提交</a>    
 				</div>
-				<br> 
-				<div>
-					<label for="password">选题状态:</label> <input id="answer1"
-						name="answer" type="text" style="width: 200px">
-				</div>
-				<br> 
-				<div style="margin-left: 120px;">
-					<a id="btn" href="#">提交</a>
-				</div>
-			</div>
 		</form>
-	</div>
-	<div id="addwin">
-		<form id="ff1" method="post">
-			<div style="margin-left: 150px;margin-top: 100px; ">
-				<div>
-					<label for="name">学生姓名:</label> <input id="sid" name="sid"
-						type="text" style="width: 200px">
-				</div>
-				<br>
-				<div>
-					<label for="password">答辩问题:</label> <input id="ques"
-						name="ques" type="text" style="width: 200px">
-				</div>
-				<br> 
-				<div>
-					<label for="password">答辩答案:</label> <input id="answer"
-						name="answer" type="text" style="width: 200px">
-				</div>
-				<br> 
-				<div style="margin-left: 120px;">
-					<a id="btn1" href="#">提交</a>
-				</div>
-			</div>
-		</form>
-	</div>
-	</div>
+	
+	</div> 
 </body>
 </html>

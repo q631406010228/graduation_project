@@ -35,7 +35,7 @@
 		$('#eid').textbox({
 			readonly:true,
 			multiline:false,
-			value:"1",
+			value:"${sessionScope.e_id}",
 			prompt:"请输入教师id",
 			height : 30
 		})
