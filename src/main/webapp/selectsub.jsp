@@ -22,11 +22,11 @@
 			data:'',
 			type:'post',
 			dataType:'json',
-			sucess:function(data){
-				location.href="selectsub.jsp"
+			success:function(data){
+				
 			}
 		})
-		
+		//location.href="selectsub.jsp"
 		$('#subname').textbox({
 			readonly:true,
 			height : 30,

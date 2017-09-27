@@ -9,22 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.zr.service.LiteratureService;
-import com.zr.service.impl.LiteratureServiceImpl;
+import com.zr.service.TeacherService;
+import com.zr.service.impl.TeacherServiceImpl;
 
 import net.sf.json.JSONObject;
 
 /**
- * Servlet implementation class UpdateLiterature
+ * Servlet implementation class AddTeacherAction
  */
-@WebServlet("/shenhe")
-public class UpdateLiterature extends HttpServlet {
+@WebServlet("/addTeacher")
+public class AddTeacherAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	LiteratureService liservice = new LiteratureServiceImpl();      
+	TeacherService tservice = new TeacherServiceImpl();     
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateLiterature() {
+    public AddTeacherAction() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -44,22 +44,17 @@ public class UpdateLiterature extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		String Wxid = request.getParameter("wxid");
-		int wxid = Integer.parseInt(Wxid);
-		String statename = request.getParameter("state");
-		int state;
-		//System.out.println("wxid:"+wxid+"state:"+statename);
-		if("通过".equals(statename)){
-			state = 1;
-		}else{
-			state = 2;
-		}
-		int i = liservice.updateLiterature(wxid, state);
+		String ename = request.getParameter("ename");
+		String emnum = request.getParameter("emnum");
+		String colid = request.getParameter("cid");
+		String epsw = request.getParameter("epsw");
+		int e_num = Integer.parseInt(emnum);
+		int cid = Integer.parseInt(colid);
+		int i = tservice.insertTeacher(ename, cid, e_num, epsw);
 		JSONObject json = new JSONObject();
-		json.put("ok", i);
+		json.put("exception", i);
 		PrintWriter pw = response.getWriter();
 		pw.write(json.toString());
-		
 	}
 
 }
