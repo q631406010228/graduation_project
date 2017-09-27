@@ -3,7 +3,7 @@ package com.zr.model;
 public class Literature {
 	private int wxid; //文献ID 
 	private String wxcontent; //文献内容（存路径）
-	private int wxstate; //文献状态
+	private String wxstate; //文献状态
 	private int wxlxid; //文献类型
 	private int sid; //学生id
 	private String wxlxname;//文献类型名
@@ -45,10 +45,10 @@ public class Literature {
 	public void setWxcontent(String wxcontent) {
 		this.wxcontent = wxcontent;
 	}
-	public int getWxstate() {
+	public String getWxstate() {
 		return wxstate;
 	}
-	public void setWxstate(int wxstate) {
+	public void setWxstate(String wxstate) {
 		this.wxstate = wxstate;
 	}
 	public int getSid() {

@@ -25,5 +25,11 @@ public interface SubDao {
 	 * @return
 	 */
 	public JSONArray selectSubByTeacherEcol(int e_col);
+	/**
+	 * 删除选题
+	 * @param eid 教师ID
+	 * @return 是否成功的标志位
+	 */
+	public int deleteSub(int eid);
 }
 

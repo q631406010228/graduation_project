@@ -1,5 +1,6 @@
 package com.zr.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.zr.dao.ReplyProcessDao;
@@ -27,11 +28,11 @@ public class ReplyProcessServiceImpl implements ReplyProcessService{
 		return count;
 	}
 	@Override
-	public int[] deletReplyProcess(List<Integer> sid) {
+	public List<Integer> deletReplyProcess(List<Integer> sid) {
 		// TODO Auto-generated method stub
-		int flag[] = new int[20];
+		List <Integer>flag = new ArrayList<>();
 		for (int i = 0; i < sid.size(); i++) {
-			flag[i] = rpdao.deleteReplyProcess(sid.get(i));
+			flag.add(rpdao.deleteReplyProcess(sid.get(i))) ;
 		}
 		return flag;
 	}

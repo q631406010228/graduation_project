@@ -47,21 +47,32 @@ public class DeleteReplyProcessAction extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		String [] prids = request.getParameterValues("sid");
+		String [] sids = request.getParameterValues("sid");
+		StringBuffer str = new StringBuffer();
 		List<Integer> sid = new ArrayList<Integer>();
-		for (int i = 0; i < prids.length; i++) {
-			sid.add(Integer.parseInt(prids[i]));
+		List<Integer> flag = new ArrayList<Integer>();
+		//int sid[] = new int[50];
+		//int flag[] = new int[50];
+		for (int i = 0; i < sids.length; i++) {
+			 str.append(sids[i]);
 		}
-		int flag[] = new int[20];
+		String eids[] = str.toString().split(",");
+		
+		for (int i = 0; i < eids.length; i++) {
+			//System.out.println(stuid[i]);
+			sid.add(Integer.parseInt(eids[i])) ;
+			
+		}
 		flag = rpservice.deletReplyProcess(sid);
 		JSONObject jsons = new JSONObject();
-		for (int i = 0; i < sid.size(); i++) {
-			if(flag[i]==1){
-				jsons.put("exce", "删除成功");
+		for (int i = 0; i < flag.size(); i++) {
+			System.out.println(flag.get(i).toString());
+			if(!("1".equals( flag.get(i).toString()))){
+				jsons.put("exce", "删除失败");
 				break;
 			}
 			else{
-				jsons.put("exce", "删除失败");
+				jsons.put("exce", "删除成功");
 			}
 		}
 		PrintWriter pw = response.getWriter();
