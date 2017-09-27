@@ -24,4 +24,14 @@ public class NoticeServiceImpl implements NoticeService {
 		return ln;
 	}
 
+	@Override
+	public void setTeacherNotice(int sendID, int receiveID, String title, String content, String data, String num) {
+		String[] s = num.split(",");
+		int[] nums = new int[s.length];
+		for(int i = 0;i < s.length;i++){
+			nums[i] = Integer.parseInt(s[i]);
+		}
+		nd.setTeacherNotice(sendID, receiveID, title, content, data, nums);
+	}
+
 }

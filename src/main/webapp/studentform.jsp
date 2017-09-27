@@ -19,7 +19,7 @@
 	$(document).ready(function(){
 		$("#tb").datagrid({
 			url:'selectStudentForm',
-		    title:'学生答辩过程信息',
+		    title:'学生信息',
 		    striped:true,
 		    fitColumns:true,
 		    pageSize:10,

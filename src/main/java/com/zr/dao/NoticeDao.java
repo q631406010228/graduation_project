@@ -7,7 +7,7 @@ import com.zr.model.Notice;
 public interface NoticeDao {
 	
 	/**
-	 * 保存通知的信息
+	 * 教主任保存通知的信息
 	 * @param sendID	发通知的角色
 	 * @param receiveID	接收通知的角色
 	 * @param title		通知的题目	
@@ -15,6 +15,16 @@ public interface NoticeDao {
 	 * @param data		通知的时间
 	 */
 	public void setDeanNotice(int sendID,int receiveID,String title,String content,String data);
+	
+	/**
+	 * 教师保存通知的信息
+	 * @param sendID	发通知的角色
+	 * @param receiveID	接收通知的角色
+	 * @param title		通知的题目	
+	 * @param content	通知的内容
+	 * @param data		通知的时间
+	 */
+	public void setTeacherNotice(int sendID,int receiveID,String title,String content,String data,int[] num);
 	
 	/**
 	 * 获取指定人的通知

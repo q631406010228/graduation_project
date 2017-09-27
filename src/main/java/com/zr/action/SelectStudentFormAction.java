@@ -1,3 +1,4 @@
+
 package com.zr.action;
 
 import java.io.IOException;
@@ -19,6 +20,11 @@ import net.sf.json.JSONObject;
 
 /**
  * Servlet implementation class SelectStudentForm
+ */
+/**
+ * 学生名单action层
+ * @author 欧小峰
+ *
  */
 @WebServlet("/selectStudentForm")
 public class SelectStudentFormAction extends HttpServlet {

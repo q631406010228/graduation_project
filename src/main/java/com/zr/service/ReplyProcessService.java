@@ -26,7 +26,7 @@ public interface ReplyProcessService {
 	 * @param sid 学生ID
 	 * @return 是否成功的标志位
 	 */
-	public int[] deletReplyProcess(List<Integer> sid);
+	public List<Integer> deletReplyProcess(List<Integer> sid);
 	/**
 	 * 
 	 * @param sid
