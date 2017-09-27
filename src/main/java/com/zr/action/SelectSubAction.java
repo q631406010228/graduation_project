@@ -53,7 +53,6 @@ public class SelectSubAction extends HttpServlet {
 		int eid = (int) session.getAttribute("e_id");
 		Sub sub = subservice.selectSubByEid(eid);
 		JSONObject json = new JSONObject();
-		
 		System.out.println("aaaa"+eid);
 		session.setAttribute("subname", sub.getSubname());
 		session.setAttribute("subcontent", sub.getSubcontent());

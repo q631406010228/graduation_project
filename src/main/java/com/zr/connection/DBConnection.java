@@ -15,7 +15,8 @@ public class DBConnection {
 	 * 
 	 * @return 数据库连接对象
 	 */
-	 private  final  static String DBURL = "jdbc:mysql://172.18.23.54:3306/graduation_project?useUnicode=true&characterEncoding=UTF8";
+
+	   private  final  static String DBURL = "jdbc:mysql://172.18.23.54:3306/graduation_project?useUnicode=true&characterEncoding=UTF8";
 	   private  final  static String  USERNAME = "qinhao";
 	   private  final  static String  PASSWORD = "123456";
 	   /*private  final  static String DBURL = "jdbc:mysql://127.0.0.1:3305/graduation_project?useUnicode=true&characterEncoding=UTF8";

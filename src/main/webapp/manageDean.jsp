@@ -38,7 +38,7 @@
      					$('#win').window('open');
      					$('#btn').off('click').on('click', function(){    
      				    	$('#ff').form('submit', {    
-     				    	    url:'updateStudent ',    
+     				    	    url:'updateDean ',    
      				    	    onSubmit: function(param){    
      				    	    	param.flag = '1';      
      				    	    },    
@@ -62,10 +62,10 @@
      					}
      					var sids = [];
      					for(var i = 0;i < rows.length;i++){
-     						sids.push(rows[i].num);
+     						sids.push(rows[i].eid);
      					}
      					$.ajax({
-     						url:'updateStudent',
+     						url:'updateDean',
      						type:'post',
      						data:{'sids':sids.join(","),'flag':2},
      						dataType:'html',

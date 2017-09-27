@@ -15,7 +15,14 @@ public class Student {
 	private String subname; //选题名称
 	private String sname; //学生姓名
 	private String spsw; //密码
+	private int score;//答辩成绩
 	
+	public int getScore() {
+		return score;
+	}
+	public void setScore(int score) {
+		this.score = score;
+	}
 	public String getColname() {
 		return colname;
 	}

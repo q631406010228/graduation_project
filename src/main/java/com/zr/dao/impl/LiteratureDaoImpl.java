@@ -20,7 +20,7 @@ public class LiteratureDaoImpl implements LiteratureDao{
 		sql.append("select a.wx_name,a.wx_id,a.wx_state,a.wx_content,b.s_name,c.wxlx_name ");
 		sql.append("from literature a ,student b,literaturelx c,sub d ");
 		sql.append("where a.wxlx_id = c.id and a.s_id = b.s_id and b.sub_id = d.sub_id ");
-		sql.append("and d.e_id=?");
+		sql.append("and e_id=?");
 		List<Literature> list = new ArrayList<Literature>();
 		Connection con = DBConnection.getConnection();
 		try {
@@ -74,4 +74,3 @@ public class LiteratureDaoImpl implements LiteratureDao{
 	}
 	
 }
-
