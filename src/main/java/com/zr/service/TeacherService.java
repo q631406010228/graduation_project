@@ -25,6 +25,7 @@ public interface TeacherService {
     * @param score  成绩
     */
     public void alterStudentScore(int sid ,int score);
+    /**
 	 * 查询教师信息
 	 * @return 教师对象的集合
 	 */
