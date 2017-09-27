@@ -57,8 +57,11 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+<<<<<<< HEAD
 	
 
+=======
+>>>>>>> 5409f170b06381a27c5d0d71e63dfa785200b51a
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
