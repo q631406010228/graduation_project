@@ -84,11 +84,6 @@
 	})
 </script>
 <body>
-<<<<<<< HEAD
 	<table id ="tb"></table>
 </body>
-=======
-	<table id ="tb"></table>
-</body>
->>>>>>> edb45fe6cd0177f620b12cff36781fe446007bbd
 </html>

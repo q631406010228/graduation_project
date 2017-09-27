@@ -23,32 +23,35 @@
 			type:'post',
 			dataType:'json',
 			success:function(data){
-				
+				$('#subname').textbox('setValue','${sessionScope.subname}');
+				$('#subcontent').textbox('setValue','${sessionScope.subcontent}');
+				$('#subcount').textbox('setValue','${sessionScope.subcount}');
+				$('#state').textbox('setValue','${sessionScope.state}');	
 			}
 		})
 		//location.href="selectsub.jsp"
 		$('#subname').textbox({
 			readonly:true,
 			height : 30,
-			value:'${sessionScope.subname}'
+			value:''
 		})
 		$('#subcontent').textbox({
 			readonly:true,
 			multiline:true,
 			height : 60,
-			value:'${sessionScope.subcontent}'
+			value:''
 		})
 		$('#subcount').textbox({
 			readonly:true,
 			multiline:false,
 			height : 30,
-			value:'${sessionScope.subcount}'
+			value:''
 		})
 		$('#state').textbox({
 			readonly:true,
 			multiline:false,
 			height : 30,
-			value:'${sessionScope.state}'
+			value:''
 		})
 	})
 </script>
