@@ -15,7 +15,6 @@ public class StudentDaoImpl implements StudentDao{
 
 	@Override
 	public List<Student> selectStudentByEid(int eid) {
-		// TODO Auto-generated method stub
 		StringBuffer sql = new StringBuffer();
 		sql.append("select s_id,s_name from student,sub ");
 		sql.append("where student.sub_id = sub.sub_id and sub.e_id =?");
