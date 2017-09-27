@@ -8,9 +8,17 @@ public class Staff {
 	private int eid; //职工id
 	private String ename; //职工姓名
 	private int ecol; //学院id
+	private String ecolname; //学院名
 	private int replyid; //答辩id
 	private int emnum; //教职工号
 	private String epsw; //职工密码
+	private String cname;
+	public String getCname() {
+		return cname;
+	}
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
 	public int getEid() {
 		return eid;
 	}
@@ -25,6 +33,12 @@ public class Staff {
 	}
 	public int getEcol() {
 		return ecol;
+	}
+	public String getEcolname() {
+		return ecolname;
+	}
+	public void setEcolname(String ecolname) {
+		this.ecolname = ecolname;
 	}
 	public void setEcol(int ecol) {
 		this.ecol = ecol;

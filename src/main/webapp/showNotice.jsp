@@ -53,13 +53,15 @@ ul.test li span {
 		</div>
 	</div>
     <script type="text/javascript">  
-        var webSocket = new WebSocket('ws://172.18.23.54:8080/graduation_project/websocket');  
+    	var webSocket = new WebSocket("ws://localhost:8080/graduation_project/websocket");  
+    	
         webSocket.onerror = function(event) {  
             alert(event.data);  
         };  
         //与WebSocket建立连接  
         webSocket.onopen = function(event) {  
             document.getElementById('messages').innerHTML = '与服务器端建立连接';  
+            webSocket.send('我是秦皓');  
         };  
         //处理服务器返回的信息  
         webSocket.onmessage = function(event) {  
@@ -71,14 +73,7 @@ ul.test li span {
         		+"</span><p style='color:gray'>"+$.parseJSON(event.data).Notice[i].content+"</p></li><br>";      		
 			}
         };  
-        function start() {  
-            //向服务器发送请求  
-            webSocket.send('我是jCuckoo');  
-        }  
-        
-        function showContent(){
-        	console.log(this)
-        }
+
         
     </script>  
 </body>  

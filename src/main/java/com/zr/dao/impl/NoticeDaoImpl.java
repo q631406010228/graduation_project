@@ -64,4 +64,34 @@ public class NoticeDaoImpl implements NoticeDao{
 		return ns;
 	}
 
+	@Override
+	public void setTeacherNotice(int sendID, int receiveID, String title, String content, String data, int[] num) {
+		Connection conn = DBConnection.getConnection();
+		try {
+			conn.setAutoCommit(false);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}	//禁止自动提交
+		StringBuffer s = new StringBuffer();
+		s.append("insert into notice(send_id,receive_role_id,title,content,`data`,receive_num) values(?,?,?,?,?,?);");
+		try {
+			PreparedStatement ps = conn.prepareStatement(s.toString());
+			for(int i = 0;i < num.length;i++){
+				ps.setInt(1, 2);	//在session找教师角色表的id）
+				ps.setInt(2, 2);	//固定发给学生角色
+				ps.setString(3, title);
+				ps.setString(4, content);
+				ps.setString(5, data);
+				ps.setInt(6, num[i]);
+				ps.addBatch();	
+			}
+		
+			ps.executeBatch();	//批量执行上面的语句
+			conn.commit();		//一起提交	
+			ps.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+	}
+
 }

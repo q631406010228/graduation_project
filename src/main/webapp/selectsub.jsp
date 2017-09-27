@@ -16,31 +16,64 @@
 <title>选题申报查看</title>
 </head>
 <script type="text/javascript">
-	$(document).ready(function(){
+	$(document).ready(function() {
+		$.ajax({
+			url:'selectSub',
+			data:'',
+			type:'post',
+			dataType:'json',
+			sucess:function(data){
+				location.href="selectsub.jsp"
+			}
+		})
 		
+		$('#subname').textbox({
+			readonly:true,
+			height : 30,
+			value:'${sessionScope.subname}'
+		})
+		$('#subcontent').textbox({
+			readonly:true,
+			multiline:true,
+			height : 60,
+			value:'${sessionScope.subcontent}'
+		})
+		$('#subcount').textbox({
+			readonly:true,
+			multiline:false,
+			height : 30,
+			value:'${sessionScope.subcount}'
+		})
+		$('#state').textbox({
+			readonly:true,
+			multiline:false,
+			height : 30,
+			value:'${sessionScope.state}'
+		})
 	})
 </script>
 <body>
-	<div>
-			<div>
-				<label>课题名称：</label>
-				<input id="subname" name="subname" type="text" style="width: 200px">
-			</div>
-			<br>
-			<div>
-				<label>课题描述：</label>
-				<input id="subcontent" name="subcontent" type="text" style="width: 200px">
-			</div>
-			<br>
-			<div>
-				<label>课题容量：</label>
-				<input id="subcount" name="subcount" type="text" style="width: 200px">
-			</div>
-			<br>
-			<div style="margin-left: 17px;">
-				<label>课题状态：</label>
-				<input id="eid" name="eid" type="text" style="width: 200px">
-			</div>
+	<div style="text-align: center;">
+		<h4>选题申报信息</h4>
+		<div>
+			<label>课题名称：</label> <input id="subname" name="subname" type="text"
+				style="width: 200px">
+		</div>
+		<br>
+		<div>
+			<label>课题描述：</label> <input id="subcontent" name="subcontent"
+				type="text" style="width: 200px">
+		</div>
+		<br>
+		<div>
+			<label>课题容量：</label> <input id="subcount" name="subcount" type="text"
+				style="width: 200px">
+		</div>
+		<br>
+		<div >
+			<label>课题状态：</label> <input id="state" name="state" type="text"
+				style="width: 200px">
+		</div>
 	</div>
 </body>
 </html>
