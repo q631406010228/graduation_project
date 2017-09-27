@@ -51,7 +51,7 @@
 <body class="easyui-layout">
 	<div data-options="region:'north',title:'毕业系统管理系统',split:true"
 		style="height: 100px;"></div>
-	<div data-options="region:'west',title:'尊敬的同学您好！',split:true"
+	<div data-options="region:'west',title:'尊敬的您好！',split:true"
 		style="width: 300px;">
 		<ul id="tt"></ul>
 	</div>

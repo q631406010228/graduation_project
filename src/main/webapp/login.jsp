@@ -4,6 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet"
+	href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script
+	src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- 引入主题样式 -->
 <link href="themes/gray/easyui.css" rel="stylesheet">
 <!-- 引入图标的样式 -->
@@ -15,16 +21,14 @@
 <script type="text/javascript" src="js/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" src="js/Login.js"></script>
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
 	<hr></hr>
 	<!-- 滚动字幕部分 -->
 
-	<p style="margin-left: 14px;">
+	<p style="margin-left: 14px;" >
 		<i><b><marquee scrollAmount=2 width=450>欢迎使用本系统，在登录时注意选择准确的角色哦&nbsp;-----</marquee>
 		</b></i>
 	</p>
@@ -90,7 +94,9 @@
 								class="form-control" style="position: relative; left: 5px;"
 								id="yzm" name="yzm" value="" placeholder="请输入验证码">
 							<canvas id="num" width="120" height="40"
-								style="position: relative; top: 16px; left: 6px"></canvas>
+								style="position: relative; top: 16px; left: 
+
+6px"></canvas>
 						</div>
 
 						<!-- 下拉框选择角色 -->
@@ -103,7 +109,7 @@
 								<option value="3">教师</option>
 								<option value="4">系主任</option>
 							</select>-->
-							<label for="">角色选择:</label>&nbsp;&nbsp;<input id="cc" name="dept" value="">  		
+							<label for="">角色选择:&nbsp;&nbsp;</label><input id="cc" name="dept" value="">
 						</div>
 						<br> <br> <br> <br>
 						<!--登录和重置  -->
@@ -111,7 +117,7 @@
 							style="position: relative; top: 20px; left: 50px">登录</button>
 				</div>
 				<button type="button" id="cz" class="btn btn-default"
-							style="position: relative; top: 82px; left: 50px">重置</button>
+					style="position: relative; top: 84px; left: 40px">重置</button>
 				</form>
 			</div>
 		</div>

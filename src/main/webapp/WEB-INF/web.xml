@@ -12,8 +12,7 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
-	 <!-- 登录 -->
-	<servlet>
+<!-- 	<servlet>
 		<servlet-name>Login</servlet-name>
 		<servlet-class>com.zr.action.LoginAction</servlet-class>
 	</servlet>
@@ -22,7 +21,6 @@
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
 	
-	 <!-- 跳转到主页面 -->
 	<servlet>
 		<servlet-name>show</servlet-name>
 		<servlet-class>com.zr.action.ShowAction</servlet-class>
@@ -32,7 +30,6 @@
 		<url-pattern>/show</url-pattern>
 	</servlet-mapping>
 	
-	 <!-- 展现角色的权限 -->
 	<servlet>
 		<servlet-name>showRoles</servlet-name>
 		<servlet-class>com.zr.action.ShowFunctionAction</servlet-class>
@@ -42,7 +39,6 @@
 		<url-pattern>/showRoles</url-pattern>
 	</servlet-mapping>
 	
-	 <!-- 展现功能模块 -->
 	<servlet>
 		<servlet-name>showFuncModule</servlet-name>
 		<servlet-class>com.zr.action.ShowFuncModuleAction</servlet-class>
@@ -52,7 +48,6 @@
 		<url-pattern>/showFuncModule</url-pattern>
 	</servlet-mapping>
 	
-	 <!-- 注册 -->
 	<servlet>
 		<servlet-name>registeruser</servlet-name>
 		<servlet-class>com.zr.action.RegisterUserAction</servlet-class>
@@ -62,7 +57,6 @@
 		<url-pattern>/registeruser</url-pattern>
 	</servlet-mapping>
 	
-	<!-- 获得所有角色 -->
 	<servlet>
 		<servlet-name>getRoles</servlet-name>
 		<servlet-class>com.zr.action.GetRolesAction</servlet-class>
@@ -72,7 +66,6 @@
 		<url-pattern>/getRoles</url-pattern>
 	</servlet-mapping>
 	
-	<!-- 获得所有用户 -->
 	<servlet>
 		<servlet-name>getUsers</servlet-name>
 		<servlet-class>com.zr.action.GetUsersAction</servlet-class>
@@ -82,7 +75,6 @@
 		<url-pattern>/getUsers</url-pattern>
 	</servlet-mapping>
 	
-	<!-- 更新用户的角色 -->
 	<servlet>
 		<servlet-name>updateUserRole</servlet-name>
 		<servlet-class>com.zr.action.UpdateUserRoleAction</servlet-class>
@@ -92,7 +84,6 @@
 		<url-pattern>/updateUserRole</url-pattern>
 	</servlet-mapping>
 	
-	<!-- 获取所有的功能 -->
 	<servlet>
 		<servlet-name>getFuncs</servlet-name>
 		<servlet-class>com.zr.action.GetFuncsAction</servlet-class>
@@ -102,7 +93,6 @@
 		<url-pattern>/getFuncs</url-pattern>
 	</servlet-mapping>	
 	
-	<!-- 新增角色 -->
 	<servlet>
 		<servlet-name>addRole</servlet-name>
 		<servlet-class>com.zr.action.AddRoleAction</servlet-class>
@@ -112,7 +102,6 @@
 		<url-pattern>/addRole</url-pattern>
 	</servlet-mapping>	
 	
-	<!-- 分配角色的功能 -->
 	<servlet>
 		<servlet-name>updateRoleFunc</servlet-name>
 		<servlet-class>com.zr.action.UpdateRoleFuncAction</servlet-class>
@@ -122,7 +111,6 @@
 		<url-pattern>/updateRoleFunc</url-pattern>
 	</servlet-mapping>
 	
-	<!-- 新增功能到指定功能模块 -->
 	<servlet>
 		<servlet-name>addFunc</servlet-name>
 		<servlet-class>com.zr.action.AddFuncAction</servlet-class>
@@ -132,7 +120,6 @@
 		<url-pattern>/addFunc</url-pattern>
 	</servlet-mapping>	
 	
-	<!-- 得到表格中每一页的角色 -->
 	<servlet>
 		<servlet-name>getRolesTable</servlet-name>
 		<servlet-class>com.zr.action.GetRolesTableAction</servlet-class>
@@ -142,7 +129,6 @@
 		<url-pattern>/getRolesTable</url-pattern>
 	</servlet-mapping>	
 	
-	<!-- 得到表格中每一页的角色 -->
 	<servlet>
 		<servlet-name>getFids</servlet-name>
 		<servlet-class>com.zr.action.GetFidsAction</servlet-class>
@@ -152,7 +138,6 @@
 		<url-pattern>/getFids</url-pattern>
 	</servlet-mapping>
 	
-	<!-- 得到表格中每一页的角色 -->
 	<servlet>
 		<servlet-name>getFuncsCombotree</servlet-name>
 		<servlet-class>com.zr.action.GetFuncsCombotreeAction</servlet-class>
@@ -160,6 +145,6 @@
 	<servlet-mapping>
 		<servlet-name>getFuncsCombotree</servlet-name>
 		<url-pattern>/getFuncsCombotree</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping>  -->
 	
 </web-app>

@@ -2,10 +2,13 @@ package com.zr.serviceimpl;
 
 import com.zr.dao.StaffDao;
 import com.zr.dao.StudentDao;
+import com.zr.dao.UserDao;
 import com.zr.daoimpl.StaffDaoImpl;
 import com.zr.daoimpl.StudentDaoImpl;
+import com.zr.daoimpl.UserDaoImpl;
 import com.zr.model.Staff;
 import com.zr.model.Student;
+import com.zr.model.User;
 
 import net.sf.json.JSONObject;
 
@@ -21,13 +24,14 @@ public class LoginServiceImpl {
 		// 创建各表对象
 		Staff staff = new Staff();
 		Student student = new Student();
+		User user = new User();
 		// 创建各个数据库对象
 		// 职工
 		StaffDao staffdao = new StaffDaoImpl();
 		// 学生
 	    StudentDao studentdao = new StudentDaoImpl();
 		// 管理员
-	    //UserDao userdao = new UserDaoImpl();
+	    UserDao userdao = new UserDaoImpl();
 		// 创建json对象
 		JSONObject json = new JSONObject();
 		// 判断用户类型
@@ -35,7 +39,7 @@ public class LoginServiceImpl {
 			// 学生
 			Integer snum = new Integer(ename);
 			student = studentdao.getStudent(snum,epsw);
-            System.out.println("这个是在哪里啊 "+student);
+            System.out.println("LoginServiceImpl学生中 "+student);
         	if (student.getSpsw()== null) {
 				// 用户不存在
 				json.put("ok", false);
@@ -76,10 +80,30 @@ public class LoginServiceImpl {
 
 			}
 
-		} else {
-			// 管理员
-		}
+		} else if (user_type.equals("1")) {
+				// 管理员
+				Integer unum = new Integer(ename);				
+				user = userdao.getUser(unum,epsw);
+	            System.out.println("LoginServiceImpl管理员中 "+user);
+	        	if (user.getUpsw()== null) {
+					// 用户不存在
+					json.put("ok", false);
+					json.put("msg", "登录失败,用户不存在！");
+				} else if (!user.getUpsw().equals(epsw)) {
+					// 用户密码错误
+					json.put("ok", false);
+					json.put("msg", "登录失败,用户密码错误!");
+				} else {
+					// 信息匹配成功
+					json.put("ok", true);
+					json.put("r_id", user.getRid());
+					json.put("msg", "登录成功!");
+					// 获取职工的id
+					json.put("e_id", user.getUid());
+				}
+			}
 		System.out.println("LoginService。getUserIdByUsernum方法返回的结果" + json);
+		
 		return json;
 	}
 }

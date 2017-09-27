@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +21,7 @@ import net.sf.json.JSONObject;
 * @version 创建时间：2017年9月25日 上午1:04:59 
 * 说明 ：
 */
+@WebServlet("/login")
 public class LoginAction extends HttpServlet{
 	ValidateService vs = new ValidateServiceImpl();
 	@Override
@@ -45,7 +47,7 @@ public class LoginAction extends HttpServlet{
 		// 创建登录服务对象，获取数据库中返回的信息
 		LoginServiceImpl login = new LoginServiceImpl();
 		JSONObject js = new JSONObject();
-		js = login.getUserIdByUsernum(dept, ename, epsw);
+		js = login.getUserIdByUsernum(dept,ename,epsw);
 
 		// 创建会话对象
 		HttpSession s = req.getSession();
