@@ -46,5 +46,15 @@ public class TeacherServiceImpl implements TeacherService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public JSONObject showReplymisson() {
+		JSONObject json = tdao.checkReplyMisson();
+		return json;
+	}
+	@Override
+	public String getSnum(int id) {
+		String s = tdao.getSnumBySid(id);
+		return s;
+	}
     
 }

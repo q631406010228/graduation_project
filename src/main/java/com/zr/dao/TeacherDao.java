@@ -24,4 +24,16 @@ public interface TeacherDao {
      * @param score  成绩
      */
     public void insertStudentScore(int sid,int score);
+    
+    /**
+     * 查看答辩任务
+     * @return
+     */
+    public JSONObject checkReplyMisson();
+     
+    /**
+     * 获取学生学号
+     * @return
+     */
+    public String getSnumBySid(int id);
 }

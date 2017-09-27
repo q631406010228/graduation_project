@@ -29,7 +29,7 @@ public class FileDownloadAction extends HttpServlet {
 		// System.out.println(stuFiles[0]);
 		String paperFile = req.getParameter("pnames");
 		//for (int i = 0; i < stuFiles.length; i++) {
-			String filepath = this.getServletContext().getRealPath("/WEB-INF/uploads/" + stuFiles +"/"+ paperFile);
+			String filepath = this.getServletContext().getRealPath("uploads/" + stuFiles +"/"+ paperFile);
 			File file = new File(filepath);
 			System.out.println(file.toString());
 			JSONObject json = new JSONObject();

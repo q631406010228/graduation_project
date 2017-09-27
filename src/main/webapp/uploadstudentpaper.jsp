@@ -26,7 +26,7 @@
 			
 	})
 	$("#stus").combobox({
-		url:'selectStudentByEid',    
+		url:'SelectStudentByEid',    
 	    valueField:'id',    
 	    textField:'text',   
 		iconCls :'icon-man',

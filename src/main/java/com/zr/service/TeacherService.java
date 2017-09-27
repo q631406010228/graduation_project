@@ -26,6 +26,11 @@ public interface TeacherService {
     * @param score  成绩
     */
     public void alterStudentScore(int sid ,int score);
+    /**
+	 * 查看答辩任务
+	 * @return
+	 */
+	public JSONObject showReplymisson();
 
 
 
@@ -45,5 +50,11 @@ public interface TeacherService {
 	 * @return 是否成功的标志位
 	 */
 	public List<Integer> deleteTeacher(List<Integer> eids);
+	/**
+	 * 获取学生学号
+	 *  @return
+	 */
+	public String getSnum(int id);
+	
 
 }

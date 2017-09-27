@@ -18,8 +18,23 @@
 
 <title>查看答辩工作任务</title>
 </head>
+
+<script type="text/javascript">
+$(function(){
+	$('#mission').datagrid({    
+	    url:'showreplymission',    
+	    columns:[[    
+	        {field:'replysite',title:'答辩地点',width:100},    
+	        {field:'subname',title:'论文课题名',width:100},    
+	        {field:'replystart',title:'开始时间',width:100,align:'right'},    
+	        
+	    ]]    
+	});  
+
+})
+</script>
 <body>
-<table id='stusc'>
+<table id='mission'>
 </table>
 
 </body>
