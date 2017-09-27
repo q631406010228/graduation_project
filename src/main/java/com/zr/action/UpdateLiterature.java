@@ -1,3 +1,4 @@
+
 package com.zr.action;
 
 import java.io.IOException;
@@ -48,7 +49,7 @@ public class UpdateLiterature extends HttpServlet {
 		int wxid = Integer.parseInt(Wxid);
 		String statename = request.getParameter("state");
 		int state;
-		System.out.println("wxid:"+wxid+"state:"+statename);
+		//System.out.println("wxid:"+wxid+"state:"+statename);
 		if("通过".equals(statename)){
 			state = 1;
 		}else{
@@ -63,3 +64,4 @@ public class UpdateLiterature extends HttpServlet {
 	}
 
 }
+
