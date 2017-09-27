@@ -48,20 +48,13 @@ public class SelectSubAction extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setCharacterEncoding("utf8");
-<<<<<<< HEAD
+
 		request.setCharacterEncoding("utf8");
-=======
-		request.setCharacterEncoding("utf8");
->>>>>>> edb45fe6cd0177f620b12cff36781fe446007bbd
 		HttpSession session = request.getSession();
 		int eid = (int) session.getAttribute("e_id");
 		Sub sub = subservice.selectSubByEid(eid);
 		JSONObject json = new JSONObject();
-<<<<<<< HEAD
 		System.out.println("aaaa"+eid);
-=======
-		System.out.println("aaaa"+eid);
->>>>>>> edb45fe6cd0177f620b12cff36781fe446007bbd
 		session.setAttribute("subname", sub.getSubname());
 		session.setAttribute("subcontent", sub.getSubcontent());
 		session.setAttribute("subcount", sub.getSubcount());
