@@ -3,6 +3,9 @@ package com.zr.action;
 import java.io.IOException;
 import java.util.List;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpSession;
 import javax.websocket.EncodeException;
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
@@ -17,7 +20,17 @@ import com.zr.service.impl.NoticeServiceImpl;
 import net.sf.json.JSONObject;
 
 @ServerEndpoint("/websocket")
-public class NoticeSoket {
+public class NoticeSoket extends HttpServlet{
+	
+	HttpSession s ;
+	
+	protected void doGet(javax.servlet.http.HttpServletRequest req, javax.servlet.http.HttpServletResponse resp) throws javax.servlet.ServletException ,IOException {
+		doPost(req, resp);
+	};
+	
+	protected void doPost(javax.servlet.http.HttpServletRequest req, javax.servlet.http.HttpServletResponse resp) throws javax.servlet.ServletException ,IOException {
+		s = req.getSession();
+	};
 	
 	NoticeService ns = new NoticeServiceImpl();
 	
@@ -28,6 +41,7 @@ public class NoticeSoket {
 	@OnMessage
 	public void onMessage(String message, Session session) throws IOException, InterruptedException, java.io.IOException, EncodeException {
 		int n = 0;
+		int eid = (int) s.getAttribute("e_id");
 		while (true) {
 			Thread.sleep(1000);
 			List<Notice> ln = ns.getNotices(2,1406010001);
