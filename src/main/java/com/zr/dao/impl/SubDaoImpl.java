@@ -37,7 +37,7 @@ public class SubDaoImpl implements SubDao{
 		return 0;
 	}
 @Override
-public JSONArray selectSubByTeacherEcol(int e_col) {
+	public JSONArray selectSubByTeacherEcol(int e_col) {
 	//创建连接
 	Connection con = DBConnection.getConnection();
 	//定义数据库语句
@@ -148,6 +148,27 @@ public boolean setSelectnumByStudentNum(int number,int sub_id) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+
+	@Override
+	public int deleteSub(int eid) {
+		// TODO Auto-generated method stub
+		StringBuffer sql = new StringBuffer();
+		sql.append("delete from sub ");
+		sql.append("where e_id=? ");
+		Connection con = DBConnection.getConnection();
+		try {
+			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
+			pst.setInt(1, eid);
+			int i = pst.executeUpdate();
+			return i;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+
 	return false;
 }
 @Override

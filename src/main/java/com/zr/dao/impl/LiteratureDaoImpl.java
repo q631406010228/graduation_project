@@ -33,7 +33,15 @@ public class LiteratureDaoImpl implements LiteratureDao{
 				li.setSname(res.getString("s_name"));
 				li.setWxcontent(res.getString("wx_content"));
 				li.setWxlxname(res.getString("wxlx_name"));
-				li.setWxstate(res.getInt("wx_state"));
+				if(res.getInt("wx_state")==0){
+					li.setWxstate("未审核");
+				}else
+				if(res.getInt("wx_state")==1){
+					li.setWxstate("通过");
+				}else if(res.getInt("wx_state")==2){
+					li.setWxstate("驳回");
+				}
+				
 				li.setWxname(res.getString("wx_name"));
 				list.add(li);
 			}
