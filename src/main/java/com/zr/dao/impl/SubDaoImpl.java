@@ -12,8 +12,13 @@ import com.zr.dao.SubDao;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
+<<<<<<< HEAD
 import com.zr.model.Sub;
 
+=======
+
+import com.zr.model.Sub;
+>>>>>>> edb45fe6cd0177f620b12cff36781fe446007bbd
 public class SubDaoImpl implements SubDao {
 
 	@Override
@@ -38,6 +43,10 @@ public class SubDaoImpl implements SubDao {
 		}
 		return 0;
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> edb45fe6cd0177f620b12cff36781fe446007bbd
 	@Override
 	public JSONArray selectSubByTeacherEcol(int e_col) {
 		//创建连接
@@ -88,6 +97,36 @@ public class SubDaoImpl implements SubDao {
 		return null;
 	}
 
+<<<<<<< HEAD
+=======
+	@Override
+	public Sub selectSubByEid(int eid) {
+		// TODO Auto-generated method stub
+		StringBuffer sql = new StringBuffer();
+		Sub sub = new Sub();
+		sql.append("select sub_name,sub_count,sub_content,sub_state ");
+		sql.append("from sub ");
+		sql.append("where e_id=? ");
+		Connection con = DBConnection.getConnection();
+		try {
+			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
+			pst.setInt(1, eid);
+			ResultSet res = pst.executeQuery();
+			while(res.next()){
+				sub.setSubcontent(res.getString("sub_content"));
+				sub.setSubcount(res.getInt("sub_count"));
+				sub.setSubname(res.getString("sub_name"));
+				sub.setSubstate(res.getInt("sub_state"));
+			}
+			return sub;
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+
+	}
+>>>>>>> edb45fe6cd0177f620b12cff36781fe446007bbd
 
 	@Override
 	public Sub getSelectnumSub_countBySubid(int sub_id) {
@@ -166,6 +205,10 @@ public class SubDaoImpl implements SubDao {
 		return 0;
 	}
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> edb45fe6cd0177f620b12cff36781fe446007bbd
 	@Override
 	public Sub selectSubByEid(int eid) {
 		// TODO Auto-generated method stub
@@ -192,6 +235,9 @@ public class SubDaoImpl implements SubDao {
 		}
 		return null;
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> edb45fe6cd0177f620b12cff36781fe446007bbd
 }
 
