@@ -2,31 +2,29 @@ package com.zr.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.zr.service.LiteratureService;
-import com.zr.service.impl.LiteratureServiceImpl;
+import com.zr.service.TeacherService;
+import com.zr.service.impl.TeacherServiceImpl;
 
 import net.sf.json.JSONObject;
 
 /**
- * Servlet implementation class SelectWwnXianAction
+ * Servlet implementation class AddTeacherAction
  */
-@WebServlet("/selectLiteratureAction")
-public class SelectLiteratureAction extends HttpServlet {
+@WebServlet("/addTeacher")
+public class AddTeacherAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    LiteratureService liservice = new LiteratureServiceImpl();   
+	TeacherService tservice = new TeacherServiceImpl();     
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SelectLiteratureAction() {
+    public AddTeacherAction() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -46,15 +44,17 @@ public class SelectLiteratureAction extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		HttpSession session = request.getSession();
-		int eid = (int) session.getAttribute("e_id");
-		System.out.println("sds:"+eid);
-		List list = liservice.selectLiteratureByEid(eid);
+		String ename = request.getParameter("ename");
+		String emnum = request.getParameter("emnum");
+		String colid = request.getParameter("cid");
+		String epsw = request.getParameter("epsw");
+		int e_num = Integer.parseInt(emnum);
+		int cid = Integer.parseInt(colid);
+		int i = tservice.insertTeacher(ename, cid, e_num, epsw);
 		JSONObject json = new JSONObject();
-		//json.put("total", count);
-		//json.put("total",1);
-		json.put("rows", list);
+		json.put("exception", i);
 		PrintWriter pw = response.getWriter();
 		pw.write(json.toString());
 	}
+
 }

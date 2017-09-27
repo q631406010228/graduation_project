@@ -7,11 +7,7 @@ import com.zr.model.Staff;
 import net.sf.json.JSONObject;
 
 public interface TeacherService {
-	/**
-	 * 获取学生所有论文
-	 * @return json数据对象
-	 */
-	public JSONObject getPapers();
+	
 	/**
 
 	 * 获取学生答辩成绩
@@ -51,10 +47,30 @@ public interface TeacherService {
 	 */
 	public List<Integer> deleteTeacher(List<Integer> eids);
 	/**
+<<<<<<< HEAD
 	 * 获取学生学号
 	 *  @return
 	 */
 	public String getSnum(int id);
 	
+   /**
+	 * 修改教师信息
+	 * @param eid 教师编号
+	 * @param ename 教师姓名
+	 * @param colid 学院号
+	 * @param emnum 教师号
+	 * @return 是否成功的标志位
+	 */
+	public int updateTeacher(int eid,String ename,int colid,int emnum);
+	/**
+	 * 添加教师
+	 * @param ename 教师姓名
+	 * @param colid 学院号
+	 * @param emnum 教师号
+	 * @param epsw 密码
+	 * @return 是否成功的标志位
+	 */
+	public int insertTeacher(String ename,int colid,int emnum,String epsw);
+
 
 }

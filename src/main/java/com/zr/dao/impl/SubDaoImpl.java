@@ -38,7 +38,6 @@ public class SubDaoImpl implements SubDao {
 		}
 		return 0;
 	}
-
 	@Override
 	public JSONArray selectSubByTeacherEcol(int e_col) {
 		//创建连接
@@ -88,35 +87,6 @@ public class SubDaoImpl implements SubDao {
 		}
 		return null;
 	}
-
-	@Override
-	public Sub selectSubByEid(int eid) {
-		// TODO Auto-generated method stub
-		StringBuffer sql = new StringBuffer();
-		Sub sub = new Sub();
-		sql.append("select sub_name,sub_count,sub_content,sub_state ");
-		sql.append("from sub ");
-		sql.append("where e_id=? ");
-		Connection con = DBConnection.getConnection();
-		try {
-			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
-			pst.setInt(1, eid);
-			ResultSet res = pst.executeQuery();
-			while(res.next()){
-				sub.setSubcontent(res.getString("sub_content"));
-				sub.setSubcount(res.getInt("sub_count"));
-				sub.setSubname(res.getString("sub_name"));
-				sub.setSubstate(res.getInt("sub_state"));
-			}
-			return sub;
-		}catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-
-	}
-
 	@Override
 	public Sub getSelectnumSub_countBySubid(int sub_id) {
 		Sub sub = new Sub();
@@ -194,5 +164,31 @@ public class SubDaoImpl implements SubDao {
 		return 0;
 	}
 
+	@Override
+	public Sub selectSubByEid(int eid) {
+		// TODO Auto-generated method stub
+		StringBuffer sql = new StringBuffer();
+		Sub sub = new Sub();
+		sql.append("select sub_name,sub_count,sub_content,sub_state ");
+		sql.append("from sub ");
+		sql.append("where e_id=? ");
+		Connection con = DBConnection.getConnection();
+		try {
+			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
+			pst.setInt(1, eid);
+			ResultSet res = pst.executeQuery();
+			while(res.next()){
+				sub.setSubcontent(res.getString("sub_content"));
+				sub.setSubcount(res.getInt("sub_count"));
+				sub.setSubname(res.getString("sub_name"));
+				sub.setSubstate(res.getInt("sub_state"));
+				return sub;
+			}
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
 

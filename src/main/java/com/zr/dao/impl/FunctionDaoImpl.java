@@ -46,7 +46,7 @@ public class FunctionDaoImpl implements FunctionDao {
 				json.put("text", set.getString("fun_name"));
 				json.put("state", set.getString("fun_state"));
 				JSONObject attr = new JSONObject();
-				attr.put("src", set.getString("url"));
+				attr.put("src", set.getString("fun_jsp"));
 				json.put("attributes", attr);
 				json_arr.add(json);
 			}

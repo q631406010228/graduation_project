@@ -28,7 +28,7 @@
 	<hr></hr>
 	<!-- 滚动字幕部分 -->
 
-	<p style="margin-left: 14px;" >
+	<p style="margin-left: 14px;">
 		<i><b><marquee scrollAmount=2 width=450>欢迎使用本系统，在登录时注意选择准确的角色哦&nbsp;-----</marquee>
 		</b></i>
 	</p>
@@ -109,15 +109,16 @@
 								<option value="3">教师</option>
 								<option value="4">系主任</option>
 							</select>-->
-							<label for="">角色选择:&nbsp;&nbsp;</label><input id="cc" name="dept" value="">
+							<label for="">角色选择:&nbsp;&nbsp;</label><input id="cc" name="dept"
+								value="">
 						</div>
 						<br> <br> <br> <br>
 						<!--登录和重置  -->
 						<button type="button" id="dl" class="btn btn-default"
-							style="position: relative; top: 20px; left: 50px">登录</button>
+							style="position: relative; top: 20px; left: 100px">登录</button>
+						<button type="button" id="cz" class="btn btn-default"
+							style="position: relative; top: 20px; left: -50px">重置</button>
 				</div>
-				<button type="button" id="cz" class="btn btn-default"
-					style="position: relative; top: 84px; left: 40px">重置</button>
 				</form>
 			</div>
 		</div>

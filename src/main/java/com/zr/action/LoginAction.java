@@ -42,7 +42,7 @@ public class LoginAction extends HttpServlet{
 
 		// 获取用户的类型，用来判断从哪个表来进行查询
 		String dept = req.getParameter("dept");
-		System.out.println("ename:" + ename + "epsw:" + epsw + "dept:" + dept);
+		//System.out.println("ename:" + ename + "epsw:" + epsw + "dept:" + dept);
 
 		// 创建登录服务对象，获取数据库中返回的信息
 		LoginServiceImpl login = new LoginServiceImpl();
@@ -58,7 +58,7 @@ public class LoginAction extends HttpServlet{
 			s.setAttribute("e_id", js.get("e_id"));
 			s.setAttribute("c_id", js.get("c_id"));
 			s.setAttribute("r_id", js.get("r_id"));
-			System.out.println(js.toString());
+			//System.out.println(js.toString());
 		} else {
 			s.setAttribute("e_id", null);
 		}
