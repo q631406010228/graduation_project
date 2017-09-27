@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.zr.service.ReplyProcessService;
 import com.zr.service.StudentService;
@@ -54,7 +55,9 @@ public class SelectStudentFormAction extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setCharacterEncoding("utf8");
 		request.setCharacterEncoding("utf8");
-		int eid = 1;
+		HttpSession session = request.getSession();
+		int eid = (int) session.getAttribute("e_id");
+		System.out.println("qwe+"+eid);
 		List list = stuservice.selectStudentFormByEid(eid);
 		int count = rpservice.selectReplyProcessAcount(eid);
 		JSONObject json = new JSONObject();

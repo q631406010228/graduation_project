@@ -49,10 +49,11 @@ public class SelectSubAction extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setCharacterEncoding("utf8");
 		request.setCharacterEncoding("utf8");
-		int eid = 1;
+		HttpSession session = request.getSession();
+		int eid = (int) session.getAttribute("e_id");
 		Sub sub = subservice.selectSubByEid(eid);
 		JSONObject json = new JSONObject();
-		HttpSession session = request.getSession();
+		System.out.println("aaaa"+eid);
 		session.setAttribute("subname", sub.getSubname());
 		session.setAttribute("subcontent", sub.getSubcontent());
 		session.setAttribute("subcount", sub.getSubcount());

@@ -1,9 +1,14 @@
 package com.zr.service.impl;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.websocket.Session;
+import com.zr.dao.SubDao;
+import com.zr.dao.impl.SubDaoImpl;
 
+
+import javax.websocket.Session;
 import com.zr.dao.TeacherDao;
 import com.zr.dao.impl.TeacherDaoImpl;
 import com.zr.model.Staff;
@@ -34,17 +39,25 @@ public class TeacherServiceImpl implements TeacherService{
 	@Override
 	public List<Staff> selectTeacher() {
 		// TODO Auto-generated method stub
-		return null;
+		List<Staff> list = tdao.selectTeacher();
+		return list;
 	}
 	@Override
 	public int selectTeacherCount() {
 		// TODO Auto-generated method stub
-		return 0;
+		int count = tdao.selectTeacherCount();
+		return count;
 	}
 	@Override
 	public List<Integer> deleteTeacher(List<Integer> eids) {
 		// TODO Auto-generated method stub
-		return null;
+		List <Integer> flag = new ArrayList<Integer>();
+		for (int i = 0; i < eids.size(); i++) {
+			//int fla = tdao.deleteTeacherRole(eids.get(i));
+			//int f = subdao.deleteSub(eids.get(i));
+			//System.out.println(f);
+			flag.add( tdao.deleteTeacher(eids.get(i)));
+		}
+		return flag;
 	}
-    
 }
