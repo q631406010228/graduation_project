@@ -15,9 +15,12 @@ public class DBConnection {
 	 * 
 	 * @return 数据库连接对象
 	 */
-		private  final  static String DBURL = "jdbc:mysql://172.18.23.54:3306/graduation_project?useUnicode=true&characterEncoding=UTF8";
+/*		private  final  static String DBURL = "jdbc:mysql://172.18.23.54:3306/graduation_project?useUnicode=true&characterEncoding=UTF8";
 	   private  final  static String  USERNAME = "qinhao";
-	   private  final  static String  PASSWORD = "123456";
+	   private  final  static String  PASSWORD = "123456";*/
+		private  final  static String DBURL = "jdbc:mysql://127.0.0.1:3305/graduation_project?useUnicode=true&characterEncoding=UTF8";
+	   private  final  static String  USERNAME = "root";
+	   private  final  static String  PASSWORD = "123";
 	  //3.设置驱动名称 (根据不同的数据标准是不一样)
 	  private  final  static String  DBDRIVER = "com.mysql.jdbc.Driver";
 	  /**
