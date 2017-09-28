@@ -29,8 +29,8 @@ public class SaveAction extends HttpServlet {
 		 resp.setCharacterEncoding("utf8");
 		 req.setCharacterEncoding("utf-8");
 		int flag = Integer.parseInt(req.getParameter("flag"));
-		System.out.println(flag);
-		System.out.println(req.getParameter("id"));
+		//System.out.println(flag);
+		//System.out.println(req.getParameter("id"));
 		if (flag == 1) {
 			String reply_site = req.getParameter("uname1");
 			System.out.println(reply_site);

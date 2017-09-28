@@ -45,7 +45,7 @@ public class Student_SelectSubAction extends HttpServlet {
 		/*json_arr=sub.selectSubBySid(1);*/
 		//将信息返回给回调函数
 		PrintWriter print = resp.getWriter();
-		System.out.println("Student_SelectSubAction.doPost.json_arr:"+json_arr);
+		//System.out.println("Student_SelectSubAction.doPost.json_arr:"+json_arr);
 		print.write(json_arr.toString());
 	}
 }
