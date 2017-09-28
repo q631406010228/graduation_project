@@ -1,3 +1,4 @@
+
 package com.zr.action;
 
 import java.io.IOException;
@@ -48,21 +49,14 @@ public class SelectSubAction extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setCharacterEncoding("utf8");
-
 		request.setCharacterEncoding("utf8");
-		HttpSession session = request.getSession();
-		int eid = (int) session.getAttribute("e_id");
+		int eid = 1;
 		Sub sub = subservice.selectSubByEid(eid);
 		JSONObject json = new JSONObject();
-		if("".equals(sub.getSubname())){
-			session.setAttribute("subname", "");
-			session.setAttribute("subcontent", "");
-			session.setAttribute("subcount", "");
-		}else{
-			session.setAttribute("subname", sub.getSubname());
-			session.setAttribute("subcontent", sub.getSubcontent());
-			session.setAttribute("subcount", sub.getSubcount());
-		}
+		HttpSession session = request.getSession();
+		session.setAttribute("subname", sub.getSubname());
+		session.setAttribute("subcontent", sub.getSubcontent());
+		session.setAttribute("subcount", sub.getSubcount());
 		if(sub.getSubstate()==0){
 			session.setAttribute("state", "未审核");
 		}else if(sub.getSubstate()==1){
@@ -73,3 +67,4 @@ public class SelectSubAction extends HttpServlet {
 	}
 
 }
+

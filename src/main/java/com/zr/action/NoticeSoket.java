@@ -3,6 +3,9 @@ package com.zr.action;
 import java.io.IOException;
 import java.util.List;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpSession;
 import javax.websocket.EncodeException;
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
@@ -17,7 +20,17 @@ import com.zr.service.impl.NoticeServiceImpl;
 import net.sf.json.JSONObject;
 
 @ServerEndpoint("/websocket")
-public class NoticeSoket {
+public class NoticeSoket extends HttpServlet{
+	
+	HttpSession s ;
+	
+	protected void doGet(javax.servlet.http.HttpServletRequest req, javax.servlet.http.HttpServletResponse resp) throws javax.servlet.ServletException ,IOException {
+		doPost(req, resp);
+	};
+	
+	protected void doPost(javax.servlet.http.HttpServletRequest req, javax.servlet.http.HttpServletResponse resp) throws javax.servlet.ServletException ,IOException {
+		s = req.getSession();
+	};
 	
 	NoticeService ns = new NoticeServiceImpl();
 	
