@@ -1,3 +1,4 @@
+
 package com.zr.action;
 
 import java.io.IOException;
@@ -7,12 +8,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.zr.service.NoticeService;
 import com.zr.service.impl.NoticeServiceImpl;
-
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 
 public class SetNoticeAction extends HttpServlet{
 	
@@ -30,8 +29,10 @@ public class SetNoticeAction extends HttpServlet{
 		int receiveID = Integer.parseInt(req.getParameter("role"));
 		//System.out.println(req.getParameter("role"));
 		int sendID = Integer.parseInt(req.getParameter("sendID"));
+		HttpSession session = req.getSession();
+		int cID = (int) session.getAttribute("c_id");
 		String data = req.getParameter("data");
-		ns.setDeanNotice(1, receiveID, title, content, data);
+		ns.setDeanNotice(1, receiveID, title, content, data,cID);
 		resp.setCharacterEncoding("UTF-8");
 		PrintWriter pw = resp.getWriter();
 		pw.write("1");

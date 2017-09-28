@@ -1,4 +1,5 @@
 package com.zr.action;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -42,10 +43,9 @@ public class Student_SubmitOpenReportAction extends HttpServlet{
 		//获取文件属性
 		String l_id = req.getParameter("dept");
 		//为每个用户创建3个文件夹，方便用来存储他们的头像和微博内容
-		String savepath = this.getServletContext().getRealPath("/upload/" +s_num+ "/l_id");
+		String savepath = this.getServletContext().getRealPath("/upload/" +s_num+ "/teacher/"+l_id);
 		File file = new File(savepath);
-		//File file1 = new File("E:\\JAVA-my\\personal_diary\\WebRoot\\\\xc");
-		//File file2 = new File("E:\\JAVA-my\\personal_diary\\WebRoot\\\\Blog");
+		
 		
 		try {
 			file.mkdirs();
@@ -64,7 +64,8 @@ public class Student_SubmitOpenReportAction extends HttpServlet{
 		String inputFilePath = upFileService.uploadFile(req,upFilePath);
 		//如果文件路径不为空，
 		if (null != inputFilePath && !"".equals(inputFilePath.trim()))
-		{
+		{ //文件上传成功
+			
 			String outFilePath = inputFilePath.replace(new File(inputFilePath).getName(), System.currentTimeMillis() + ".swf");
 			outFilePath = Office2Swf.office2Swf(inputFilePath, outFilePath);
 			//System.out.println("转换的最终结果Student_SubmitOpenReportAction.doPost.outFilePath"+outFilePath);

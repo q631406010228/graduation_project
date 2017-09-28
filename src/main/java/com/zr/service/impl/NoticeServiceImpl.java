@@ -13,14 +13,14 @@ public class NoticeServiceImpl implements NoticeService {
 	NoticeDao nd = new NoticeDaoImpl();
 
 	@Override
-	public void setDeanNotice(int sendID, int receiveID, String title, String content, String data) {
-		nd.setDeanNotice(sendID, receiveID, title, content, data);
+	public void setDeanNotice(int sendID, int receiveID, String title, String content, String data,int cID) {
+		nd.setDeanNotice(sendID, receiveID, title, content, data,cID);
 	}
 
 	@Override
-	public List<Notice> getNotices(int role, int num) {
+	public List<Notice> getNotices(int role, int num,int cID) {
 		List<Notice> ln = new LinkedList<Notice>();
-		ln = nd.getNotices(role, num);
+		ln = nd.getNotices(role, num,cID);
 		return ln;
 	}
 
