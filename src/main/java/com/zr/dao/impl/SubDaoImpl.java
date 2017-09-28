@@ -83,7 +83,7 @@ public class SubDaoImpl implements SubDao {
 				//将对象放入json数组
 				json_arr.add(json);
 			}
-			System.out.println("SubDaoImpl.selectSubByTeacherEcol返回数据："+json_arr);
+			//System.out.println("SubDaoImpl.selectSubByTeacherEcol返回数据："+json_arr);
 			return json_arr;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -113,8 +113,8 @@ public class SubDaoImpl implements SubDao {
 				sub.setSelectnum(selectnum);
 				int sub_count = set.getInt("sub_count");
 				sub.setSubcount(sub_count);
-				System.out.println(
-						"SubDaoImpl.getSelectnumSub_countBySubid.selectnum=" + selectnum + "sub_count=" + sub_count);
+				/*System.out.println(
+						"SubDaoImpl.getSelectnumSub_countBySubid.selectnum=" + selectnum + "sub_count=" + sub_count);*/
 			}
 			return sub;
 		} catch (SQLException e) {

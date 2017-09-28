@@ -67,7 +67,7 @@ List<Replys> replys = new ArrayList<Replys>();
 				reply.setSub_id(rs.getInt("sub_id"));
 				reply.setSub_name(rs.getString("sub_name"));
 				
-				System.out.println(rs.getString("reply_start"));
+				//System.out.println(rs.getString("reply_start"));
 				reply.setReply_start(rs.getString("reply_start"));
 				reply.setReply_end(rs.getString("reply_end"));
 				reply.setE_id(rs.getInt("e_id"));
@@ -88,7 +88,7 @@ List<Replys> replys = new ArrayList<Replys>();
 	@Override
 	public void addReply(String reply_site,int sub_id,String reply_start,String reply_end,int e_id){
 		
-		System.out.println("reply_start: "+reply_start);
+		//System.out.println("reply_start: "+reply_start);
 		Connection  con   =  DBConnection.getConnection();
 		StringBuffer  sql = new StringBuffer("");
 		sql.append("INSERT INTO reply ");

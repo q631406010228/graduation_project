@@ -20,7 +20,7 @@ public class RoleDaoImpl implements RoleDao {
 
 	@Override
 	public String getfidsByRid(int r_id) {
-		System.out.println("RoleDaoImpl.getfidsByRid.r_id" + r_id);
+		//System.out.println("RoleDaoImpl.getfidsByRid.r_id" + r_id);
 		// TODO Auto-generated method stub
 		StringBuffer sql = new StringBuffer("");
 		sql.append("select fids from role ");
@@ -32,7 +32,7 @@ public class RoleDaoImpl implements RoleDao {
 			ResultSet res = pst.executeQuery();
 			if (res.next()) {
 				String fids = res.getString("fids");
-				System.out.println("RoleDaoImpl.getfidsByRid.fids" + fids);
+				//System.out.println("RoleDaoImpl.getfidsByRid.fids" + fids);
 				return fids;
 			}
 		} catch (SQLException e) {

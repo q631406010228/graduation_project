@@ -17,7 +17,7 @@ import com.zr.model.User;
 public class UserDaoImpl implements UserDao {
 	@Override
         public User getUser(Integer unum,String upsw){
-        	System.out.println("进入UserDaoImpl。getUser方法，获取参数unum:"+"和upsw");
+        	//System.out.println("进入UserDaoImpl。getUser方法，获取参数unum:"+"和upsw");
         	User user = new User();
         	StringBuffer sql = new StringBuffer("");
         	sql.append("select u_id,u_num,u_psw,r_id ");
@@ -37,7 +37,7 @@ public class UserDaoImpl implements UserDao {
 					user.setUpsw(u_psw);
 					int r_id = re.getInt("r_id");
 					user.setRid(r_id);
-					System.out.println("数据库中获取的结果u_id："+u_id+"u_num"+u_num+"u_psw"+u_psw+"r_id"+r_id);
+					//System.out.println("数据库中获取的结果u_id："+u_id+"u_num"+u_num+"u_psw"+u_psw+"r_id"+r_id);
 				}
 				return user;
 			} catch (SQLException e) {

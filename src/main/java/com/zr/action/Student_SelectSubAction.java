@@ -38,7 +38,7 @@ public class Student_SelectSubAction extends HttpServlet {
 		//获取学生的学院id
 		HttpSession session = req.getSession();
 		Integer c_id = (Integer)session.getAttribute("c_id");
-		System.out.println("Student_SelectSubAction.doPost.c_id:"+c_id);
+		//System.out.println("Student_SelectSubAction.doPost.c_id:"+c_id);
 		//获取返回的选题信息
 		JSONArray json_arr= new JSONArray();
 		json_arr=sub.selectSubBySid(c_id);
