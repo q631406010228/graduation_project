@@ -41,7 +41,7 @@ public class DeanServiceImpl implements DeanService {
 		int[] nums = new int[s.length];
 		for(int i = 0;i < s.length;i++){
 			nums[i] = Integer.parseInt(s[i]);
-			dd.deleteDeanRole(nums[i]);
+			dd.deleteDeanRole(nums[i]);		//循环调用存储过程进行事务管理
 		}
 		/*srd.deleteDeanRole(nums);
 		dd.deleteDean(nums);*/		
