@@ -41,4 +41,10 @@ public interface DeanDao {
 	 */
 	public int getDean(int num);
 	
+	/**
+	 * 用存储过程删除系主任信息
+	 * @param num
+	 */
+	public void deleteDeanRole(int num);
+	
 }
