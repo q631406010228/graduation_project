@@ -63,7 +63,7 @@ public class NoticeDaoImpl implements NoticeDao{
 	}
 
 	@Override
-	public void setTeacherNotice(int sendID, int receiveID, String title, String content, String data, int[] num) {
+	public void setTeacherNotice(int sendID, int receiveID, String title, String content, String data, int[] num,int cID) {
 		Connection conn = DBConnection.getConnection();
 		try {
 			conn.setAutoCommit(false);
@@ -71,7 +71,7 @@ public class NoticeDaoImpl implements NoticeDao{
 			e1.printStackTrace();
 		}	//禁止自动提交
 		StringBuffer s = new StringBuffer();
-		s.append("insert into notice(send_id,receive_role_id,title,content,`data`,receive_num) values(?,?,?,?,?,?);");
+		s.append("insert into notice(send_id,receive_role_id,title,content,`data`,receive_num,c_id) values(?,?,?,?,?,?,?);");
 		try {
 			PreparedStatement ps = conn.prepareStatement(s.toString());
 			for(int i = 0;i < num.length;i++){
@@ -81,6 +81,7 @@ public class NoticeDaoImpl implements NoticeDao{
 				ps.setString(4, content);
 				ps.setString(5, data);
 				ps.setInt(6, num[i]);
+				ps.setInt(7, cID);
 				ps.addBatch();	
 			}
 		

@@ -24,7 +24,7 @@ public interface NoticeDao {
 	 * @param content	通知的内容
 	 * @param data		通知的时间
 	 */
-	public void setTeacherNotice(int sendID,int receiveID,String title,String content,String data,int[] num);
+	public void setTeacherNotice(int sendID,int receiveID,String title,String content,String data,int[] num,int cID);
 	
 	/**
 	 * 获取指定人的通知
