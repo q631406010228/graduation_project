@@ -20,7 +20,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-					<h2>此处为流程图</h2>
+					<iframe  width='600px ' height='500px' frameborder='0' src='showGP.jsp'></iframe>
 					<p></p>
 				</div>
 			</div>

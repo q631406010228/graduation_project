@@ -2,6 +2,7 @@ package com.zr.action;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -45,6 +46,7 @@ public class Student_SubmitOpenReportAction extends HttpServlet{
 		upFileService upFileService = new upFileServiceImpl();
 		//调用上传服务的方法
 		String inputFilePath = upFileService.uploadFile(req,upFilePath);
+		
 		//如果文件路径不为空，
 		if (null != inputFilePath && !"".equals(inputFilePath.trim()))
 		{
@@ -53,8 +55,10 @@ public class Student_SubmitOpenReportAction extends HttpServlet{
 			System.out.println("转换的最终结果Student_SubmitOpenReportAction.doPost.outFilePath"+outFilePath);
 			System.out.println("转换的swf的文件名"+new File(outFilePath).getName());
 			req.getSession().setAttribute("fileName", new File(outFilePath).getName());
+			PrintWriter printWriter = resp.getWriter();
+			printWriter.write("true");
 		}
-		req.getRequestDispatcher("/readonline.jsp").forward(req, resp);
+		//req.getRequestDispatcher("/readonline.jsp").forward(req, resp);
 	}
 	
 	
