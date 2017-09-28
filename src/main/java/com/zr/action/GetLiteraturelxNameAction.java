@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.zr.service.LiteraturelxService;
+import com.zr.service.impl.LiteraturelxServiceImpl;
+
 import net.sf.json.JSONArray;
 @WebServlet("/getLiteraturelxName")
 public class GetLiteraturelxNameAction extends HttpServlet {
