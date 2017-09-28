@@ -64,7 +64,8 @@ public class Student_SubmitOpenReportAction extends HttpServlet{
 		String inputFilePath = upFileService.uploadFile(req,upFilePath);
 		//如果文件路径不为空，
 		if (null != inputFilePath && !"".equals(inputFilePath.trim()))
-		{
+		{ //文件上传成功
+			
 			String outFilePath = inputFilePath.replace(new File(inputFilePath).getName(), System.currentTimeMillis() + ".swf");
 			outFilePath = Office2Swf.office2Swf(inputFilePath, outFilePath);
 			//System.out.println("转换的最终结果Student_SubmitOpenReportAction.doPost.outFilePath"+outFilePath);
