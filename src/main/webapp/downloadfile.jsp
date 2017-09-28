@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,14 +17,28 @@
 <script type="text/javascript" src="js/easyui-lang-zh_CN.js"></script>
 </head>
 <script type="text/javascript">
-$(function(){
-	location.href='showallfile'
-})
+	$(function() {
+		$('#dg').datagrid({
+			url : 'showstudentpapers',
+			title:'学生论文批复',
+			columns : [ [ {
+				field : 'snum',
+				title : '学生学号',
+				width : 100
+			}, {
+				field : 'filename',
+				title : '文件名称',
+				width : 100
+			},
+
+			] ]
+		});
+
+	});
 </script>
 <body>
-<h1 style = "color : red">下载页面</h1>
-<a href ="<c:url value ='/downloadfile?path=20170801.txt'/>">20170801.txt</a><br>
-<a href="<c:url value='/downloadServlet?path=a.avi'/>">a.avi</a><br/>
+
+	<table id="dg"></table>
 
 </body>
 </html>
