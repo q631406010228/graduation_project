@@ -58,5 +58,4 @@
 		<div id="tabs" class="easyui-tabs" data-options="fit:true"></div>
 	</div>
 </body>
-
 </html>
