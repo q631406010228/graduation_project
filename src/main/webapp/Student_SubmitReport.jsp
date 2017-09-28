@@ -13,12 +13,13 @@
 <script type="text/javascript" src="FlexPaper/js/flexpaper_flash_debug.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-
+	
 	$('#cc').combobox({    
 	    url:'getLiteraturelxName',    
 	    valueField:'id',    
 	    textField:'text'   
-	}); 
+	});
+		
 });
  
 </script>
@@ -28,7 +29,7 @@ $(document).ready(function() {
   		<input type="file" name="file"/>
   		<br>
   		<br>
-  		<label for="">文件类型选择:&nbsp;&nbsp;</label><input id="cc" name="dept" value="">
+  		<label for="">文件类型选择:&nbsp;&nbsp;</label><input id="cc" name="dept" value="1111">
   		<br>
   		<br>
   		<input type="submit" value="在线预览">
