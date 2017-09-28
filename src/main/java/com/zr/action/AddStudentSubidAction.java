@@ -26,7 +26,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 	resp.setCharacterEncoding("utf-8");
 	//获取页面上的信息
 	Integer sub_id =new Integer(req.getParameter("sub_id"));
-	System.out.println("AddStudentSubidAction.sub_id"+sub_id);
+	 //System.out.println("AddStudentSubidAction.sub_id"+sub_id);
 	//获取学生id
 	HttpSession session = req.getSession();
 	Integer s_id = (Integer)session.getAttribute("e_id");

@@ -66,7 +66,7 @@ public class DeleteReplyProcessAction extends HttpServlet {
 		flag = rpservice.deletReplyProcess(sid);
 		JSONObject jsons = new JSONObject();
 		for (int i = 0; i < flag.size(); i++) {
-			System.out.println(flag.get(i).toString());
+			//System.out.println(flag.get(i).toString());
 			if(!("1".equals( flag.get(i).toString()))){
 				jsons.put("exce", "删除失败");
 				break;

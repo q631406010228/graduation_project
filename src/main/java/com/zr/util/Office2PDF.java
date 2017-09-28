@@ -64,8 +64,8 @@ public class Office2PDF {
 					officeManager);
 			
 			converter.convert(inputFile, outputFile);
-			System.out.println("文件：" + inputFilePath + "\n转换为\n目标文件：" + outputFile
-					+ "\n成功！");
+			/*System.out.println("文件：" + inputFilePath + "\n转换为\n目标文件：" + outputFile
+					+ "\n成功！");*/
 			
 			officeManager.stop();
 		}
