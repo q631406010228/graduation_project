@@ -41,9 +41,10 @@ public class DeanServiceImpl implements DeanService {
 		int[] nums = new int[s.length];
 		for(int i = 0;i < s.length;i++){
 			nums[i] = Integer.parseInt(s[i]);
+			dd.deleteDeanRole(nums[i]);
 		}
-		srd.deleteDeanRole(nums);
-		dd.deleteDean(nums);		
+		/*srd.deleteDeanRole(nums);
+		dd.deleteDean(nums);*/		
 	}
 
 }
