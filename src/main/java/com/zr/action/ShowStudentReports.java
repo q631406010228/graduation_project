@@ -42,8 +42,8 @@ public class ShowStudentReports extends HttpServlet{
 				json.put("snum", studentPath[i].getName());
 				json.put("filename","<a href ="+"\""+"/graduation_project/downloadreportfile?path1="+studentPath[i].getName()+"&path2="+paperFile[j].getName()+"\""+">"+paperFile[j].getName()+"</a>");
 
-				System.out.println(studentPath[i].getName());
-				System.out.println(paperFile[j].getName());
+				//System.out.println(studentPath[i].getName());
+				//System.out.println(paperFile[j].getName());
 			
 				list.add(json);
 			}
