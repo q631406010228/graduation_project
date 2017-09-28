@@ -23,6 +23,7 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
+
 	$(function(){    
 	    $('#read').bind('click', function(){    
 	       //在线预览
@@ -65,12 +66,15 @@ $(document).ready(function() {
 	    });    
 	});   */
 	
+
+
 	
 	$('#cc').combobox({    
 	    url:'getLiteraturelxName',    
 	    valueField:'id',    
 	    textField:'text'   
-	}); 
+	});
+		
 });
  
 </script>
@@ -78,7 +82,13 @@ $(document).ready(function() {
 <body>
 <form id='ff' enctype="multipart/form-data" method="post">
   		<input type="file" name="file"/>
+
   		<label for="">文件类型选择:&nbsp;&nbsp;</label><input id="cc" name="dept" value="">
+
+  		<br>
+  		<br>
+  		<label for="">文件类型选择:&nbsp;&nbsp;</label><input id="cc" name="dept" value="1111">
+
   		<br>
   		<br>
   		<!-- <a id="upload" href="#" class="easyui-linkbutton" data-options="">上传</a>   --> 		

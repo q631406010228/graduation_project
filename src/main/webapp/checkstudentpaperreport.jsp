@@ -19,8 +19,8 @@
 <script type="text/javascript">
 	$(function() {
 		$('#dg').datagrid({
-			url : 'showstudentpapers',
-			title:'查看学生论文',
+			url : 'showstudentpaperreport',
+			title:'查看学生开题报告',
 			columns : [ [ {
 				field : 'snum',
 				title : '学生学号',

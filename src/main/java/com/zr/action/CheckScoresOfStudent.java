@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.IOUtils;
 
@@ -31,7 +32,9 @@ public class CheckScoresOfStudent extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int eid = 2;
+		 HttpSession session = req.getSession();
+	    int eid = (int)session.getAttribute("e_id");
+		
 		resp.setCharacterEncoding("utf8");
 		JSONObject json = tea.getScoresOfStu(eid);
 		PrintWriter pw = resp.getWriter();
