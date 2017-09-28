@@ -74,5 +74,11 @@ public interface StudentDao {
      * spsw 密码
      */
 	Student getStudent(int snum, String spsw);
+	/**
+	 * 通过学生id，获取学号
+	 * @param s_id
+	 * @return
+	 */
+	public String getStudentnumBys_id(int s_id);
 }
 

@@ -21,5 +21,13 @@ public class LiteratureServiceImpl implements LiteratureService{
 		int i = lidao.updateLiterature(wxid, state);
 		return i;
 	}
+	
+	@Override
+	public Boolean setLiteratureInfo(int s_id, int wxlx_id, String wx_content, String wx_name) {
+		//调用数据库语句，将信息添加进去
+		LiteratureDao dao = new LiteratureDaoImpl();
+		Boolean result= dao.setLiteratureInfo(s_id, wxlx_id, wx_content, wx_name);
+		return result;
+	}
 
 }

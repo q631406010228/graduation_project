@@ -48,7 +48,7 @@ public class SelectLiteratureAction extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		int eid = (int) session.getAttribute("e_id");
-		System.out.println("sds:"+eid);
+		//System.out.println("sds:"+eid);
 		List list = liservice.selectLiteratureByEid(eid);
 		JSONObject json = new JSONObject();
 		//json.put("total", count);

@@ -1,38 +1,39 @@
 package com.zr.action;
 
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpSession;
 import javax.websocket.EncodeException;
+import javax.websocket.EndpointConfig;
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
+import com.zr.connection.GetHttpSessionConfigurator;
+import com.zr.dao.StaffRoleDao;
+import com.zr.dao.StudentDao;
+import com.zr.dao.impl.StaffRoleDaoImpl;
+import com.zr.dao.impl.StudentDaoImpl;
 import com.zr.model.Notice;
 import com.zr.service.NoticeService;
 import com.zr.service.impl.NoticeServiceImpl;
 
 import net.sf.json.JSONObject;
 
-@ServerEndpoint("/websocket")
-public class NoticeSoket extends HttpServlet{
+@ServerEndpoint(value="/websocket",configurator=GetHttpSessionConfigurator.class)
+public class NoticeSoket {
 	
-	HttpSession s ;
-	
-	protected void doGet(javax.servlet.http.HttpServletRequest req, javax.servlet.http.HttpServletResponse resp) throws javax.servlet.ServletException ,IOException {
-		doPost(req, resp);
-	};
-	
-	protected void doPost(javax.servlet.http.HttpServletRequest req, javax.servlet.http.HttpServletResponse resp) throws javax.servlet.ServletException ,IOException {
-		s = req.getSession();
-	};
-	
+	int rid ;
+	int num;
+	int cid;
 	NoticeService ns = new NoticeServiceImpl();
+	StaffRoleDao srd = new StaffRoleDaoImpl();
+	StudentDao sd = new StudentDaoImpl();
 	
 	/**
 	 * @throws java.io.IOException 
@@ -41,9 +42,15 @@ public class NoticeSoket extends HttpServlet{
 	@OnMessage
 	public void onMessage(String message, Session session) throws IOException, InterruptedException, java.io.IOException, EncodeException {
 		int n = 0;
+		
 		while (true) {
 			Thread.sleep(1000);
-			List<Notice> ln = ns.getNotices(2,1406010001);
+			List<Notice> ln = new LinkedList<Notice>();
+			if(rid == 3){
+				ln = ns.getNotices(rid,1,cid);
+			}else if(rid == 2){
+				ln = ns.getNotices(rid,num,cid);
+			}
 			JSONObject ja = new JSONObject();
 			ja.put("Notice", ln);
 			if(ln.size() != n){
@@ -57,13 +64,22 @@ public class NoticeSoket extends HttpServlet{
 	 * 当一个新用户连接时所调用的方法 该方法可能包含一个javax.websocket.Session可选参数
 	*/
 	@OnOpen
-	public void onOpen(Session session) {
-		System.out.println("客户端连接成功");
+	public void onOpen(Session session,EndpointConfig config) {
+		/*System.out.println("客户端连接成功");*/
+		HttpSession httpSession= (HttpSession) config.getUserProperties().get(HttpSession.class.getName());
+		rid = (int) httpSession.getAttribute("r_id");
+		if(rid == 2){
+			num = Integer.parseInt(sd.getStudentnumBys_id((int) httpSession.getAttribute("e_id")));
+		}else if(rid == 0){
+			rid = srd.getRidByEid((int) httpSession.getAttribute("e_id"));
+		}
+		cid = (int) httpSession.getAttribute("c_id");
+        //sessionMap.put(session.getId(), session);	
 	}
 
 	/** 当一个用户断开连接时所调用的方法 */
 	@OnClose
 	public void onClose() { 
-		System.out.println("客户端关闭");
+		/*System.out.println("客户端关闭");*/
 	}
 }

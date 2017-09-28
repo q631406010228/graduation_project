@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.sf.json.JSONObject;
 @WebServlet("/showstudentpapers")
@@ -24,8 +25,11 @@ public class ShowPapersOfStudent extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {	
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
+		HttpSession session = req.getSession();
+	    int eid = (int)session.getAttribute("e_id");
+	    String s= "teacher"+eid;
 		List<JSONObject> list = new ArrayList<JSONObject>();		
-		String savePath = this.getServletContext().getRealPath("/upload/paper");
+		String savePath = this.getServletContext().getRealPath("/upload/"+s+"/paper");
 		JSONObject json1 = new JSONObject();
 		File upload = new File(savePath);
 		File[] studentPath = upload.listFiles();

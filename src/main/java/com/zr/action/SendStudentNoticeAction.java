@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.zr.service.NoticeService;
 import com.zr.service.impl.NoticeServiceImpl;
@@ -30,10 +31,12 @@ public class SendStudentNoticeAction extends HttpServlet{
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
 		String sid = req.getParameter("sid");
+		HttpSession s = req.getSession();
+		int cID = (int) s.getAttribute("c_id");
 		int eID = Integer.parseInt(req.getParameter("eID"));
 		String title = req.getParameter("subname");
 		String content = req.getParameter("ques");
 		String data = req.getParameter("data");
-		ns.setTeacherNotice(1, 2, title, content, data, sid);
+		ns.setTeacherNotice(1, 2, title, content, data, sid,cID);
 	}
 }
