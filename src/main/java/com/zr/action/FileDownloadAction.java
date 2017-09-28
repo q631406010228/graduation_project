@@ -23,15 +23,15 @@ public class FileDownloadAction extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        req.setCharacterEncoding("utf8");
 		resp.setCharacterEncoding("utf8");
-		 String stuFiles = req.getParameter("sids");
+		 String stuFiles = req.getParameter("path1");
 		// System.out.println(stuFiles[0]);
-		String paperFile = req.getParameter("pnames");
+		String paperFile = req.getParameter("path2");
 		//for (int i = 0; i < stuFiles.length; i++) {
-			String filepath = this.getServletContext().getRealPath("/WEB-INF/uploads/" + stuFiles +"/"+ paperFile);
+			String filepath = this.getServletContext().getRealPath("/upload/paper/" + stuFiles +"/"+ paperFile);
 			File file = new File(filepath);
-			//System.out.println(file.toString());
+			System.out.println(file.toString());
 			JSONObject json = new JSONObject();
 			if (!file.exists()) {
 				resp.getWriter().print("你要下载的文件不存在");
