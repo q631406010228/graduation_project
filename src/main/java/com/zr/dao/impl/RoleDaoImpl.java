@@ -135,6 +135,67 @@ public class RoleDaoImpl implements RoleDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+public List<String> getAllRolesname() {
+		
+		List<String> rolesname = new ArrayList<String>();
+		String name;
+		
+		StringBuffer sql = new StringBuffer("");
+		sql.append("SELECT  r_name ");
+		sql.append("FROM  role ");
+		Connection con = DBConnection.getConnection();
+		PreparedStatement pst = null;
+		try {
+			pst = con.prepareStatement(sql.toString());
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				name=rs.getString("r_name");
+				
+			
+				rolesname.add(name);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+		}
+
+		return rolesname; 
+}
+
+	@Override
+	public int getRidByRname(String rname) {
+		int a[] = new int[1];
+	
+		
+		StringBuffer sql = new StringBuffer("");
+		sql.append("SELECT  r_d ");
+		sql.append("FROM  role ");
+		sql.append("WHERE  r_name=? ");
+		Connection con = DBConnection.getConnection();
+		PreparedStatement pst = null;
+		try {
+			pst = con.prepareStatement(sql.toString());
+			pst.setString(1, rname);
+			
+			ResultSet rs = pst.executeQuery();
+			if(rs.next()){
+				a[0] = rs.getInt("r_id");
+			
+			}
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+		}
+
+		
+		return a[0]; 
+		
+		
+	}
 
 
 }
