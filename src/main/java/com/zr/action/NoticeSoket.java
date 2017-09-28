@@ -41,7 +41,6 @@ public class NoticeSoket extends HttpServlet{
 	@OnMessage
 	public void onMessage(String message, Session session) throws IOException, InterruptedException, java.io.IOException, EncodeException {
 		int n = 0;
-		int eid = (int) s.getAttribute("e_id");
 		while (true) {
 			Thread.sleep(1000);
 			List<Notice> ln = ns.getNotices(2,1406010001);
