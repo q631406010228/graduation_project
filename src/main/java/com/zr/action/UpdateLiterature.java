@@ -20,27 +20,32 @@ import net.sf.json.JSONObject;
 @WebServlet("/shenhe")
 public class UpdateLiterature extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	LiteratureService liservice = new LiteratureServiceImpl();      
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UpdateLiterature() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	LiteratureService liservice = new LiteratureServiceImpl();
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public UpdateLiterature() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
@@ -48,10 +53,10 @@ public class UpdateLiterature extends HttpServlet {
 		int wxid = Integer.parseInt(Wxid);
 		String statename = request.getParameter("state");
 		int state;
-		//System.out.println("wxid:"+wxid+"state:"+statename);
-		if("通过".equals(statename)){
+		// System.out.println("wxid:"+wxid+"state:"+statename);
+		if ("通过".equals(statename)) {
 			state = 1;
-		}else{
+		} else {
 			state = 2;
 		}
 		int i = liservice.updateLiterature(wxid, state);
@@ -59,7 +64,7 @@ public class UpdateLiterature extends HttpServlet {
 		json.put("ok", i);
 		PrintWriter pw = response.getWriter();
 		pw.write(json.toString());
-		
+
 	}
 
 }

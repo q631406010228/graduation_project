@@ -32,7 +32,7 @@ public class AddStudentScoreAction extends HttpServlet {
 
 		int sid = Integer.parseInt(req.getParameter("sid"));
 		int score = Integer.parseInt(req.getParameter("score"));
-        tea.alterStudentScore(sid, score);
+		tea.alterStudentScore(sid, score);
 		JSONObject json = new JSONObject();
 		json.put("s", true);
 		json.put("msg", "修改成功");

@@ -128,7 +128,7 @@ $(document).ready(function() {
 	//配置提交按钮
 	$('#dl').linkbutton({    
 	    onClick:function(){
-	    	//alert("dj");
+	    	//alert("验证码的验证！");
 	    	var yzmvalue = $("#yzm").val();
 			if (yzmvalue != t) {
 				$.messager.confirm('提示', "验证码错误", function(r){
@@ -159,7 +159,7 @@ $(document).ready(function() {
 		}
 	});
      //重置按钮
-	$("#cz").click(function() {
+	$("#cz").linkbutton(function() {
 		location.href = "login.jsp";
 	});
 })

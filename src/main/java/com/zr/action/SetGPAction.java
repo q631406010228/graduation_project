@@ -10,23 +10,21 @@ import javax.servlet.http.HttpServletResponse;
 import com.zr.service.GraduationProcessService;
 import com.zr.service.impl.GraduationProcessServiceImpl;
 
+public class SetGPAction extends HttpServlet {
 
-public class SetGPAction extends HttpServlet{
-	
 	GraduationProcessService gps = new GraduationProcessServiceImpl();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String gpContent = new String(req.getParameter("gpContent").getBytes("iso-8859-1"), "utf-8");	 
-	    String graStartTime = req.getParameter("graStartTime");
-	    String graEndTime = req.getParameter("graEndTime");
-	    gps.setGraduationProcess(gpContent, graStartTime, graEndTime);
+		String gpContent = new String(req.getParameter("gpContent").getBytes("iso-8859-1"), "utf-8");
+		String graStartTime = req.getParameter("graStartTime");
+		String graEndTime = req.getParameter("graEndTime");
+		gps.setGraduationProcess(gpContent, graStartTime, graEndTime);
 	}
 
 }
-

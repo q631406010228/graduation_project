@@ -20,15 +20,15 @@ import com.zr.service.impl.GraduationProcessServiceImpl;
 import net.sf.json.JSONObject;
 
 @WebServlet("/showDean")
-public class ShowDeanAction extends HttpServlet{
-	
+public class ShowDeanAction extends HttpServlet {
+
 	DeanService ds = new DeanServiceImpl();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setCharacterEncoding("utf8");
@@ -38,8 +38,7 @@ public class ShowDeanAction extends HttpServlet{
 		JSONObject json = new JSONObject();
 		json.put("rows", list);
 		PrintWriter pw = resp.getWriter();
-		pw.write(json.toString());	
+		pw.write(json.toString());
 	}
 
 }
-

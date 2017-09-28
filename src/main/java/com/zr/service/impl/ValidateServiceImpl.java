@@ -5,11 +5,10 @@ import com.zr.dao.impl.StaffDaoImpl;
 import com.zr.model.Staff;
 import com.zr.service.ValidateService;
 
-/** 
-* @author SkySK: 
-* @version 创建时间：2017年9月25日 上午1:07:31 
-* 说明 ：
-*/
+/**
+ * @author SkySK:
+ * @version 创建时间：2017年9月25日 上午1:07:31 说明 ：
+ */
 public class ValidateServiceImpl implements ValidateService {
 	StaffDao dao = new StaffDaoImpl();
 
@@ -21,4 +20,3 @@ public class ValidateServiceImpl implements ValidateService {
 	}
 
 }
-

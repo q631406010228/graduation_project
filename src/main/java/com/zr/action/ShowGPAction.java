@@ -16,15 +16,15 @@ import com.zr.service.impl.GraduationProcessServiceImpl;
 
 import net.sf.json.JSONObject;
 
-public class ShowGPAction extends HttpServlet{
-	
+public class ShowGPAction extends HttpServlet {
+
 	GraduationProcessService GPS = new GraduationProcessServiceImpl();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<GraduationProcess> gps = new LinkedList<GraduationProcess>();
@@ -35,5 +35,5 @@ public class ShowGPAction extends HttpServlet{
 		PrintWriter pw = resp.getWriter();
 		pw.write(jb.toString());
 	}
-	
+
 }

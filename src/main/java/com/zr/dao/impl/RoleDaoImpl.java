@@ -11,16 +11,15 @@ import com.zr.connection.DBConnection;
 import com.zr.dao.RoleDao;
 import com.zr.model.Role;
 
-/** 
-* @author SkySK: 
-* @version 创建时间：2017年9月25日 上午1:51:15 
-* 说明 ：
-*/
+/**
+ * @author SkySK:
+ * @version 创建时间：2017年9月25日 上午1:51:15 说明 ：
+ */
 public class RoleDaoImpl implements RoleDao {
 
 	@Override
 	public String getfidsByRid(int r_id) {
-		System.out.println("RoleDaoImpl.getfidsByRid.r_id" + r_id);
+		// System.out.println("RoleDaoImpl.getfidsByRid.r_id" + r_id);
 		// TODO Auto-generated method stub
 		StringBuffer sql = new StringBuffer("");
 		sql.append("select fids from role ");
@@ -32,7 +31,7 @@ public class RoleDaoImpl implements RoleDao {
 			ResultSet res = pst.executeQuery();
 			if (res.next()) {
 				String fids = res.getString("fids");
-				System.out.println("RoleDaoImpl.getfidsByRid.fids" + fids);
+				// System.out.println("RoleDaoImpl.getfidsByRid.fids" + fids);
 				return fids;
 			}
 		} catch (SQLException e) {
@@ -135,12 +134,11 @@ public class RoleDaoImpl implements RoleDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-public List<String> getAllRolesname() {
-		
+
+	public List<String> getAllRolesname() {
+
 		List<String> rolesname = new ArrayList<String>();
 		String name;
-		
 		StringBuffer sql = new StringBuffer("");
 		sql.append("SELECT  r_name ");
 		sql.append("FROM  role ");
@@ -150,25 +148,22 @@ public List<String> getAllRolesname() {
 			pst = con.prepareStatement(sql.toString());
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
-				name=rs.getString("r_name");
-				
-			
+				name = rs.getString("r_name");
+
 				rolesname.add(name);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
+		} finally {
 		}
 
-		return rolesname; 
-}
+		return rolesname;
+	}
 
 	@Override
 	public int getRidByRname(String rname) {
 		int a[] = new int[1];
-	
-		
 		StringBuffer sql = new StringBuffer("");
 		sql.append("SELECT  r_d ");
 		sql.append("FROM  role ");
@@ -178,24 +173,20 @@ public List<String> getAllRolesname() {
 		try {
 			pst = con.prepareStatement(sql.toString());
 			pst.setString(1, rname);
-			
 			ResultSet rs = pst.executeQuery();
-			if(rs.next()){
+			if (rs.next()) {
 				a[0] = rs.getInt("r_id");
-			
+
 			}
-		
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
+		} finally {
 		}
 
-		
-		return a[0]; 
-		
-		
-	}
+		return a[0];
 
+	}
 
 }

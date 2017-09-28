@@ -16,14 +16,14 @@ import com.zr.service.impl.ValidateServiceImpl;
 
 import net.sf.json.JSONObject;
 
-/** 
-* @author SkySK: 
-* @version 创建时间：2017年9月25日 上午1:04:59 
-* 说明 ：
-*/
+/**
+ * @author SkySK:
+ * @version 创建时间：2017年9月25日 上午1:04:59 说明 ：
+ */
 @WebServlet("/login")
-public class LoginAction extends HttpServlet{
+public class LoginAction extends HttpServlet {
 	ValidateService vs = new ValidateServiceImpl();
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -42,12 +42,13 @@ public class LoginAction extends HttpServlet{
 
 		// 获取用户的类型，用来判断从哪个表来进行查询
 		String dept = req.getParameter("dept");
-		//System.out.println("ename:" + ename + "epsw:" + epsw + "dept:" + dept);
+		// System.out.println("ename:" + ename + "epsw:" + epsw + "dept:" +
+		// dept);
 
 		// 创建登录服务对象，获取数据库中返回的信息
 		LoginServiceImpl login = new LoginServiceImpl();
 		JSONObject js = new JSONObject();
-		js = login.getUserIdByUsernum(dept,ename,epsw);
+		js = login.getUserIdByUsernum(dept, ename, epsw);
 
 		// 创建会话对象
 		HttpSession s = req.getSession();
@@ -58,7 +59,7 @@ public class LoginAction extends HttpServlet{
 			s.setAttribute("e_id", js.get("e_id"));
 			s.setAttribute("c_id", js.get("c_id"));
 			s.setAttribute("r_id", js.get("r_id"));
-			//System.out.println(js.toString());
+			// System.out.println(js.toString());
 		} else {
 			s.setAttribute("e_id", null);
 		}

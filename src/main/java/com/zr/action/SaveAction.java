@@ -27,11 +27,11 @@ public class SaveAction extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		int flag = Integer.parseInt(req.getParameter("flag"));
-		System.out.println(flag);
-		System.out.println(req.getParameter("id"));
+		//System.out.println(flag);
+		//System.out.println(req.getParameter("id"));
 		if (flag == 1) {
 			String reply_site = req.getParameter("uname1");
-			System.out.println(reply_site);
+			//System.out.println(reply_site);
 			int sub_id = Integer.parseInt(req.getParameter("uname2"));
 			String reply_start = req.getParameter("uname3");
 			String reply_end = req.getParameter("uname4");
@@ -41,7 +41,7 @@ public class SaveAction extends HttpServlet {
 		if (flag == 2) {
 			int reply_id = Integer.parseInt(req.getParameter("id"));
 			String reply_site = req.getParameter("uname1");
-			System.out.println(reply_site);
+			//System.out.println(reply_site);
 			int sub_id = Integer.parseInt(req.getParameter("uname2"));
 			String reply_start = req.getParameter("uname3");
 			String reply_end = req.getParameter("uname4");

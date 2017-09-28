@@ -17,19 +17,20 @@ import com.zr.model.Role;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-/** 
-* @author SkySK: 
-* @version 创建时间：2017年9月25日 上午1:49:18 
-* 说明 ：
-*/
+/**
+ * @author SkySK:
+ * @version 创建时间：2017年9月25日 上午1:49:18 说明 ：
+ */
 @WebServlet("/showRoleName")
 public class SelectRoleNameAction extends HttpServlet {
 	RoleDao rdao = new RoleDaoImpl();
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doPost(req, resp);
 	}
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub

@@ -9,7 +9,7 @@ import com.zr.model.Notice;
 import com.zr.service.NoticeService;
 
 public class NoticeServiceImpl implements NoticeService {
-	
+
 	NoticeDao nd = new NoticeDaoImpl();
 
 	@Override
@@ -28,7 +28,7 @@ public class NoticeServiceImpl implements NoticeService {
 	public void setTeacherNotice(int sendID, int receiveID, String title, String content, String data, String num) {
 		String[] s = num.split(",");
 		int[] nums = new int[s.length];
-		for(int i = 0;i < s.length;i++){
+		for (int i = 0; i < s.length; i++) {
 			nums[i] = Integer.parseInt(s[i]);
 		}
 		nd.setTeacherNotice(sendID, receiveID, title, content, data, nums);

@@ -6,8 +6,8 @@ import java.util.List;
 import com.zr.model.GraduationProcess;
 import com.zr.service.GraduationProcessService;
 
-public class GraduationProcessServiceImpl implements GraduationProcessService{
-	
+public class GraduationProcessServiceImpl implements GraduationProcessService {
+
 	com.zr.dao.impl.GraduationProcessDaoImpl gpd = new com.zr.dao.impl.GraduationProcessDaoImpl();
 
 	@Override
@@ -20,6 +20,6 @@ public class GraduationProcessServiceImpl implements GraduationProcessService{
 		List<GraduationProcess> gps = new LinkedList<GraduationProcess>();
 		gps = gpd.getGraduationProcess();
 		return gps;
-	}		
+	}
 
 }

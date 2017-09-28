@@ -6,10 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet"
 	href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-<!-- <script
+<script
 	src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script
-	src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+	src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- 引入主题样式 -->
 <link href="themes/gray/easyui.css" rel="stylesheet">
 <!-- 引入图标的样式 -->
@@ -20,26 +20,22 @@
 <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="js/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" src="js/Login.js"></script>
-<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
 <title>登录</title>
 </head>
-
 <body>
 	<hr></hr>
 	<!-- 滚动字幕部分 -->
-
 	<p style="margin-left: 14px;">
 		<i><b><marquee scrollAmount=2 width=450>欢迎使用本系统，在登录时注意选择准确的角色哦&nbsp;-----</marquee>
 		</b></i>
 	</p>
-
 	<!-- 标题部分  -->
 	<div class="title" style="margin-top: 80px">
 		<strong><h1 align="center" style="font-family: 微软雅黑;">
 				<i><b>毕&nbsp;业&nbsp;设&nbsp;计&nbsp;管&nbsp;理&nbsp;系&nbsp;统</b></i>
 			</h1></strong>
 	</div>
-
 	<!-- 轮播：指标，项目，导航 -->
 	<div style="text-align: center;" class="container">
 		<div class="row">
@@ -101,14 +97,6 @@
 
 						<!-- 下拉框选择角色 -->
 						<div style="position: relative; top: 70px; left: -2px;">
-							<!-- 更改后的代码 -->
-							<!--  <select id="cc" class="easyui-combobox" name="user_type"
-								style="width: 200px;">
-								<option value="1">管理员</option>
-								<option value="2">学生</option>
-								<option value="3">教师</option>
-								<option value="4">系主任</option>
-							</select>-->
 							<label for="">角色选择:&nbsp;&nbsp;</label><input id="cc" name="dept"
 								value="">
 						</div>

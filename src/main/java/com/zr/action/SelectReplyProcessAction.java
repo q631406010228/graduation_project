@@ -21,33 +21,39 @@ import net.sf.json.JSONObject;
  */
 /**
  * 答辩记录信息查询action层
+ * 
  * @author 欧小峰
  *
  */
 @WebServlet("/selectReplyProcessAction")
 public class SelectReplyProcessAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    ReplyProcessService rpservice = new ReplyProcessServiceImpl();   
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SelectReplyProcessAction() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	ReplyProcessService rpservice = new ReplyProcessServiceImpl();
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public SelectReplyProcessAction() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");

@@ -25,14 +25,17 @@ import net.sf.json.JSONArray;
 public class ShowFunctionAction extends HttpServlet {
 	FunctionService func = new FunctionServiceImpl();
 	RoleService roles = new RoleServiceImpl();
+
 	public ShowFunctionAction() {
 		super();
 	}
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doPost(req, resp);
 	}
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -44,10 +47,10 @@ public class ShowFunctionAction extends HttpServlet {
 		// 获取用户的id
 		int e_id = (int) session.getAttribute("e_id");
 		int r_id = (int) session.getAttribute("r_id");
-		//System.out.println("ShowFunctionAction.doPost.e_id" + e_id);
+		// System.out.println("ShowFunctionAction.doPost.e_id" + e_id);
 		FunctionService function = new FunctionServiceImpl();
 		JSONArray json = new JSONArray();
-		json = function.getStaffFunction(e_id,r_id);
+		json = function.getStaffFunction(e_id, r_id);
 		PrintWriter pw = resp.getWriter();
 		pw.write(json.toString());
 		JSONArray jsonss = new JSONArray();

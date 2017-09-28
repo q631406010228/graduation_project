@@ -21,8 +21,9 @@ import com.zr.service.impl.TeacherServiceImpl;
 import net.sf.json.JSONObject;
 
 @WebServlet("/showstudentscore")
-public class CheckScoresOfStudent extends HttpServlet{
+public class CheckScoresOfStudent extends HttpServlet {
 	TeacherService tea = new TeacherServiceImpl();
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
@@ -36,6 +37,6 @@ public class CheckScoresOfStudent extends HttpServlet{
 		JSONObject json = tea.getScoresOfStu(eid);
 		PrintWriter pw = resp.getWriter();
 		pw.write(json.toString());
-	}	
+	}
 
 }

@@ -13,10 +13,12 @@ import com.zr.service.StaffService;
 import com.zr.service.impl.StaffServiceImpl;
 
 import net.sf.json.JSONObject;
+
 @WebServlet("/subjectTable")
-public class SubjectTableAction extends HttpServlet{
-	
-	StaffService ss =new StaffServiceImpl();
+public class SubjectTableAction extends HttpServlet {
+
+	StaffService ss = new StaffServiceImpl();
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -32,7 +34,7 @@ public class SubjectTableAction extends HttpServlet{
 		resp.setCharacterEncoding("utf8");
 		PrintWriter pw = resp.getWriter();
 		pw.write(j.toString());
-		
+
 	}
 
 }

@@ -22,27 +22,32 @@ import net.sf.json.JSONObject;
 @WebServlet("/selectTeacher")
 public class SelectTeacherAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    TeacherService tservice = new TeacherServiceImpl();   
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SelectTeacherAction() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	TeacherService tservice = new TeacherServiceImpl();
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public SelectTeacherAction() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
@@ -50,7 +55,7 @@ public class SelectTeacherAction extends HttpServlet {
 		int count = tservice.selectTeacherCount();
 		JSONObject json = new JSONObject();
 		json.put("total", count);
-		//json.put("total",1);
+		// json.put("total",1);
 		json.put("rows", list);
 		PrintWriter pw = response.getWriter();
 		pw.write(json.toString());

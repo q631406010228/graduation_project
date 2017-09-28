@@ -13,12 +13,10 @@ import com.zr.service.impl.FunctionServiceImpl;
 
 import net.sf.json.JSONArray;
 
-
-/** 
-* @author SkySK: 
-* @version 创建时间：2017年9月25日 上午2:48:49 
-* 说明 ：
-*/
+/**
+ * @author SkySK:
+ * @version 创建时间：2017年9月25日 上午2:48:49 说明 ：
+ */
 public class ShowAllFunctionAction extends HttpServlet {
 	FunctionService func = new FunctionServiceImpl();
 

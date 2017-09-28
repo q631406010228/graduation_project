@@ -28,19 +28,19 @@ public class UpdateStudentAction extends HttpServlet {
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {	
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
-		if("1".equals(req.getParameter("flag"))){
+		if ("1".equals(req.getParameter("flag"))) {
 			int num = Integer.parseInt(req.getParameter("num"));
 			String name = req.getParameter("sname");
 			int cID = Integer.parseInt(req.getParameter("cname"));
 			int mID = Integer.parseInt(req.getParameter("mname"));
 			ss.insertStudent(num, name, cID, mID);
-		}else if("2".equals(req.getParameter("flag"))){
+		} else if ("2".equals(req.getParameter("flag"))) {
 			String num = req.getParameter("sids");
 			ss.deleteStudent(num);
-		}else if("3".equals(req.getParameter("flag"))){
+		} else if ("3".equals(req.getParameter("flag"))) {
 			int preNum = Integer.parseInt(req.getParameter("sid"));
 			int num = Integer.parseInt(req.getParameter("num"));
 			String name = req.getParameter("sname");

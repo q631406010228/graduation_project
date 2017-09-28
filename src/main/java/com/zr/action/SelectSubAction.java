@@ -26,27 +26,32 @@ import net.sf.json.JSONObject;
 @WebServlet("/selectSub")
 public class SelectSubAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    SubService subservice = new SubServiceImpl();   
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SelectSubAction() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	SubService subservice = new SubServiceImpl();
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doPost(request, response);	
+	public SelectSubAction() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doPost(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setCharacterEncoding("utf8");
 		request.setCharacterEncoding("utf8");
@@ -57,14 +62,13 @@ public class SelectSubAction extends HttpServlet {
 		session.setAttribute("subname", sub.getSubname());
 		session.setAttribute("subcontent", sub.getSubcontent());
 		session.setAttribute("subcount", sub.getSubcount());
-		if(sub.getSubstate()==0){
+		if (sub.getSubstate() == 0) {
 			session.setAttribute("state", "未审核");
-		}else if(sub.getSubstate()==1){
+		} else if (sub.getSubstate() == 1) {
 			session.setAttribute("state", "通过");
-		}else{
+		} else {
 			session.setAttribute("state", "驳回");
 		}
 	}
 
 }
-

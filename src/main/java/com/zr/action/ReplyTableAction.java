@@ -13,9 +13,11 @@ import com.zr.service.ReplyService;
 import com.zr.service.impl.ReplyServiceImpl;
 
 import net.sf.json.JSONObject;
+
 @WebServlet("/replyTable")
-public class ReplyTableAction extends HttpServlet{
-	ReplyService rs=new ReplyServiceImpl();
+public class ReplyTableAction extends HttpServlet {
+	ReplyService rs = new ReplyServiceImpl();
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -31,7 +33,7 @@ public class ReplyTableAction extends HttpServlet{
 		resp.setCharacterEncoding("utf8");
 		PrintWriter pw = resp.getWriter();
 		pw.write(j.toString());
-	
+
 	}
 
 }

@@ -12,17 +12,15 @@ import com.zr.dao.StaffDao;
 import com.zr.model.Staff;
 import com.zr.model.Subject;
 
-/** 
-* @author SkySK: 
-* @version 创建时间：2017年9月25日 上午1:14:26 
-* 说明 ：
-*/
+/**
+ * @author SkySK:
+ * @version 创建时间：2017年9月25日 上午1:14:26 说明 ：
+ */
 public class StaffDaoImpl implements StaffDao {
-
-
 	@Override
 	public Staff getStaff(String ename, String epsw) {
-		System.out.println("进入StaffDaoImpl。getStaff方法 ，获取 参数ename：" + ename + "和epsw：" + epsw);
+		// System.out.println("进入StaffDaoImpl。getStaff方法 ，获取 参数ename：" + ename +
+		// "和epsw：" + epsw);
 		// 创建职工对象
 		Staff staff = new Staff();
 		// 定义数据库语句
@@ -50,7 +48,8 @@ public class StaffDaoImpl implements StaffDao {
 				staff.setEpsw(e_psw);
 				int c_id = re.getInt("e_col");
 				staff.setEcol(c_id);
-				System.out.println("数据库中获取的结果e_id:" + e_id + " e_name:" + e_name + " e_psw:" + e_psw+"c_id"+c_id);
+				// System.out.println("数据库中获取的结果e_id:" + e_id + " e_name:" +
+				// e_name + " e_psw:" + e_psw+"c_id"+c_id);
 			}
 			// 将职工对象返回
 			return staff;
@@ -61,29 +60,27 @@ public class StaffDaoImpl implements StaffDao {
 		return null;
 
 	}
-	
+
 	@Override
 	public int getSubjectCount() {
 		// TODO Auto-generated method stub
-		int p =0;
-		Connection  con   =  DBConnection.getConnection();
-		StringBuffer  sql = new StringBuffer("select count(sub_id) AS scount from sub  ");
-		PreparedStatement   pst = null;
+		int p = 0;
+		Connection con = DBConnection.getConnection();
+		StringBuffer sql = new StringBuffer("select count(sub_id) AS scount from sub  ");
+		PreparedStatement pst = null;
 		try {
-			   pst =  con.prepareStatement(sql.toString());
-			
-			ResultSet  rs  =  pst.executeQuery();
-			while(rs.next()){
-				 
-				  p=rs.getInt("scount");
-				 
-				  
-				  
+			pst = con.prepareStatement(sql.toString());
+
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+
+				p = rs.getInt("scount");
+
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
+		} finally {
 		}
 		return p;
 	}
@@ -91,13 +88,13 @@ public class StaffDaoImpl implements StaffDao {
 	@Override
 	public List<Subject> getSubjects(int i, int pageSize) {
 		// TODO Auto-generated method stub
-List<Subject> subjects = new ArrayList<Subject>();
-		
+		List<Subject> subjects = new ArrayList<Subject>();
+
 		StringBuffer sql = new StringBuffer("");
 		sql.append("SELECT sub_id,sub_name,sub_count,sub_content,sub_state,sub.e_id ");
 		sql.append("FROM sub ");
 		sql.append("INNER JOIN staff ON staff.e_id=sub.e_id  limit ?,? ");
-		
+
 		Connection con = DBConnection.getConnection();
 		PreparedStatement pst = null;
 		try {
@@ -112,23 +109,22 @@ List<Subject> subjects = new ArrayList<Subject>();
 				subject.setSub_count(rs.getInt("sub_count"));
 				subject.setSub_content(rs.getString("sub_content"));
 				subject.setSub_state(rs.getInt("sub_state"));
-				if (rs.getInt("sub_state")==0) {
+				if (rs.getInt("sub_state") == 0) {
 					subject.setSub_statecn("未审核");
-				}else if (rs.getInt("sub_state")==1) {
+				} else if (rs.getInt("sub_state") == 1) {
 					subject.setSub_statecn("通过");
-				} else{
+				} else {
 					subject.setSub_statecn("驳回");
 				}
-				
+
 				subject.setE_id(rs.getInt("e_id"));
-				
-				
+
 				subjects.add(subject);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
+		} finally {
 		}
 
 		return subjects;
@@ -144,18 +140,17 @@ List<Subject> subjects = new ArrayList<Subject>();
 		sql.append("WHERE sub_id=? ");
 		PreparedStatement pst = null;
 		try {
-			 pst = con.prepareStatement(sql.toString());
+			pst = con.prepareStatement(sql.toString());
 			pst.setInt(1, sub_id);
-			
-			
-			 pst.executeUpdate();
-			
+
+			pst.executeUpdate();
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
+		} finally {
 		}
-		
+
 	}
 
 	@Override
@@ -168,18 +163,17 @@ List<Subject> subjects = new ArrayList<Subject>();
 		sql.append("WHERE sub_id=? ");
 		PreparedStatement pst = null;
 		try {
-			 pst = con.prepareStatement(sql.toString());
+			pst = con.prepareStatement(sql.toString());
 			pst.setInt(1, sub_id);
-			
-			
-			 pst.executeUpdate();
-			
+
+			pst.executeUpdate();
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
+		} finally {
 		}
-		
+
 	}
 
 	@Override
@@ -188,22 +182,21 @@ List<Subject> subjects = new ArrayList<Subject>();
 		Connection con = DBConnection.getConnection();
 		StringBuffer sql = new StringBuffer("");
 		sql.append("DELETE FROM  sub ");
-		
+
 		sql.append("WHERE sub_id=? ");
 		PreparedStatement pst = null;
 		try {
-			 pst = con.prepareStatement(sql.toString());
+			pst = con.prepareStatement(sql.toString());
 			pst.setInt(1, sub_id);
-			
-			
-			 pst.executeUpdate();
-			
+
+			pst.executeUpdate();
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
+		} finally {
 		}
-		
+
 	}
 
 }

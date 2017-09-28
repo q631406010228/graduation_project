@@ -15,7 +15,7 @@ import com.zr.service.impl.CollegeMajorServiceImpl;
 import net.sf.json.JSONArray;
 
 @WebServlet("/getMajor")
-public class GetMajorActioni  extends HttpServlet {
+public class GetMajorActioni extends HttpServlet {
 
 	CollegeMajorService cms = new CollegeMajorServiceImpl();
 
@@ -26,7 +26,7 @@ public class GetMajorActioni  extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int cID = Integer.parseInt(req.getParameter("id"));		
+		int cID = Integer.parseInt(req.getParameter("id"));
 		JSONArray major = cms.getMajors(cID);
 		resp.setCharacterEncoding("UTF-8");
 		PrintWriter pw = resp.getWriter();

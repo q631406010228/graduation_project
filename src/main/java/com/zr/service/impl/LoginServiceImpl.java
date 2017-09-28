@@ -12,15 +12,17 @@ import com.zr.model.User;
 
 import net.sf.json.JSONObject;
 
-/** 
-* @author SkySK: 
-* @version 创建时间：2017年9月26日 下午5:40:47 
-* 说明 ：
-*/
+/**
+ * @author SkySK:
+ * @version 创建时间：2017年9月26日 下午5:40:47 说明 ：
+ */
 public class LoginServiceImpl {
 	public JSONObject getUserIdByUsernum(String user_type, String ename, String epsw) {
-		System.out.println(
-				"进入LoginService。getUserIdByUsernum方法，获得的参数user_type：" + user_type + "ename " + ename + "epsw:" + epsw);
+		/*
+		 * System.out.println(
+		 * "进入LoginService。getUserIdByUsernum方法，获得的参数user_type：" + user_type +
+		 * "ename " + ename + "epsw:" + epsw);
+		 */
 		// 创建各表对象
 		Staff staff = new Staff();
 		Student student = new Student();
@@ -29,18 +31,18 @@ public class LoginServiceImpl {
 		// 职工
 		StaffDao staffdao = new StaffDaoImpl();
 		// 学生
-	    StudentDao studentdao = new StudentDaoImpl();
+		StudentDao studentdao = new StudentDaoImpl();
 		// 管理员
-	    UserDao userdao = new UserDaoImpl();
+		UserDao userdao = new UserDaoImpl();
 		// 创建json对象
 		JSONObject json = new JSONObject();
 		// 判断用户类型
 		if (user_type.equals("2")) {
 			// 学生
 			Integer snum = new Integer(ename);
-			student = studentdao.getStudent(snum,epsw);
-            System.out.println("LoginServiceImpl学生中 "+student);
-        	if (student.getSpsw()== null) {
+			student = studentdao.getStudent(snum, epsw);
+			// System.out.println("LoginServiceImpl学生中 "+student);
+			if (student.getSpsw() == null) {
 				// 用户不存在
 				json.put("ok", false);
 				json.put("msg", "登录失败,用户不存在！");
@@ -57,7 +59,7 @@ public class LoginServiceImpl {
 				// 获取职工的id
 				json.put("e_id", student.getSid());
 			}
-		} else if (user_type.equals("3")||(user_type.equals("4"))) {
+		} else if (user_type.equals("3") || (user_type.equals("4"))) {
 
 			// 职工
 			staff = staffdao.getStaff(ename, epsw);
@@ -81,29 +83,29 @@ public class LoginServiceImpl {
 			}
 
 		} else if (user_type.equals("1")) {
-				// 管理员
-				Integer unum = new Integer(ename);				
-				user = userdao.getUser(unum,epsw);
-	            System.out.println("LoginServiceImpl管理员中 "+user);
-	        	if (user.getUpsw()== null) {
-					// 用户不存在
-					json.put("ok", false);
-					json.put("msg", "登录失败,用户不存在！");
-				} else if (!user.getUpsw().equals(epsw)) {
-					// 用户密码错误
-					json.put("ok", false);
-					json.put("msg", "登录失败,用户密码错误!");
-				} else {
-					// 信息匹配成功
-					json.put("ok", true);
-					json.put("r_id", user.getRid());
-					json.put("msg", "登录成功!");
-					// 获取职工的id
-					json.put("e_id", user.getUid());
-				}
+			// 管理员
+			Integer unum = new Integer(ename);
+			user = userdao.getUser(unum, epsw);
+			// System.out.println("LoginServiceImpl管理员中 "+user);
+			if (user.getUpsw() == null) {
+				// 用户不存在
+				json.put("ok", false);
+				json.put("msg", "登录失败,用户不存在！");
+			} else if (!user.getUpsw().equals(epsw)) {
+				// 用户密码错误
+				json.put("ok", false);
+				json.put("msg", "登录失败,用户密码错误!");
+			} else {
+				// 信息匹配成功
+				json.put("ok", true);
+				json.put("r_id", user.getRid());
+				json.put("msg", "登录成功!");
+				// 获取职工的id
+				json.put("e_id", user.getUid());
 			}
-		System.out.println("LoginService。getUserIdByUsernum方法返回的结果" + json);
-		
+		}
+		// System.out.println("LoginService。getUserIdByUsernum方法返回的结果" + json);
+
 		return json;
 	}
 }

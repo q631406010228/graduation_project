@@ -23,62 +23,68 @@ import net.sf.json.JSONObject;
 @WebServlet("/DeleteReplyProcessAction")
 public class DeleteReplyProcessAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    ReplyProcessService rpservice = new ReplyProcessServiceImpl();   
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public DeleteReplyProcessAction() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	ReplyProcessService rpservice = new ReplyProcessServiceImpl();
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public DeleteReplyProcessAction() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		String [] sids = request.getParameterValues("sid");
+		String[] sids = request.getParameterValues("sid");
 		StringBuffer str = new StringBuffer();
 		List<Integer> sid = new ArrayList<Integer>();
 		List<Integer> flag = new ArrayList<Integer>();
-		//int sid[] = new int[50];
-		//int flag[] = new int[50];
+		// int sid[] = new int[50];
+		// int flag[] = new int[50];
 		for (int i = 0; i < sids.length; i++) {
-			 str.append(sids[i]);
+			str.append(sids[i]);
 		}
 		String eids[] = str.toString().split(",");
-		
+
 		for (int i = 0; i < eids.length; i++) {
-			//System.out.println(stuid[i]);
-			sid.add(Integer.parseInt(eids[i])) ;
-			
+			// System.out.println(stuid[i]);
+			sid.add(Integer.parseInt(eids[i]));
+
 		}
 		flag = rpservice.deletReplyProcess(sid);
 		JSONObject jsons = new JSONObject();
 		for (int i = 0; i < flag.size(); i++) {
 			System.out.println(flag.get(i).toString());
-			if(!("1".equals( flag.get(i).toString()))){
+			if (!("1".equals(flag.get(i).toString()))) {
 				jsons.put("exce", "删除失败");
 				break;
-			}
-			else{
+			} else {
 				jsons.put("exce", "删除成功");
 			}
 		}
 		PrintWriter pw = response.getWriter();
 		pw.write(jsons.toString());
-	/*	HttpSession session = request.getSession();
-		session.setAttribute("exception", "删除成功");*/
+		/*
+		 * HttpSession session = request.getSession();
+		 * session.setAttribute("exception", "删除成功");
+		 */
 	}
 
 }

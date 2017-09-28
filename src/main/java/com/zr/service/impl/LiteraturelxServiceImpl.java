@@ -28,7 +28,7 @@ public class LiteraturelxServiceImpl implements LiteraturelxService{
 			json2.put("text", json1.get("wxlx_name"));
 			json_arr2.add(json2);
 		}
-		System.out.println("LiteraturelxServiceImpl.getAllLiteraturelxInfoForCombobox中获取的文献类型信息json_arr2="+json_arr2);
+		//System.out.println("LiteraturelxServiceImpl.getAllLiteraturelxInfoForCombobox中获取的文献类型信息json_arr2="+json_arr2);
 		return json_arr2;
 	}
 }

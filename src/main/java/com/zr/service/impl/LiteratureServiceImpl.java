@@ -7,14 +7,16 @@ import com.zr.dao.impl.LiteratureDaoImpl;
 import com.zr.model.Literature;
 import com.zr.service.LiteratureService;
 
-public class LiteratureServiceImpl implements LiteratureService{
+public class LiteratureServiceImpl implements LiteratureService {
 	LiteratureDao lidao = new LiteratureDaoImpl();
+
 	@Override
 	public List<Literature> selectLiteratureByEid(int eid) {
 		// TODO Auto-generated method stub
-		List<Literature>list = lidao.selectLiteratureByEid(eid);
+		List<Literature> list = lidao.selectLiteratureByEid(eid);
 		return list;
 	}
+
 	@Override
 	public int updateLiterature(int wxid, int state) {
 		// TODO Auto-generated method stub

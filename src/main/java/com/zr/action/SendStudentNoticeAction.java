@@ -16,15 +16,15 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 @WebServlet("/sendStudentNotice")
-public class SendStudentNoticeAction extends HttpServlet{
-	
+public class SendStudentNoticeAction extends HttpServlet {
+
 	NoticeService ns = new NoticeServiceImpl();
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");

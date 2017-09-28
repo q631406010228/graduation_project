@@ -20,50 +20,53 @@ import com.zr.service.impl.NoticeServiceImpl;
 import net.sf.json.JSONObject;
 
 @ServerEndpoint("/websocket")
-public class NoticeSoket extends HttpServlet{
-	
-	HttpSession s ;
-	
-	protected void doGet(javax.servlet.http.HttpServletRequest req, javax.servlet.http.HttpServletResponse resp) throws javax.servlet.ServletException ,IOException {
+public class NoticeSoket extends HttpServlet {
+
+	HttpSession s;
+
+	protected void doGet(javax.servlet.http.HttpServletRequest req, javax.servlet.http.HttpServletResponse resp)
+			throws javax.servlet.ServletException, IOException {
 		doPost(req, resp);
 	};
-	
-	protected void doPost(javax.servlet.http.HttpServletRequest req, javax.servlet.http.HttpServletResponse resp) throws javax.servlet.ServletException ,IOException {
+
+	protected void doPost(javax.servlet.http.HttpServletRequest req, javax.servlet.http.HttpServletResponse resp)
+			throws javax.servlet.ServletException, IOException {
 		s = req.getSession();
 	};
-	
+
 	NoticeService ns = new NoticeServiceImpl();
-	
+
 	/**
-	 * @throws java.io.IOException 
-	 * @throws EncodeException 
+	 * @throws java.io.IOException
+	 * @throws EncodeException
 	 */
 	@OnMessage
-	public void onMessage(String message, Session session) throws IOException, InterruptedException, java.io.IOException, EncodeException {
+	public void onMessage(String message, Session session)
+			throws IOException, InterruptedException, java.io.IOException, EncodeException {
 		int n = 0;
 		while (true) {
 			Thread.sleep(1000);
-			List<Notice> ln = ns.getNotices(2,1406010001);
+			List<Notice> ln = ns.getNotices(2, 1406010001);
 			JSONObject ja = new JSONObject();
 			ja.put("Notice", ln);
-			if(ln.size() != n){
+			if (ln.size() != n) {
 				session.getBasicRemote().sendText(ja.toString());
 				n = ln.size();
 			}
 		}
-	}  
+	}
 
 	/**
 	 * 当一个新用户连接时所调用的方法 该方法可能包含一个javax.websocket.Session可选参数
-	*/
+	 */
 	@OnOpen
 	public void onOpen(Session session) {
-		/*System.out.println("客户端连接成功");*/
+		/* System.out.println("客户端连接成功"); */
 	}
 
 	/** 当一个用户断开连接时所调用的方法 */
 	@OnClose
-	public void onClose() { 
-		/*System.out.println("客户端关闭");*/
+	public void onClose() {
+		/* System.out.println("客户端关闭"); */
 	}
 }

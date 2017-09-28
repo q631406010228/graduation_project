@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-public class GetGPAction extends HttpServlet{
+public class GetGPAction extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		JSONArray gps = new JSONArray();
@@ -39,5 +39,4 @@ public class GetGPAction extends HttpServlet{
 		pw.write(gps.toString());
 	}
 
-	
 }
