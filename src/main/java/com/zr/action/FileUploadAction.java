@@ -62,7 +62,7 @@ public class FileUploadAction extends HttpServlet {
 						continue;
 					}
 
-					String savepath = this.getServletContext().getRealPath("/upload/" + realfile + "/paper");
+					String savepath = this.getServletContext().getRealPath("/upload/" + realfile + "/7");
 					File file2 = new File(savepath);
 					if (!file2.exists()) {
 						file2.mkdirs();
