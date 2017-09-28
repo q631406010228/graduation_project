@@ -5,15 +5,11 @@ import java.util.List;
 
 import com.zr.model.Staff;
 
+
 import net.sf.json.JSONObject;
 
 public interface TeacherDao {
     
-	/**
-	 * 获取所有论文
-	 * @return
-	 */
-	public JSONObject selectAllPapers();
 	
 	
 	/**
@@ -29,6 +25,20 @@ public interface TeacherDao {
      * @param score  成绩
      */
     public void insertStudentScore(int sid,int score);
+
+    
+    /**
+     * 查看答辩任务
+     * @return
+     */
+    public JSONObject checkReplyMisson();
+     
+    /**
+     * 获取学生学号
+     * @return
+     */
+    public String getSnumBySid(int id);
+
     /**
 	 * 查询教师信息
 	 * @return 教师对象的集合
