@@ -73,5 +73,30 @@ public class LiteratureDaoImpl implements LiteratureDao{
 		return 0;
 	}
 	
+	@Override
+	public Boolean setLiteratureInfo(int s_id, int wxlx_id, String wx_content, String wx_name) {
+		Connection con = DBConnection.getConnection();
+		StringBuffer sql = new StringBuffer();
+		
+		sql.append("INSERT INTO literature VALUES(?,0,?,?,?); ");
+		try {
+			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
+			pst.setString(1, wx_content);
+			pst.setInt(2, wxlx_id);
+			pst.setInt(3, s_id);
+			pst.setString(4, wx_name);
+			int i = pst.executeUpdate();
+			if(i==1)
+			{
+				return true;
+			}
+				
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 }
 

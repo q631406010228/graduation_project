@@ -19,7 +19,7 @@
                          'FlexPaper/swfFiles/FlexPaperViewer', 
                          'viewerPlaceHolder',     //对应于a 标签的id
                          { config : {
-                         SwfFile : escape('upload/631406010426/<%=(String)session.getAttribute("fileName")%>'),  //导入的.swf的路径,文件名称使用英语表示，中文时显示不出来，暂时未解决这个问题
+                         SwfFile : escape('<%=(String)session.getAttribute("fileName")%>'),  //导入的.swf的路径,文件名称使用英语表示，中文时显示不出来，暂时未解决这个问题
                          Scale : 0.6, 
                          ZoomTransition : 'easeOut',
                          ZoomTime : 0.5,

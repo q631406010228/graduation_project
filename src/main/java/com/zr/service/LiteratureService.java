@@ -18,4 +18,13 @@ public interface LiteratureService {
 	 * @return 是否成功的标志位
 	 */
 	public int updateLiterature(int wxid,int state);
+	/**
+	 * 设置学生上传的文件路径名
+	 * @param s_id 学生的学号
+	 * @param wxlx_id 文献类型id
+	 * @param wx_content 文献路径
+	 * @param wx_name 文献名
+	 * @return
+	 */
+	public Boolean setLiteratureInfo(int s_id,int wxlx_id,String wx_content,String wx_name);
 }
