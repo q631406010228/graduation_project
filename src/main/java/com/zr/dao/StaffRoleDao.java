@@ -1,9 +1,4 @@
 package com.zr.dao;
-
-import java.util.List;
-
-import com.zr.model.Subject;
-
 /** 
 * @author SkySK: 
 * @version 创建时间：2017年9月26日 下午5:31:38 
@@ -34,6 +29,4 @@ public interface StaffRoleDao {
 	 * @param eid
 	 */
 	public void insertTeacerRole(int eid);
-	
-
 }

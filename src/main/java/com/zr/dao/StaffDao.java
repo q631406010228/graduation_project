@@ -1,9 +1,6 @@
 package com.zr.dao;
 
-import java.util.List;
-
 import com.zr.model.Staff;
-import com.zr.model.Subject;
 
 /** 
 * @author SkySK: 
@@ -12,14 +9,4 @@ import com.zr.model.Subject;
 */
 public interface StaffDao {
 	public Staff getStaff(String ename, String epsw);
-	
-	public int getSubjectCount();
-
-	public List<Subject> getSubjects(int i, int pageSize);
-	
-	public void agreeSubject(int sub_id);
-
-	public void returnSubject(int sub_id);
-
-	public void deleteSubject(int sub_id);
 }
