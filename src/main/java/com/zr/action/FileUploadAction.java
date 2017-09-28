@@ -14,15 +14,21 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+<<<<<<< HEAD
 import com.zr.dao.TeacherDao;
 import com.zr.dao.impl.TeacherDaoImpl;
 import com.zr.service.TeacherService;
 import com.zr.service.impl.TeacherServiceImpl;
+=======
+
+>>>>>>> master
 
 import net.sf.json.JSONObject;
 
 public class FileUploadAction extends HttpServlet {
+
     TeacherService tea = new TeacherServiceImpl();
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
@@ -33,13 +39,17 @@ public class FileUploadAction extends HttpServlet {
 		
 		resp.setContentType("text/html; charset=UTF-8");
         resp.setCharacterEncoding("utf8");
+
         int id ;
         
+
 		DiskFileItemFactory dfif = new DiskFileItemFactory();
 
 		ServletFileUpload sfu = new ServletFileUpload(dfif);
         String username= "";
+
         String realfile = "";
+
         JSONObject json = new JSONObject();
 		try {
 			List<FileItem> list = sfu.parseRequest(req);
@@ -47,17 +57,31 @@ public class FileUploadAction extends HttpServlet {
 			for (FileItem fileItem : list) {
 				if (fileItem.isFormField()) {
 					if (fileItem.getFieldName().equals("sname")) {
+
                        username= fileItem.getString();
 						  
 					}
 				} else {
 					  id = Integer.parseInt(username);
 					  realfile = tea.getSnum(id);
+
+
+						
+						  username= fileItem.getString();
+						 
+					}
+				} else {
+					
+
 					 String name = fileItem.getName();
 					 if(name ==null||name.isEmpty()){
 						 continue;
 					 }
+
 					 String savepath = this.getServletContext().getRealPath("/upload/"+realfile+"/paper");
+
+					 String savepath = this.getServletContext().getRealPath("/WEB-INF/PapersUploadsByTeacher"+"/"+username);
+
 					 
 			
 					 File file2= new File(savepath);
