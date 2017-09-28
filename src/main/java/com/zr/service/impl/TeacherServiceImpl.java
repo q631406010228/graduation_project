@@ -1,5 +1,6 @@
 package com.zr.service.impl;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import com.zr.dao.SubDao;
 import com.zr.dao.TeacherDao;
 import com.zr.dao.impl.StaffRoleDaoImpl;
 import com.zr.dao.impl.SubDaoImpl;
+
 import java.util.List;
 
 import javax.websocket.Session;
@@ -20,13 +22,13 @@ import com.zr.service.TeacherService;
 import net.sf.json.JSONObject;
 
 public class TeacherServiceImpl implements TeacherService{
+
+     
+
     TeacherDao  tdao = new  TeacherDaoImpl();
     StaffRoleDao srdao = new StaffRoleDaoImpl();
-	@Override
-	public JSONObject getPapers() {
-		JSONObject json = tdao.selectAllPapers();
-		return json;
-	}
+
+	
 	@Override
 	public JSONObject getScoresOfStu(int eid) {
 		
@@ -42,10 +44,27 @@ public class TeacherServiceImpl implements TeacherService{
 	}
 	@Override
 	public List<Staff> selectTeacher() {
-		// TODO Auto-generated method stub
-		List<Staff> list = tdao.selectTeacher();
+			List<Staff> list = tdao.selectTeacher();
 		return list;
+
 	}
+
+	
+	@Override
+	public JSONObject showReplymisson() {
+		JSONObject json = tdao.checkReplyMisson();
+		return json;
+	}
+	@Override
+	public String getSnum(int id) {
+		String s = tdao.getSnumBySid(id);
+		return s;
+	}
+    
+
+
+	
+	
 
 	@Override
 	public int selectTeacherCount() {
@@ -81,3 +100,4 @@ public class TeacherServiceImpl implements TeacherService{
 		return i;
 	}
 }
+
