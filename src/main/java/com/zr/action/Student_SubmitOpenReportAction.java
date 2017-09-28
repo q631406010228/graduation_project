@@ -57,8 +57,8 @@ public class Student_SubmitOpenReportAction extends HttpServlet{
 		{
 			String outFilePath = inputFilePath.replace(new File(inputFilePath).getName(), System.currentTimeMillis() + ".swf");
 			outFilePath = Office2Swf.office2Swf(inputFilePath, outFilePath);
-			System.out.println("转换的最终结果Student_SubmitOpenReportAction.doPost.outFilePath"+outFilePath);
-			System.out.println("转换的swf的文件名"+new File(outFilePath).getName());
+			//System.out.println("转换的最终结果Student_SubmitOpenReportAction.doPost.outFilePath"+outFilePath);
+			//System.out.println("转换的swf的文件名"+new File(outFilePath).getName());
 			req.getSession().setAttribute("fileName", new File(outFilePath).getName());
 		}
 		req.getRequestDispatcher("/readonline.jsp").forward(req, resp);
