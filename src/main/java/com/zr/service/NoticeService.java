@@ -14,7 +14,7 @@ public interface NoticeService {
 	 * @param content	通知的内容
 	 * @param data		通知的时间
 	 */
-	public void setDeanNotice(int sendID,int receiveID,String title,String content,String data);
+	public void setDeanNotice(int sendID,int receiveID,String title,String content,String data,int cID);
 	
 	/**
 	 * 教师保存通知的信息
@@ -32,6 +32,6 @@ public interface NoticeService {
 	 * @param num	接收者的号码
 	 * @return	返回接收者所有的通知
 	 */
-	public List<Notice> getNotices(int role,int num); 
+	public List<Notice> getNotices(int role,int num,int cID); 
 	
 }

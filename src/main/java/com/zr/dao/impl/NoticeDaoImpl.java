@@ -15,10 +15,10 @@ import com.zr.model.Notice;
 public class NoticeDaoImpl implements NoticeDao{
 
 	@Override
-	public void setDeanNotice(int sendID, int receiveID, String title, String content, String data) {
+	public void setDeanNotice(int sendID, int receiveID, String title, String content, String data,int cID) {
 		Connection conn = DBConnection.getConnection();
 		StringBuffer s = new StringBuffer();
-		s.append("insert into notice(send_id,receive_role_id,title,content,`data`) values(?,?,?,?,?);");
+		s.append("insert into notice(send_id,receive_role_id,title,content,`data`,c_id) values(?,?,?,?,?,?);");
 		try {
 			PreparedStatement ps = conn.prepareStatement(s.toString());
 			ps.setInt(1, 1);
@@ -26,6 +26,7 @@ public class NoticeDaoImpl implements NoticeDao{
 			ps.setString(3, title);
 			ps.setString(4, content);
 			ps.setString(5, data);
+			ps.setInt(6, cID);
 			ps.executeUpdate();	
 			ps.close();
 		} catch (SQLException e) {
@@ -34,16 +35,17 @@ public class NoticeDaoImpl implements NoticeDao{
 	}
 
 	@Override
-	public List<Notice> getNotices(int role,int num) {
+	public List<Notice> getNotices(int role,int num,int cID) {
 		List<Notice> ns = new LinkedList<Notice>();
 		Connection conn = DBConnection.getConnection();
 		StringBuffer s = new StringBuffer();
 		s.append("select * from notice "); 
-		s.append("where receive_role_id = ? and (receive_num is null or receive_num = ?);");
+		s.append("where receive_role_id = ? and (receive_num is null or receive_num = ?) and c_id = ?;");
 		try {
 			PreparedStatement ps = conn.prepareStatement(s.toString());
 			ps.setInt(1, role);
 			ps.setInt(2, num);
+			ps.setInt(3, cID);
 			ResultSet re = ps.executeQuery();		
 			while(re.next()){
 				Notice n = new Notice();

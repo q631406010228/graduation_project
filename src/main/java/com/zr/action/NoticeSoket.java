@@ -30,6 +30,7 @@ public class NoticeSoket {
 	
 	int rid ;
 	int num;
+	int cid;
 	NoticeService ns = new NoticeServiceImpl();
 	StaffRoleDao srd = new StaffRoleDaoImpl();
 	StudentDao sd = new StudentDaoImpl();
@@ -46,9 +47,9 @@ public class NoticeSoket {
 			Thread.sleep(1000);
 			List<Notice> ln = new LinkedList<Notice>();
 			if(rid == 3){
-				ln = ns.getNotices(rid,1);
+				ln = ns.getNotices(rid,1,cid);
 			}else if(rid == 2){
-				ln = ns.getNotices(rid,num);
+				ln = ns.getNotices(rid,num,cid);
 			}
 			JSONObject ja = new JSONObject();
 			ja.put("Notice", ln);
@@ -72,9 +73,7 @@ public class NoticeSoket {
 		}else if(rid == 0){
 			rid = srd.getRidByEid((int) httpSession.getAttribute("e_id"));
 		}
-        System.err.println(httpSession.getAttribute("r_id"));
-        System.err.println(rid);
-        System.err.println((int) httpSession.getAttribute("e_id"));
+		cid = (int) httpSession.getAttribute("c_id");
         //sessionMap.put(session.getId(), session);	
 	}
 
