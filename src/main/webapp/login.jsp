@@ -21,7 +21,7 @@
 <script type="text/javascript" src="js/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" src="js/Login.js"></script>
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+<title>登录</title>
 </head>
 
 <body>
