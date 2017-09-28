@@ -47,4 +47,11 @@ public interface StudentService {
 	 * @param preNum	旧学号
 	 */
 	public void updateStudent(int num, String name, int cID, int mID,int preNum);
+	
+	/**
+	 * 根据学院获取学生成绩
+	 * @param cid 学院ID
+	 * @return 学院成绩的List集合
+	 */
+	public List<Integer> getStudentScore(int cid);
 }
