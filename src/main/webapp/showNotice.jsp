@@ -16,7 +16,6 @@ div.box {
 	width: 500px;
 	padding: 20px;
 	margin: 20px;
-	border: 4px dashed #ccc;
 }
 
 div.box>span {
@@ -40,10 +39,7 @@ ul.test li span {
 }
 </style>
 </head>
-<body>  
-    <div>  
-        <input type="button" value="Start" onclick="start()" />  
-    </div>  
+<body>   
     <div id="messages"></div>  
     <div class="box">
 		<div class="content">
@@ -60,7 +56,6 @@ ul.test li span {
         };  
         //与WebSocket建立连接  
         webSocket.onopen = function(event) {  
-            document.getElementById('messages').innerHTML = '与服务器端建立连接';  
             webSocket.send('我是秦皓');  
         };  
         //处理服务器返回的信息  
