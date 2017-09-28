@@ -80,5 +80,11 @@ public interface StudentDao {
 	 * @return
 	 */
 	public String getStudentnumBys_id(int s_id);
+	/**
+	 * 根据学院获取学生成绩
+	 * @param cid 学院ID
+	 * @return 学院成绩的List集合
+	 */
+	public List<Integer> getStudentScore(int cid);
 }
 
