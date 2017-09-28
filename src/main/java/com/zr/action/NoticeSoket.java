@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpSession;
 import javax.websocket.EncodeException;
 import javax.websocket.EndpointConfig;
