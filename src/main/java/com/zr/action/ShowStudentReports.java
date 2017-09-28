@@ -12,10 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.ws.WebServiceProvider;
 
 import net.sf.json.JSONObject;
-@WebServlet("/showstudentpapers")
-public class ShowPapersOfStudent extends HttpServlet {
+@WebServlet("/showstudentpaperreport")
+public class ShowStudentReports extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
@@ -25,11 +26,11 @@ public class ShowPapersOfStudent extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {	
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
+		List<JSONObject> list = new ArrayList<JSONObject>();
 		HttpSession session = req.getSession();
 	    int eid = (int)session.getAttribute("e_id");
 	    String s= "teacher"+eid;
-		List<JSONObject> list = new ArrayList<JSONObject>();		
-		String savePath = this.getServletContext().getRealPath("/upload/"+s+"/paper");
+		String savePath = this.getServletContext().getRealPath("/upload/"+s+"/report");
 		JSONObject json1 = new JSONObject();
 		File upload = new File(savePath);
 		File[] studentPath = upload.listFiles();
@@ -39,7 +40,7 @@ public class ShowPapersOfStudent extends HttpServlet {
 			for (int j = 0; j < paperFile.length; j++) {
 				JSONObject json =new JSONObject();
 				json.put("snum", studentPath[i].getName());
-				json.put("filename","<a href ="+"\""+"/graduation_project/downloadfile?path1="+studentPath[i].getName()+"&path2="+paperFile[j].getName()+"\""+">"+paperFile[j].getName()+"</a>");
+				json.put("filename","<a href ="+"\""+"/graduation_project/downloadreportfile?path1="+studentPath[i].getName()+"&path2="+paperFile[j].getName()+"\""+">"+paperFile[j].getName()+"</a>");
 
 				System.out.println(studentPath[i].getName());
 				System.out.println(paperFile[j].getName());
@@ -51,4 +52,5 @@ public class ShowPapersOfStudent extends HttpServlet {
 		PrintWriter pw = resp.getWriter();
 		pw.write(json1.toString());
 	}
+ 
 }

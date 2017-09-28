@@ -1,23 +1,20 @@
 /**
- * 学生查询选题信息
+ * 
  */
 $(document).ready(function(){
 
 	$('#dg').datagrid({    
 	    url:'student_selectsub', 
-	   /* pagination:true,
-	    pageSize:4,
-	    pageList:[4,6,8],
-	    rownumbers:true,*/
+	  
 	    title:'学生信息列表',
 	    columns:[[
 	        {field:'ck',title:'ck',checkbox:true,width:100},    
-	        {field:'sub_id',title:'选题的id',width:100,hidden:true},    
-	        {field:'sub_name',title:'选题',width:100},      
-	        {field:'sub_content',title:'选题内容',width:100}, 
-	        {field:'e_name',title:'负责教师',width:100},      
-	        {field:'sub_count',title:'限选人数',width:100}, 
-	        {field:'number',title:'剩余人数',width:100}, 
+	        {field:'wx_id',title:'选题的id',width:100,hidden:true},    
+	        {field:'wx_content',title:'选题',width:100},      
+	        {field:'wx_state',title:'选题内容',width:100}, 
+	        {field:'wxlx_id',title:'负责教师',width:100},      
+	        {field:'s_id',title:'限选人数',width:100}, 
+	        {field:'wx_name',title:'剩余人数',width:100}, 
 	        ]],
 		    toolbar: [{
 		    	

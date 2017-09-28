@@ -20,7 +20,7 @@
 	$(function() {
 		$('#dg').datagrid({
 			url : 'showstudentpapers',
-			title:'学生论文批复',
+			title:'查看学生论文',
 			columns : [ [ {
 				field : 'snum',
 				title : '学生学号',

@@ -54,7 +54,11 @@ public class SelectStudentByEidAction extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
+<<<<<<< HEAD
 		HttpSession session = request.getSession();
+=======
+		HttpSession session = (HttpSession) request.getSession();
+>>>>>>> master
 		int eid = (int) session.getAttribute("e_id");
 		List<Student> list = stuservice.selectStudentByEid(eid);
 		JSONObject json = new JSONObject();
