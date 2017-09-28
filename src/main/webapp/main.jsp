@@ -46,7 +46,7 @@
 	})
 </script>
 <body class="easyui-layout">
-	<div data-options="region:'east',iconCls:'icon-reload',title:'通知',split:true" style="width:400px;">
+	<div data-options="region:'east',iconCls:'icon-reload',title:'通知',split:true" style="width:20%;">
 		<iframe  width='100%' height='100%' frameborder='0' src='showNotice.jsp'></iframe>
 	</div>
 	<div data-options="region:'west',title:'尊敬的您好！',split:true"
@@ -58,4 +58,5 @@
 		<div id="tabs" class="easyui-tabs" data-options="fit:true"></div>
 	</div>
 </body>
+
 </html>
