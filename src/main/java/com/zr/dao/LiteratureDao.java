@@ -19,4 +19,13 @@ public interface LiteratureDao {
 	 * @return 是否成功的标志位
 	 */
 	public int updateLiterature(int wxid,int state);
+	/**
+	 * 将学生上传的文件信息录入数据库
+	 * @param s_id
+	 * @param wxlx_id
+	 * @param wx_content
+	 * @param wx_name
+	 * @return
+	 */
+	public Boolean setLiteratureInfo(int s_id, int wxlx_id, String wx_content, String wx_name);
 }
