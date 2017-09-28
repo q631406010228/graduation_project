@@ -59,6 +59,8 @@ public class SubDaoImpl implements SubDao {
 			
 			while (set.next()) {
 				JSONObject json = new JSONObject();
+				//获取选题id
+				Integer sub_id = set.getInt("sub_id");
 				//获取选题名
 				String sub_name = set.getString("sub_name");
 				//获取选题内容
@@ -72,6 +74,7 @@ public class SubDaoImpl implements SubDao {
 				//计算剩余名额
 				Integer number = sub_count-selectnum;
 				//存入json对象
+				json.put("sub_id", sub_id);
 				json.put("sub_name", sub_name);
 				json.put("sub_content", sub_content);
 				json.put("e_name", e_name);
@@ -81,6 +84,7 @@ public class SubDaoImpl implements SubDao {
 				json_arr.add(json);
 			}
 			System.out.println("SubDaoImpl.selectSubByTeacherEcol返回数据："+json_arr);
+			return json_arr;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -43,10 +43,9 @@ public class Student_SubmitOpenReportAction extends HttpServlet{
 		//获取文件属性
 		String l_id = req.getParameter("dept");
 		//为每个用户创建3个文件夹，方便用来存储他们的头像和微博内容
-		String savepath = this.getServletContext().getRealPath("/upload/" +s_num+ "/l_id");
+		String savepath = this.getServletContext().getRealPath("/upload/" +s_num+ "/teacher/"+l_id);
 		File file = new File(savepath);
-		//File file1 = new File("E:\\JAVA-my\\personal_diary\\WebRoot\\\\xc");
-		//File file2 = new File("E:\\JAVA-my\\personal_diary\\WebRoot\\\\Blog");
+		
 		
 		try {
 			file.mkdirs();
