@@ -28,7 +28,7 @@ public class SetNoticeAction extends HttpServlet{
 		String title = new String(req.getParameter("snTitle").getBytes("iso-8859-1"), "utf-8");	 
 		String content = new String(req.getParameter("snContent").getBytes("iso-8859-1"), "utf-8");
 		int receiveID = Integer.parseInt(req.getParameter("role"));
-		System.out.println(req.getParameter("role"));
+		//System.out.println(req.getParameter("role"));
 		int sendID = Integer.parseInt(req.getParameter("sendID"));
 		String data = req.getParameter("data");
 		ns.setDeanNotice(1, receiveID, title, content, data);

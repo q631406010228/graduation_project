@@ -28,9 +28,7 @@
 									if ($('#tabs').tabs('exists', node.text)) {
 										$('#tabs').tabs('select', node.text)
 									} else {
-										$('#tabs')
-												.tabs(
-														'add',
+										$('#tabs').tabs('add',
 														{
 															title : node.text,
 															closable : true,
@@ -40,7 +38,6 @@
 														});
 									}
 								}
-
 							},
 							onLoadSuccess : function(node, data) {
 								$("#tt").tree('expandAll');
@@ -49,7 +46,9 @@
 	})
 </script>
 <body class="easyui-layout">
-	<div data-options="region:'east',iconCls:'icon-reload',title:'通知',split:true" style="width:100px;"></div>
+	<div data-options="region:'east',iconCls:'icon-reload',title:'通知',split:true" style="width:400px;">
+		<iframe  width='100%' height='100%' frameborder='0' src='showNotice.jsp'></iframe>
+	</div>
 	<div data-options="region:'west',title:'尊敬的您好！',split:true"
 		style="width: 300px;">
 		<ul id="tt"></ul>

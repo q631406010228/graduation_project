@@ -19,10 +19,12 @@ import com.zr.dao.impl.TeacherDaoImpl;
 import com.zr.service.TeacherService;
 import com.zr.service.impl.TeacherServiceImpl;
 
+
 import net.sf.json.JSONObject;
 
 public class FileUploadAction extends HttpServlet {
     TeacherService tea = new TeacherServiceImpl();
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
@@ -31,14 +33,15 @@ public class FileUploadAction extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		resp.setContentType("text/html; charset=UTF-8");
-        resp.setCharacterEncoding("utf8");
-        int id ;
-        
+		  resp.setContentType("text/html; charset=UTF-8");
+      resp.setCharacterEncoding("utf8");
+      int id ;
+       //System.out.println(111);
 		DiskFileItemFactory dfif = new DiskFileItemFactory();
 
 		ServletFileUpload sfu = new ServletFileUpload(dfif);
         String username= "";
+
         String realfile = "";
         JSONObject json = new JSONObject();
 		try {

@@ -57,7 +57,7 @@ public class SelectStudentFormAction extends HttpServlet {
 		request.setCharacterEncoding("utf8");
 		HttpSession session = request.getSession();
 		int eid = (int) session.getAttribute("e_id");
-		System.out.println("qwe+"+eid);
+		//System.out.println("qwe+"+eid);
 		List list = stuservice.selectStudentFormByEid(eid);
 		int count = rpservice.selectReplyProcessAcount(eid);
 		JSONObject json = new JSONObject();
