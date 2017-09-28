@@ -9,12 +9,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import com.zr.dao.StudentDao;
+import com.zr.dao.impl.StudentDaoImpl;
 import com.zr.service.upFileService;
 import com.zr.service.impl.upFileServiceImpl;
 import com.zr.util.Office2Swf;
@@ -32,8 +35,16 @@ public class Student_SubmitOpenReportAction extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//获取id
+		HttpSession session = req.getSession();
+		Integer s_id= (Integer)session.getAttribute("e_id");
+		StudentDao dao = new StudentDaoImpl();
+		String s_num= dao.getStudentnumBys_id(s_id);
+		//获取文件属性
+		String l_id = req.getParameter("dept");
 		//为每个用户创建3个文件夹，方便用来存储他们的头像和微博内容
-		File file = new File("F:/eclipsejava/eclipse/apache-tomcat-7.0.68/webapps/graduation_project/upload/631406010426");
+		String savepath = this.getServletContext().getRealPath("/upload/" +s_num+ "/l_id");
+		File file = new File(savepath);
 		//File file1 = new File("E:\\JAVA-my\\personal_diary\\WebRoot\\\\xc");
 		//File file2 = new File("E:\\JAVA-my\\personal_diary\\WebRoot\\\\Blog");
 		

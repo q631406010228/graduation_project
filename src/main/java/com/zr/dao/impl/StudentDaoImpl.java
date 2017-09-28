@@ -264,5 +264,28 @@ public class StudentDaoImpl implements StudentDao{
 		}
 		return null;
 	}
-
+	@Override
+	public String getStudentnumBys_id(int s_id) {
+		//创建连接
+		Connection con = DBConnection.getConnection();
+		//数据库语句
+		StringBuffer sql = new StringBuffer();
+		sql.append("select s_num from student where s_id=?");
+		try {
+			//预编译
+			PreparedStatement pre = (PreparedStatement)con.prepareStatement(sql.toString());
+			//赋值
+			pre.setInt(1, s_id);
+			//取值
+			ResultSet set = pre.executeQuery();
+			if(set.next()){
+				Integer studentNum=set.getInt("s_num");
+				return studentNum.toString();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
