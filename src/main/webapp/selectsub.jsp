@@ -33,25 +33,25 @@
 		$('#subname').textbox({
 			readonly:true,
 			height : 30,
-			value:''
+			//value:''
 		})
 		$('#subcontent').textbox({
 			readonly:true,
 			multiline:true,
 			height : 60,
-			value:''
+			//value:''
 		})
 		$('#subcount').textbox({
 			readonly:true,
 			multiline:false,
 			height : 30,
-			value:''
+			//value:''
 		})
 		$('#state').textbox({
 			readonly:true,
 			multiline:false,
 			height : 30,
-			value:''
+			//value:''
 		})
 	})
 </script>

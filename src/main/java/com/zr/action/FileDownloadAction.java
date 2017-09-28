@@ -3,12 +3,11 @@ package com.zr.action;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.IOUtils;
 
@@ -30,8 +29,10 @@ public class FileDownloadAction extends HttpServlet {
 		String stuFiles = req.getParameter("path1");
 
 		String paperFile = req.getParameter("path2");
-
-		String filepath = this.getServletContext().getRealPath("/upload/paper/" + stuFiles + "/" + paperFile);
+        HttpSession session = req.getSession();
+		int eid = (int)session.getAttribute("e_id");
+		String teacherFile = "teacher" +eid;
+		String filepath = this.getServletContext().getRealPath("/upload/"+teacherFile+"/paper/" + stuFiles + "/" + paperFile);
 		File file = new File(filepath);
 		System.out.println(file.toString());
 		JSONObject json = new JSONObject();
