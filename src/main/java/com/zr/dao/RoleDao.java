@@ -25,6 +25,11 @@ public interface RoleDao {
 	public String getfidsByRid(int r_id);
 
 	String getStafffidsByStaffID(int staffid);
+	
+	public List<String> getAllRolesname();
+
+	public int getRidByRname(String rname);
+	
      
 
 }

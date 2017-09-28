@@ -58,12 +58,12 @@ public class NoticeSoket extends HttpServlet{
 	*/
 	@OnOpen
 	public void onOpen(Session session) {
-		System.out.println("客户端连接成功");
+		/*System.out.println("客户端连接成功");*/
 	}
 
 	/** 当一个用户断开连接时所调用的方法 */
 	@OnClose
 	public void onClose() { 
-		System.out.println("客户端关闭");
+		/*System.out.println("客户端关闭");*/
 	}
 }
