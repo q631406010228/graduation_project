@@ -264,6 +264,7 @@ public class StudentDaoImpl implements StudentDao{
 		}
 		return null;
 	}
+	
 	@Override
 	public String getStudentnumBys_id(int s_id) {
 		//创建连接
@@ -287,5 +288,27 @@ public class StudentDaoImpl implements StudentDao{
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	
+	@Override
+	public List<Integer> getStudentScore(int cid) {
+		// TODO Auto-generated method stub
+		StringBuffer sql = new StringBuffer();
+		List<Integer> list = new ArrayList<Integer>();
+		sql.append("select score from student where c_id =?");
+		Connection con = DBConnection.getConnection();
+		try {
+			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
+			pst.setInt(1, cid);
+			ResultSet re = pst.executeQuery();
+			while(re.next()){
+				list.add(re.getInt("score"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
 	}
 }

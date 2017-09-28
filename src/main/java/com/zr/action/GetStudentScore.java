@@ -2,7 +2,7 @@ package com.zr.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.zr.model.Student;
 import com.zr.service.StudentService;
 import com.zr.service.impl.StudentServiceImpl;
 
@@ -20,21 +19,16 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 /**
- * Servlet implementation class SelectStudentByEid
+ * Servlet implementation class GetStudentScore
  */
-/**
- * 通过选题发布教师查询学生信息action层
- * @author 欧小峰
- *
- */
-@WebServlet("/SelectStudentByEid")
-public class SelectStudentByEidAction extends HttpServlet {
+@WebServlet("/getStudentScore")
+public class GetStudentScore extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    StudentService stuservice = new StudentServiceImpl();   
+    StudentService stuservice = new StudentServiceImpl();
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SelectStudentByEidAction() {
+    public GetStudentScore() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -54,20 +48,51 @@ public class SelectStudentByEidAction extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-
 		HttpSession session = request.getSession();
-
-		int eid = (int) session.getAttribute("e_id");
-		List<Student> list = stuservice.selectStudentByEid(eid);
+		int cid = (int) session.getAttribute("c_id");
+		List<String> list1 = new ArrayList<>();
+		list1.add("90~100");
+		list1.add("80~90");
+		list1.add("70~80");
+		list1.add("60~70");
+		list1.add("60以下");
+		List<Integer> list2 = new ArrayList<>();
+		List<Integer> list = stuservice.getStudentScore(cid);
+		int count1 = 0;
+		int count2 = 0;
+		int count3 = 0;
+		int count4 = 0;
+		int count5 = 0;
+		for (int i = 0; i < list.size(); i++) {
+			if(list.get(i)<=100 && list.get(i)>90){
+				count1++;
+			}else if(list.get(i)<=90 && list.get(i)>80){
+				count2++;
+			}
+			else if(list.get(i)<=80 && list.get(i)>70){
+				count3++;
+			}
+			else if(list.get(i)<=70 && list.get(i)>=60){
+				count4++;
+			}
+			else if(list.get(i)<60){
+				count5++;
+			}
+		}
+		list2.add(count1);
+		list2.add(count2);
+		list2.add(count3);
+		list2.add(count4);
+		list2.add(count5);
 		JSONObject json = new JSONObject();
 		JSONArray js = new JSONArray();
+		//json.put("categories", list1);
+		json.put("categories", list1);
+		json.put("data", list2);
+		//js.add(list2);
 		PrintWriter pw = response.getWriter();
-		for (int i = 0; i < list.size(); i++) {
-			json.put("id", list.get(i).getSid());
-			json.put("text", list.get(i).getSname());
-			js.add(json);
-		}
-		pw.write(js.toString());
+		pw.write(json.toString());
+		System.out.println(json.toString());
 	}
 
 }
