@@ -26,6 +26,8 @@ public class SaveAction extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		 resp.setCharacterEncoding("utf8");
+		 req.setCharacterEncoding("utf-8");
 		int flag = Integer.parseInt(req.getParameter("flag"));
 		System.out.println(flag);
 		System.out.println(req.getParameter("id"));
