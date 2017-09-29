@@ -387,7 +387,7 @@ public class TeacherDaoImpl implements TeacherDao {
 		StringBuffer sql = new StringBuffer();
 		Connection con = DBConnection.getConnection();
 		List<JSONObject> list = new ArrayList<JSONObject>();
-		sql.append("select p.lw_name,p.s_id,s.s_num,s.s_name,p.lw_state,p.lw_operate,p.lw_count,p.lw_backload from paper p ");
+		sql.append("select p.lw_id, p.lw_name,p.s_id,s.s_num,s.s_name,p.lw_state,p.lw_operate,p.lw_backload from paper p ");
 		sql.append("join student s ");
 		sql.append("on s.s_id = p.s_id ");
 		sql.append("join sub b ");
@@ -406,13 +406,14 @@ public class TeacherDaoImpl implements TeacherDao {
 				String lwname =st.getString("lw_name");
 				System.out.println(lwname);
 				//Paper p= new Paper();
+				json.put("lwid", st.getInt("lw_id"));
 				json.put("lwname","<a href ="+"\""+"/graduation_project/downloadfile?path1="+snum+"&path2="+lwname+"\""+">"+lwname+"</a>");
 				json.put("sid", st.getInt("s_id"));
 				json.put("snum", snum);
 				
 				json.put("sname",st.getString("s_name"));
 				json.put("lwstate",st.getString("lw_state"));
-				json.put("lwcount", st.getInt("lw_count"));
+				
 				json.put("lwoperate", st.getString("lw_operate"));
 				json.put("lwbackload",st.getString("lw_backload"));
 			    list.add(json);	

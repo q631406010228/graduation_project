@@ -24,16 +24,22 @@
 			pagination:true,
 		    pageSize:10,
 		    pageList:[10,20,30,40,50,60],
-			title:'查看学生论文',
+			title:'查看学生论文(双击记录论文批复状态)',
+			 rowStyler: function(index,row){
+				if (row.lwstate=="未批复"){
+					return 'color:red;';
+
+				}
+				}, 
+
 			columns : [ [ 
+                {field:'lwid',title:'论文id',width:100},
 			    {field:'lwname',title:'文件名',width:100},    
 			    {field:'sid',title:'学生id',width:100}, 
 			    {field:'snum',title:'学生学号',width:100}, 
 			    {field:'sname',title:'学生姓名',width:100},              
 			    {field:'lwstate',title:'状态',width:100},
-			    {field:'lwcount',title:'上传次数',width:100},
-			    {field:'lwoperate',title:'审核',width:100},
-			    {field:'lwbackload',title:'批复文件',width:100,editor:{
+			    {field:'lwoperate',title:'批复',width:100,editor:{
 	            	type:'combobox',
 	            	options:{
 	                	url:'checkpaper',
@@ -43,15 +49,41 @@
 	                	method:'post',
 	                	required:true,
 	            		}
-	    			}
-	    		}
+	    			}},
+			    {field:'lwbackload',title:'批复文件',width:100}
 			] ],
 			onDblClickRow: function(index,value){
 				$(this).datagrid('beginEdit', index);
-				$(this).datagrid('getEditors', index);
 				
 			},
-
+			onAfterEdit:function(index,row,changes){
+				$(this).datagrid('getEditors', index);
+				$(this).datagrid('beginEdit', index);
+				var ed = $("#dg").datagrid('getEditors',index);
+				var lwid = row.lwid;
+				var state = $(ed[0].target).data('textbox').options.value;
+				//$(this).datagrid('endEdit', index);
+				$.ajax({
+					url:"check",
+					data:"lwid="+lwid+"&state="+state,
+					type:"post",
+					dataType : 'json',
+					success:function(data){
+						if(data.ok != "1"){
+							$.messager.alert('提示',"分配失败",'info',function(){})
+						}else{
+							$.messager.alert('提示',"分配成功",'info',function(){
+								$('#tb').datagrid('reload');
+							})
+						}
+			        }
+				})
+				
+			},
+			onClickRow: function(index,value){
+				$(this).datagrid('endEdit', index);
+				
+			},
 		});
 
 	});
