@@ -24,7 +24,7 @@ public class ShowReplyMission extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println(222);
+		//System.out.println(222);
 		req.setCharacterEncoding("utf8");
 		resp.setCharacterEncoding("utf-8");
 		JSONObject json = tea.showReplymisson();

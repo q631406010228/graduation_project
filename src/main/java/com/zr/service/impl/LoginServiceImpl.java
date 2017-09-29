@@ -19,8 +19,8 @@ import net.sf.json.JSONObject;
 */
 public class LoginServiceImpl {
 	public JSONObject getUserIdByUsernum(String user_type, String ename, String epsw) {
-		System.out.println(
-				"进入LoginService。getUserIdByUsernum方法，获得的参数user_type：" + user_type + "ename " + ename + "epsw:" + epsw);
+	/*	System.out.println(
+				"进入LoginService。getUserIdByUsernum方法，获得的参数user_type：" + user_type + "ename " + ename + "epsw:" + epsw);*/
 		// 创建各表对象
 		Staff staff = new Staff();
 		Student student = new Student();
@@ -39,7 +39,7 @@ public class LoginServiceImpl {
 			// 学生
 			Integer snum = new Integer(ename);
 			student = studentdao.getStudent(snum,epsw);
-            System.out.println("LoginServiceImpl学生中 "+student);
+            //System.out.println("LoginServiceImpl学生中 "+student);
         	if (student.getSpsw()== null) {
 				// 用户不存在
 				json.put("ok", false);
@@ -84,7 +84,7 @@ public class LoginServiceImpl {
 				// 管理员
 				Integer unum = new Integer(ename);				
 				user = userdao.getUser(unum,epsw);
-	            System.out.println("LoginServiceImpl管理员中 "+user);
+	            //System.out.println("LoginServiceImpl管理员中 "+user);
 	        	if (user.getUpsw()== null) {
 					// 用户不存在
 					json.put("ok", false);
@@ -102,7 +102,7 @@ public class LoginServiceImpl {
 					json.put("e_id", user.getUid());
 				}
 			}
-		System.out.println("LoginService。getUserIdByUsernum方法返回的结果" + json);
+		//System.out.println("LoginService。getUserIdByUsernum方法返回的结果" + json);
 		
 		return json;
 	}

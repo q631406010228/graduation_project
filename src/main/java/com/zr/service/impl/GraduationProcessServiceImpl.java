@@ -11,14 +11,14 @@ public class GraduationProcessServiceImpl implements GraduationProcessService{
 	com.zr.dao.impl.GraduationProcessDaoImpl gpd = new com.zr.dao.impl.GraduationProcessDaoImpl();
 
 	@Override
-	public void setGraduationProcess(String gpContent, String graStartTime, String graEndTime) {
-		gpd.setGraduationProcess(gpContent, graStartTime, graEndTime);
+	public void setGraduationProcess(String gpContent, String graStartTime, String graEndTime,int cID) {
+		gpd.setGraduationProcess(gpContent, graStartTime, graEndTime,cID);
 	}
 
 	@Override
-	public List<GraduationProcess> getGraduationProcess() {
+	public List<GraduationProcess> getGraduationProcess(int cID) {
 		List<GraduationProcess> gps = new LinkedList<GraduationProcess>();
-		gps = gpd.getGraduationProcess();
+		gps = gpd.getGraduationProcess(cID);
 		return gps;
 	}		
 

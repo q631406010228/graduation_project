@@ -40,7 +40,7 @@ public JSONArray getAllLiteraturelx() {
 		json.put("wxlx_name", wxlx_name);
 		json_arr.add(json);
 		}
-		System.out.println("LiteraturelxDaoImpl.getAllLiteraturelx.获取的文件类型信息json_arr= "+json_arr);
+		//System.out.println("LiteraturelxDaoImpl.getAllLiteraturelx.获取的文件类型信息json_arr= "+json_arr);
 		return json_arr;
 	 } catch (SQLException e) {
 		// TODO Auto-generated catch block

@@ -92,7 +92,7 @@ public class GetStudentScore extends HttpServlet {
 		//js.add(list2);
 		PrintWriter pw = response.getWriter();
 		pw.write(json.toString());
-		System.out.println(json.toString());
+		//System.out.println(json.toString());
 	}
 
 }

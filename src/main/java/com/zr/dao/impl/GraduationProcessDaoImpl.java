@@ -19,11 +19,11 @@ public class GraduationProcessDaoImpl implements GraduationProcessDao{
 
 	//保存毕业设计进程信息
 	@Override
-	public void setGraduationProcess(String gpContent,String graStartTime,String graEndTime) {
+	public void setGraduationProcess(String gpContent,String graStartTime,String graEndTime,int cID) {
 		SimpleDateFormat sdf =   new SimpleDateFormat( "yyyy-MM-dd" );	//日期的格式
 		Connection conn = DBConnection.getConnection();
 		StringBuffer s = new StringBuffer();
-		s.append("insert into graduation_process(gp_starttime,gp_endtime,gp_content) values(?,?,?);");
+		s.append("insert into graduation_process(gp_starttime,gp_endtime,gp_content,c_id) values(?,?,?,?);");
 		try {
 			String[] start = graStartTime.split("/");	//将easyuir的datebox的日期转化为mysql的日期
 			StringBuffer s1 = new StringBuffer();
@@ -41,6 +41,7 @@ public class GraduationProcessDaoImpl implements GraduationProcessDao{
 			}
 			ps.setDate(2, new java.sql.Date(sdf.parse(s1.toString()).getTime()));
 			ps.setString(3, gpContent);
+			ps.setInt(4, cID);
 			ps.executeUpdate();	
 			ps.close();
 		} catch (SQLException e) {
@@ -52,15 +53,16 @@ public class GraduationProcessDaoImpl implements GraduationProcessDao{
 	
 	//查询比当前时间前的毕业设计进程
 	@Override
-	public List<GraduationProcess> getGraduationProcess() {
+	public List<GraduationProcess> getGraduationProcess(int cID) {
 		List<GraduationProcess> gps = new LinkedList<GraduationProcess>();
 		Connection conn = DBConnection.getConnection();
 		StringBuffer s = new StringBuffer();
 		s.append("select gp_starttime,gp_endtime,gp_content ");
 		s.append("from graduation_process ");
-		s.append("where gp_starttime < current_date() order by gp_starttime asc");
+		s.append("where gp_starttime < current_date() and c_id = ? order by gp_starttime asc ");
 		try {
 			PreparedStatement ps = conn.prepareStatement(s.toString());
+			ps.setInt(1, cID);
 			ResultSet re = ps.executeQuery();
 			while(re.next()){
 				GraduationProcess gp = new GraduationProcess();
