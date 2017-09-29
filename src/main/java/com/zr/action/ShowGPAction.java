@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.zr.model.GraduationProcess;
 import com.zr.service.GraduationProcessService;
@@ -28,7 +29,9 @@ public class ShowGPAction extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<GraduationProcess> gps = new LinkedList<GraduationProcess>();
-		gps = GPS.getGraduationProcess();
+		HttpSession session = req.getSession();
+		int cID = (int) session.getAttribute("c_id");
+		gps = GPS.getGraduationProcess(cID);
 		JSONObject jb = new JSONObject();
 		jb.put("gps", gps);
 		resp.setCharacterEncoding("UTF-8");

@@ -42,7 +42,7 @@ public class Student_SubmitOpenReportAction extends HttpServlet{
 		//获取文件属性
 		/*Integer l_id =new Integer(req.getParameter("dept")) ;*/
 		Integer l_id =1;
-		System.out.println("l_id:"+l_id);
+		//System.out.println("l_id:"+l_id);
 		//为每个用户创建3个文件夹，方便用来存储他们的头像和微博内容
 		String savepath = this.getServletContext().getRealPath("/upload/" +s_num+ "/teacher/"+l_id);
 		File file = new File(savepath);

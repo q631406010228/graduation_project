@@ -35,7 +35,7 @@ public class FunctionServiceImpl implements FunctionService {
 	// 通过fids获取方法树
 
 	JSONArray j = fdao.getCurrentAllfunctionObject(-1, fids);
-	System.out.println("FunctionServiceImpl.getStaffFunction.JSONArray" + j);
+	//System.out.println("FunctionServiceImpl.getStaffFunction.JSONArray" + j);
 	return j;
 
 	}

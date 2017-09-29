@@ -22,14 +22,14 @@ public class SubServiceImpl implements SubService{
 			 //通过学院id，来获取对应的全部信息
 			 JSONArray json_arr = new JSONArray();
 			 json_arr=subdao.selectSubByTeacherEcol(c_id);
-			 System.out.println("SubServiceImpl.selectSubBySid.json_arr"+json_arr);
+			 //System.out.println("SubServiceImpl.selectSubBySid.json_arr"+json_arr);
 			return json_arr;
 		}
 
 		 
 		 @Override
 		public synchronized boolean addSubToStudent(int s_id, int sub_id) {
-			 System.out.println("进入SubServiceImpl.addSubToStudent,s_id="+s_id+"sub_id"+sub_id);
+			 //System.out.println("进入SubServiceImpl.addSubToStudent,s_id="+s_id+"sub_id"+sub_id);
 			//先判断已选人数是否达到最大容量，若没有，则将选题的已选人数+1（用到线程安全）
 			 Sub sub = new Sub();
 			sub= subdao.getSelectnumSub_countBySubid(sub_id);
@@ -37,7 +37,7 @@ public class SubServiceImpl implements SubService{
 			int selectNumber = sub.getSubcount()-sub.getSelectnum();
 			if(selectNumber>0){//可以添加
 				 //将选题的id添加到学生表中
-				System.out.println("选择该课题的剩余人数SubServiceImpl.addSubToStudent.selectNumber="+selectNumber);
+				//System.out.println("选择该课题的剩余人数SubServiceImpl.addSubToStudent.selectNumber="+selectNumber);
 				StudentDao studentDao = new StudentDaoImpl();
 				boolean b1= studentDao.setSubidBySid(sub_id, s_id);
 				if(b1){//添加成功
@@ -47,7 +47,7 @@ public class SubServiceImpl implements SubService{
 					boolean b2= subdao.setSelectnumByStudentNum(studentNumber, sub_id);
 					if(b2){
 						//设置结果成功，选题操作结束
-						System.out.println("SubServiceImpl.addSubToStudent.b1(将选题的id添加到学生表中)="+b1+"  b2(设置选题的已选人数)="+b2);
+						//System.out.println("SubServiceImpl.addSubToStudent.b1(将选题的id添加到学生表中)="+b1+"  b2(设置选题的已选人数)="+b2);
 						return true;
 					}
 				}

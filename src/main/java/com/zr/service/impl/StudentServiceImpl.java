@@ -44,5 +44,11 @@ public class StudentServiceImpl implements StudentService{
 	public void updateStudent(int num, String name, int cID, int mID, int preNum) {
 		studao.updateStudent(num, name, cID, mID, preNum);
 	}
+	@Override
+	public List<Integer> getStudentScore(int cid) {
+		// TODO Auto-generated method stub
+		List list = studao.getStudentScore(cid);
+		return list;
+	}
 
 }

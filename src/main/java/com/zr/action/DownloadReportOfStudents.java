@@ -38,7 +38,7 @@ public class DownloadReportOfStudents extends HttpServlet {
 		String teacherFile = "teacher" +eid;
 		String filepath = this.getServletContext().getRealPath("/upload/"+teacherFile+"/report/" + stuFiles + "/" +reportFile);
 		File file = new File(filepath);
-		System.out.println(file.toString());
+		//System.out.println(file.toString());
 		JSONObject json = new JSONObject();
 		if (!file.exists()) {
 			resp.getWriter().print("你要下载的文件不存在");

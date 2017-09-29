@@ -33,7 +33,7 @@ public class FileDownloadAction extends HttpServlet {
         HttpSession session = req.getSession();
 		String filepath = this.getServletContext().getRealPath("/upload/" + stuFiles + "/teacher/7/"+ paperFile);
 		File file = new File(filepath);
-		System.out.println(file.toString());
+		//System.out.println(file.toString());
 		JSONObject json = new JSONObject();
 		if (!file.exists()) {
 			resp.getWriter().print("你要下载的文件不存在");

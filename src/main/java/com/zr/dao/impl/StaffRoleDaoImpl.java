@@ -16,7 +16,7 @@ import com.zr.dao.StaffRoleDao;
 public class StaffRoleDaoImpl implements StaffRoleDao {
 	@Override
 	public int getRidByEid(int e_id) {
-		System.out.println("StaffRoleDaoImpl.getRidByEid.e_id" + e_id);
+		//System.out.println("StaffRoleDaoImpl.getRidByEid.e_id" + e_id);
 		StringBuffer sql = new StringBuffer();
 		sql.append("select r_id from staff_role ");
 		sql.append("where e_id = ? ");
@@ -27,7 +27,7 @@ public class StaffRoleDaoImpl implements StaffRoleDao {
 			ResultSet res = pst.executeQuery();
 			if (res.next()) {
 				int r_id = res.getInt("r_id");
-				System.out.println("StaffRoleDaoImpl.getRidByEid.r_id" + r_id);
+				//System.out.println("StaffRoleDaoImpl.getRidByEid.r_id" + r_id);
 				return r_id;
 			}
 		} catch (SQLException e) {
@@ -42,7 +42,7 @@ public class StaffRoleDaoImpl implements StaffRoleDao {
 		StringBuffer sql = new StringBuffer();
 		sql.append("insert into staff_role(e_id,r_id)  ");
 		sql.append("values(?,?);");
-		System.out.println(eid);
+		//System.out.println(eid);
 		Connection con = DBConnection.getConnection();
 		try {
 			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
@@ -57,7 +57,7 @@ public class StaffRoleDaoImpl implements StaffRoleDao {
 		StringBuffer sql = new StringBuffer();
 		sql.append("insert into staff_role(e_id,r_id)  ");
 		sql.append("values(?,?);");
-		System.out.println(eid);
+		//System.out.println(eid);
 		Connection con = DBConnection.getConnection();
 		try {
 			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());

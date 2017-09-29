@@ -22,7 +22,7 @@ public class StaffDaoImpl implements StaffDao {
 
 	@Override
 	public Staff getStaff(String ename, String epsw) {
-		System.out.println("进入StaffDaoImpl。getStaff方法 ，获取 参数ename：" + ename + "和epsw：" + epsw);
+		//System.out.println("进入StaffDaoImpl。getStaff方法 ，获取 参数ename：" + ename + "和epsw：" + epsw);
 		// 创建职工对象
 		Staff staff = new Staff();
 		// 定义数据库语句
@@ -50,7 +50,7 @@ public class StaffDaoImpl implements StaffDao {
 				staff.setEpsw(e_psw);
 				int c_id = re.getInt("e_col");
 				staff.setEcol(c_id);
-				System.out.println("数据库中获取的结果e_id:" + e_id + " e_name:" + e_name + " e_psw:" + e_psw+"c_id"+c_id);
+				//System.out.println("数据库中获取的结果e_id:" + e_id + " e_name:" + e_name + " e_psw:" + e_psw+"c_id"+c_id);
 			}
 			// 将职工对象返回
 			return staff;
