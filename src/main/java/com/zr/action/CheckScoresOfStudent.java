@@ -34,9 +34,10 @@ public class CheckScoresOfStudent extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		 HttpSession session = req.getSession();
 	    int eid = (int)session.getAttribute("e_id");
-		
+		int page = Integer.parseInt(req.getParameter("page"));
+		int pageSize =  Integer.parseInt(req.getParameter("rows"));
 		resp.setCharacterEncoding("utf8");
-		JSONObject json = tea.getScoresOfStu(eid);
+		JSONObject json = tea.getScoresOfStu(eid,page,pageSize);
 		PrintWriter pw = resp.getWriter();
 		pw.write(json.toString());
 	}	

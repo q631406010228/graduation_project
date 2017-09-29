@@ -20,17 +20,19 @@
 	$(function() {
 		$('#dg').datagrid({
 			url : 'showstudentpapers',
+			pagination:true,
+		    pageSize:10,
+		    pageList:[10,20,30,40,50,60],
 			title:'查看学生论文',
-			columns : [ [ {
-				field : 'snum',
-				title : '学生学号',
-				width : 100
-			}, {
-				field : 'filename',
-				title : '文件名称',
-				width : 100
-			},
-
+			columns : [ [ 
+			    {field:'lwname',title:'文件名',width:100},    
+			    {field:'sid',title:'学生id',width:100}, 
+			    {field:'snum',title:'学生学号',width:100}, 
+			    {field:'sname',title:'学生姓名',width:100},              
+			    {field:'lwstate',title:'状态',width:100},
+			    {field:'lwcount',title:'上传次数',width:100},
+			    {field:'lwoperate',title:'审核',width:100},
+			    {field:'lwbackload',title:'批复文件',width:100},
 			] ]
 		});
 

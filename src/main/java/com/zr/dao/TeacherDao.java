@@ -16,8 +16,9 @@ public interface TeacherDao {
 	 * 获取所有成绩
 	 * @return json数据对象
 	 */
-    public JSONObject selectAllScores(int eid);
+    public JSONObject selectAllScores(int eid,int page,int pageSize);
     
+    public int getstudentcount(int eid);
     /**
      * 添加学生成绩    
      * @param snum 学生学号
@@ -83,4 +84,41 @@ public interface TeacherDao {
 	 * @return 教师编号
 	 */
 	public int selectTeacherEidByEnum(int e_num);
+	
+	/**
+	 * 通过老师id获取其所有的学生id
+	 * @param eid
+	 * @return
+	 */
+	public int[] selectSidsByEid(int eid);
+	/**
+	 * 写入学生论文
+	 */
+	public void getStudentPapers();
+	
+	/**
+	 * 获取该老师学生的所有论文
+	 * @param eid
+	 * @param page
+	 * @param pageSize
+	 * @return
+	 */
+	public List<JSONObject>getAllPapersOfStudent(int eid, int page,int pageSize);
+	
+	/**
+	 * 文论总数
+	 * @param eid
+	 * @return
+	 */
+	public int getPapersCount(int eid);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

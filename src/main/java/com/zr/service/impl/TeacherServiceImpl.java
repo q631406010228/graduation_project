@@ -5,20 +5,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.zr.dao.StaffRoleDao;
-import com.zr.dao.SubDao;
 import com.zr.dao.TeacherDao;
 import com.zr.dao.impl.StaffRoleDaoImpl;
 import com.zr.dao.impl.SubDaoImpl;
-
-import java.util.List;
 
 import javax.websocket.Session;
 
 import com.zr.dao.TeacherDao;
 import com.zr.dao.impl.TeacherDaoImpl;
+import com.zr.model.Paper;
 import com.zr.model.Staff;
 import com.zr.service.TeacherService;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 public class TeacherServiceImpl implements TeacherService{
@@ -30,11 +29,12 @@ public class TeacherServiceImpl implements TeacherService{
 
 	
 	@Override
-	public JSONObject getScoresOfStu(int eid) {
+	public JSONObject getScoresOfStu(int eid, int page, int pageSize) {
 		
-		
+		int count = tdao.getstudentcount(eid);
 		JSONObject json = new JSONObject();
-		json = tdao.selectAllScores(eid);
+		json = tdao.selectAllScores(eid,page,pageSize);
+		json.put("total", count);
 		return json;
 	}
 	@Override
@@ -98,6 +98,25 @@ public class TeacherServiceImpl implements TeacherService{
 		int eid = tdao.selectTeacherEidByEnum(emnum);
 		srdao.insertTeacerRole(eid);
 		return i;
+	}
+	@Override
+	public int[] getSidsOfStudentByEid(int eid) {
+		int[] sids = tdao.selectSidsByEid(eid);
+		return sids;
+	}
+	@Override
+	public void insertStudentPapers() {
+		tdao.getStudentPapers();
+		
+	}
+	@Override
+	public JSONObject showPapersofStudent(int eid,int page, int pageSize) {
+		int count =tdao.getPapersCount(eid);
+		List<JSONObject> list = tdao.getAllPapersOfStudent(eid, page, pageSize);
+		JSONObject json = new JSONObject();
+		json.put("total", count);
+		json.put("rows", list);
+		return json;
 	}
 }
 

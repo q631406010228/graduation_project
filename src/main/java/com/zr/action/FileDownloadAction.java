@@ -29,10 +29,9 @@ public class FileDownloadAction extends HttpServlet {
 		String stuFiles = req.getParameter("path1");
 
 		String paperFile = req.getParameter("path2");
+		System.out.println(paperFile);
         HttpSession session = req.getSession();
-		int eid = (int)session.getAttribute("e_id");
-		String teacherFile = "teacher" +eid;
-		String filepath = this.getServletContext().getRealPath("/upload/"+teacherFile+"/paper/" + stuFiles + "/" + paperFile);
+		String filepath = this.getServletContext().getRealPath("/upload/" + stuFiles + "/teacher/7/"+ paperFile);
 		File file = new File(filepath);
 		System.out.println(file.toString());
 		JSONObject json = new JSONObject();
