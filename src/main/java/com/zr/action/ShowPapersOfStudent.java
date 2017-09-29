@@ -36,7 +36,7 @@ public class ShowPapersOfStudent extends HttpServlet {
 		int pageSize =  Integer.parseInt(req.getParameter("rows"));
 		JSONObject json =new JSONObject();
 		//在论文表中插入学生论文信息
-		tea.insertStudentPapers();
+		//tea.insertStudentPapers();
 		//配置网页表格
 		json = tea.showPapersofStudent(eid, page, pageSize);
 		PrintWriter pw = resp.getWriter();

@@ -18,6 +18,7 @@
 </head>
 <script type="text/javascript">
 	$(function() {
+		
 		$('#dg').datagrid({
 			url : 'showstudentpapers',
 			pagination:true,
@@ -32,8 +33,25 @@
 			    {field:'lwstate',title:'状态',width:100},
 			    {field:'lwcount',title:'上传次数',width:100},
 			    {field:'lwoperate',title:'审核',width:100},
-			    {field:'lwbackload',title:'批复文件',width:100},
-			] ]
+			    {field:'lwbackload',title:'批复文件',width:100,editor:{
+	            	type:'combobox',
+	            	options:{
+	                	url:'checkpaper',
+	            		valueField:'id',    
+	     		    	textField:'text',
+	     		    	prompt :'请审核',
+	                	method:'post',
+	                	required:true,
+	            		}
+	    			}
+	    		}
+			] ],
+			onDblClickRow: function(index,value){
+				$(this).datagrid('beginEdit', index);
+				$(this).datagrid('getEditors', index);
+				
+			},
+
 		});
 
 	});

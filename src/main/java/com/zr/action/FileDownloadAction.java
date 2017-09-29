@@ -23,11 +23,11 @@ public class FileDownloadAction extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		req.setCharacterEncoding("utf8");
+		
 
 		resp.setCharacterEncoding("utf8");
 		String stuFiles = req.getParameter("path1");
-
+		req.setCharacterEncoding("utf8");
 		String paperFile = req.getParameter("path2");
 		System.out.println(paperFile);
         HttpSession session = req.getSession();
