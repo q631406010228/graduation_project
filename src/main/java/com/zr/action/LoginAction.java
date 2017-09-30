@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.zr.service.LoginService;
 import com.zr.service.ValidateService;
 import com.zr.service.impl.LoginServiceImpl;
 import com.zr.service.impl.ValidateServiceImpl;
@@ -45,7 +46,7 @@ public class LoginAction extends HttpServlet{
 		//System.out.println("ename:" + ename + "epsw:" + epsw + "dept:" + dept);
 
 		// 创建登录服务对象，获取数据库中返回的信息
-		LoginServiceImpl login = new LoginServiceImpl();
+		LoginService login = new LoginServiceImpl();
 		JSONObject js = new JSONObject();
 		js = login.getUserIdByUsernum(dept,ename,epsw);
 

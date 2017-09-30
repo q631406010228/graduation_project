@@ -23,9 +23,20 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
+	$(function(){  
+		$('#depts').form({    
+		    url:'getdept',    
+		    onSubmit: function(){    
+		         
+		    },    
+		    success:function(data){    
+		          
+		    }    
+		});    
+		
 
-	$(function(){    
-	    $('#read').bind('click', function(){    
+	    $('#read').bind('click', function(){   
+	    	$('#depts').submit();  
 	       //在线预览
 	    	$('#ff').form('submit', {    
 	    	    url:'Student_SubmitOpenReport',
@@ -66,29 +77,24 @@ $(document).ready(function() {
 	    });    
 	});   */
 	
-
-
 	
 	$('#cc').combobox({    
 	    url:'getLiteraturelxName',    
 	    valueField:'id',    
 	    textField:'text'   
-	});
-		
+	}); 
 });
  
 </script>
 </head>
 <body>
+<form id='depts'  method="post">
+<label for="">文件类型选择:&nbsp;&nbsp;</label><input id="cc" name="dept" value="">
+</form>
+
 <form id='ff' enctype="multipart/form-data" method="post">
   		<input type="file" name="file"/>
-
-  		<label for="">文件类型选择:&nbsp;&nbsp;</label><input id="cc" name="dept" value="">
-
-  		<br>
-  		<br>
-  		<label for="">文件类型选择:&nbsp;&nbsp;</label><input id="cc" name="dept" value="1111">
-
+  		
   		<br>
   		<br>
   		<!-- <a id="upload" href="#" class="easyui-linkbutton" data-options="">上传</a>   --> 		

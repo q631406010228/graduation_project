@@ -10,6 +10,8 @@ import java.io.OutputStream;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.IOUtils;
+
 import com.zr.service.FileService;
 
 public class FileServiceImpl implements FileService {
@@ -20,9 +22,10 @@ public class FileServiceImpl implements FileService {
          File file = new File(path);
          // 取得文件名。
          String filename = file.getName();
+         System.out.println("下载文件的文件名："+filename);
          // 取得文件的后缀名。
          String ext = filename.substring(filename.lastIndexOf(".") + 1).toUpperCase();
-
+         System.out.println("下载文件的文件名的后缀："+ext);
          // 以流的形式下载文件。
          InputStream fis = new BufferedInputStream(new FileInputStream(path));
          byte[] buffer = new byte[fis.available()];
@@ -31,13 +34,16 @@ public class FileServiceImpl implements FileService {
          // 清空response
          response.reset();
          // 设置response的Header
-         response.addHeader("Content-Disposition", "attachment;filename=" + new String(filename.getBytes()));
+        
+		
+         response.addHeader("content-cisposition", "attachment;filename="+filename);
          response.addHeader("Content-Length", "" + file.length());
          OutputStream toClient = new BufferedOutputStream(response.getOutputStream());
          response.setContentType("application/octet-stream");
          toClient.write(buffer);
          toClient.flush();
          toClient.close();
+     //	response.getWriter().write("下载成功");
      } catch (IOException ex) {
          ex.printStackTrace();
      }

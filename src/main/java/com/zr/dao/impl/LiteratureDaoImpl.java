@@ -11,6 +11,9 @@ import com.zr.connection.DBConnection;
 import com.zr.dao.LiteratureDao;
 import com.zr.model.Literature;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
 public class LiteratureDaoImpl implements LiteratureDao{
 
 	@Override
@@ -78,7 +81,7 @@ public class LiteratureDaoImpl implements LiteratureDao{
 		Connection con = DBConnection.getConnection();
 		StringBuffer sql = new StringBuffer();
 		
-		sql.append("INSERT INTO literature VALUES(?,0,?,?,?); ");
+		sql.append("INSERT INTO literature VALUES(null,?,0,?,?,?);");
 		try {
 			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
 			pst.setString(1, wx_content);
@@ -96,6 +99,54 @@ public class LiteratureDaoImpl implements LiteratureDao{
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	@Override
+	public JSONArray getLiteratureBySid(Integer s_id) {
+		//连接数据库
+		Connection con = DBConnection.getConnection();
+		//创建数据库语句
+		StringBuffer sql = new StringBuffer();
+		
+		sql.append("select * from literature inner join literaturelx on literature.wxlx_id=literaturelx.id where literature.s_id=?");
+		try {
+			//预编译
+			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
+			//赋值
+			pst.setInt(1, s_id);
+			//创建json数组
+			JSONArray jsaon_arr=new JSONArray();
+			//获取值
+			ResultSet set = pst.executeQuery();
+			while(set.next())
+			{//将结果进行接收
+				
+				//创建json对象
+				JSONObject jsonObject= new JSONObject();
+				Integer wx_id= set.getInt("wx_id");
+				Integer wx_state=set.getInt("wx_state");
+				Integer wxlx_id=set.getInt("wxlx_id");
+				
+				String wx_content=set.getString("wx_content");
+				String wx_name=set.getString("wx_name");
+				String wxlx_name=set.getString("wxlx_name");
+				jsonObject.put("wx_id", wx_id);
+				jsonObject.put("wx_state", wx_state);
+				jsonObject.put("wxlx_id", wxlx_id);
+				jsonObject.put("wx_content", wx_content);
+				jsonObject.put("wx_name", wx_name);
+				jsonObject.put("wxlx_name", wxlx_name);
+				jsaon_arr.add(jsonObject);
+				
+			}
+			System.out.println("LiteratureDaoImpl.getLiteratureBySid.jsaon_arr"+jsaon_arr);
+			return jsaon_arr;
+				
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 }

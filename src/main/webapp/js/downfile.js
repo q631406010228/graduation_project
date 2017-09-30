@@ -4,38 +4,35 @@
 $(document).ready(function(){
 
 	$('#dg').datagrid({    
-	    url:'student_selectsub', 
+	    url:'Student_Selectliterature', 
 	  
-	    title:'学生信息列表',
+	    title:'学生信息列表(审核状态：0，未审核，1审核通过，2审核未通过)',
 	    columns:[[
 	        {field:'ck',title:'ck',checkbox:true,width:100},    
-	        {field:'wx_id',title:'选题的id',width:100,hidden:true},    
-	        {field:'wx_content',title:'选题',width:100},      
-	        {field:'wx_state',title:'选题内容',width:100}, 
-	        {field:'wxlx_id',title:'负责教师',width:100},      
-	        {field:'s_id',title:'限选人数',width:100}, 
-	        {field:'wx_name',title:'剩余人数',width:100}, 
+	        {field:'wx_id',title:'文献的id',width:100,hidden:true},    
+	        {field:'wx_content',title:'文献的路径',width:100,hidden:true},      
+	        {field:'wxlx_name',title:'文献类型',width:100}, 
+	        {field:'wx_name',title:'文件名',width:100}, 
+	        {field:'wx_state',title:'审核状态',width:100}, 
+	        {field:'wxlx_id',title:'文献类型id',width:100,hidden:true},      
 	        ]],
 		    toolbar: [{
 		    	
 					iconCls: 'icon-edit',
-					text:'确定',
+					text:'下载',
 					handler: function(){
 						var row  = $('#dg').datagrid('getSelected');
+						
 						$('#upwin').window('open');
 						alert("输出被选中行的信息"+row);
-						/*row.sub_id
-						$("#sub_name").val(row.sub_name);
-						$("#e_name").val(row.e_name);*/
-						
 						$('#ff').form('load',row);
 						$('#btn').one("click",function(){
 							$('#ff').form('submit', {    
-							    url:"AddStudentSubid",    
+							    url:"downfile",    
 							   dataType: "json",
 							    success: function(data){
 							    	alert(data);
-							    	var obj = eval("("+data+")");
+							    	//var obj = eval("("+data+")");
 							    	alertInfo(obj);
 							    	} 
 							    	
@@ -76,19 +73,12 @@ $(document).ready(function(){
 		
 		function alertInfo(data){
 			console.log(data);
-	    	if(!data){
-	    		$.messager.alert('警告','失败','info',function(){
+	    	
+	    		$.messager.alert('警告',data,'info',function(){
 		    		$('#ff').form('clear');
 		    		$('#upwin').window('close');
 		    		$('#dg').datagrid('reload');
 		    	}); 
-	    	}else{
-		    	$.messager.alert('警告','成功','info',function(){
-		    		$('#ff').form('clear');
-		    		$('#upwin').window('close');
-		    		$('#dg').datagrid('reload');
-		    	}); 
-	    	}
+	    	
 		}
 });
-	

@@ -7,6 +7,8 @@ import com.zr.dao.impl.LiteratureDaoImpl;
 import com.zr.model.Literature;
 import com.zr.service.LiteratureService;
 
+import net.sf.json.JSONArray;
+
 public class LiteratureServiceImpl implements LiteratureService{
 	LiteratureDao lidao = new LiteratureDaoImpl();
 	@Override
@@ -28,6 +30,15 @@ public class LiteratureServiceImpl implements LiteratureService{
 		LiteratureDao dao = new LiteratureDaoImpl();
 		Boolean result= dao.setLiteratureInfo(s_id, wxlx_id, wx_content, wx_name);
 		return result;
+	}
+	
+	@Override
+	public JSONArray getLiteratureBySid(Integer s_id) {
+		LiteratureDao dao=new LiteratureDaoImpl();
+		//创建json数组
+		JSONArray array=new JSONArray();
+		array=	dao.getLiteratureBySid(s_id);
+		return array;
 	}
 
 }
