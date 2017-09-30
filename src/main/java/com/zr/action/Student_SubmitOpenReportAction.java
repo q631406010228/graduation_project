@@ -3,12 +3,18 @@ package com.zr.action;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.zr.dao.StudentDao;
 import com.zr.dao.impl.StudentDaoImpl;
@@ -32,16 +38,19 @@ public class Student_SubmitOpenReportAction extends HttpServlet{
 	}
 	
 	@Override
+	@SuppressWarnings({"unchecked", "deprecation"})
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		resp.setCharacterEncoding("utf-8");
 		//获取id
 		HttpSession session = req.getSession();
 		Integer s_id= (Integer)session.getAttribute("e_id");
 		StudentDao dao = new StudentDaoImpl();
 		String s_num= dao.getStudentnumBys_id(s_id);
 		//获取文件属性
-		/*Integer l_id =new Integer(req.getParameter("dept")) ;*/
-		Integer l_id =1;
-		System.out.println("l_id:"+l_id);
+		Integer l_id =new Integer(session.getAttribute("dept").toString());
+		
+		//System.out.println("l_id:"+l_id);
 		//为每个用户创建3个文件夹，方便用来存储他们的头像和微博内容
 		String savepath = this.getServletContext().getRealPath("/upload/" +s_num+ "/teacher/"+l_id);
 		File file = new File(savepath);
@@ -49,8 +58,7 @@ public class Student_SubmitOpenReportAction extends HttpServlet{
 		
 		try {
 			file.mkdirs();
-		//	file1.mkdirs();
-			//file2.mkdirs();
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("文件创建失败！");

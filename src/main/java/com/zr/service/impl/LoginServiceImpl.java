@@ -9,6 +9,7 @@ import com.zr.dao.impl.UserDaoImpl;
 import com.zr.model.Staff;
 import com.zr.model.Student;
 import com.zr.model.User;
+import com.zr.service.LoginService;
 
 import net.sf.json.JSONObject;
 
@@ -17,7 +18,8 @@ import net.sf.json.JSONObject;
 * @version 创建时间：2017年9月26日 下午5:40:47 
 * 说明 ：
 */
-public class LoginServiceImpl {
+public class LoginServiceImpl implements LoginService {
+	@Override
 	public JSONObject getUserIdByUsernum(String user_type, String ename, String epsw) {
 		System.out.println(
 				"进入LoginService。getUserIdByUsernum方法，获得的参数user_type：" + user_type + "ename " + ename + "epsw:" + epsw);

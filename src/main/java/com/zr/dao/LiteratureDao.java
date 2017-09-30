@@ -2,7 +2,11 @@ package com.zr.dao;
 
 import java.util.List;
 
+import javax.json.JsonArray;
+
 import com.zr.model.Literature;
+
+import net.sf.json.JSONArray;
 
 public interface LiteratureDao {
 	/**
@@ -28,4 +32,10 @@ public interface LiteratureDao {
 	 * @return
 	 */
 	public Boolean setLiteratureInfo(int s_id, int wxlx_id, String wx_content, String wx_name);
+	/**
+	 * 根据学号获取所有的文献信息，包括文献类型名及id
+	 * @param s_id  学号
+	 * @return 
+	 */
+	public JSONArray getLiteratureBySid(Integer s_id);
 }
