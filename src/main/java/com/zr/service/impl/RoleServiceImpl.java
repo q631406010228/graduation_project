@@ -23,7 +23,7 @@ public class RoleServiceImpl implements RoleService {
 		// TODO Auto-generated method stub
 		RoleDao rdao = new RoleDaoImpl();
 		String staff_fid = rdao.getStafffidsByStaffID(staffid);
-		System.out.println("RoleServiceImpl.getStafffids.staff_fid" + staff_fid);
+		//System.out.println("RoleServiceImpl.getStafffids.staff_fid" + staff_fid);
 		return staff_fid;
 	}
 	

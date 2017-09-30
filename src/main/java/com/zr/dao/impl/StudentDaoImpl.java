@@ -74,7 +74,7 @@ public class StudentDaoImpl implements StudentDao{
 
 	@Override
 	public boolean setSubidBySid(int sub_id, int s_id) {
-		System.out.println("进入StudentDaoImpl.setSubidBySid,sub_id="+sub_id+"s_id="+s_id);
+		//System.out.println("进入StudentDaoImpl.setSubidBySid,sub_id="+sub_id+"s_id="+s_id);
 		Connection con = DBConnection.getConnection();
 		//定义数据库语句
 		StringBuffer sql = new StringBuffer();
@@ -89,7 +89,7 @@ public class StudentDaoImpl implements StudentDao{
 			//获取结果
 			int i= pre.executeUpdate();
 			if(i==1){
-				System.out.println("获取结果(1为成功)StudentDaoImpl.setSubidBySid.i="+i);
+				//System.out.println("获取结果(1为成功)StudentDaoImpl.setSubidBySid.i="+i);
 				con.close();
 				return true;
 			}
@@ -152,7 +152,7 @@ public class StudentDaoImpl implements StudentDao{
 			ResultSet set = pre.executeQuery();
 			if(set.next()){
 				Integer i =set.getInt("number");
-				System.out.println("选择该课题的人数StudentDaoImpl.getStudentNumberBySubid.i="+i);
+				//System.out.println("选择该课题的人数StudentDaoImpl.getStudentNumberBySubid.i="+i);
 				return i;
 			}
 		} catch (SQLException e) {
@@ -230,7 +230,7 @@ public class StudentDaoImpl implements StudentDao{
 	@Override
 	public Student getStudent(int snum,String spsw) {
 		// TODO Auto-generated method stub
-		System.out.println("进入StudentDaoImpl。getStudent方法，获取参数snum："+snum+"和spsw"+spsw);
+		//System.out.println("进入StudentDaoImpl。getStudent方法，获取参数snum："+snum+"和spsw"+spsw);
 		Student student = new Student();
 		StringBuffer sql = new StringBuffer("");
 		sql.append("select s_id,s_num,s_psw,c_id ");
@@ -253,7 +253,7 @@ public class StudentDaoImpl implements StudentDao{
 				student.setSpsw(s_psw);
 				int c_id = re.getInt("c_id");
 				student.setColid(c_id);
-				System.out.println("数据库中获取的结果s_id："+s_id+"s_id"+s_id+"s_psw"+s_psw+"c_id"+c_id);
+				//System.out.println("数据库中获取的结果s_id："+s_id+"s_id"+s_id+"s_psw"+s_psw+"c_id"+c_id);
 				
 			}
 		    //将学生对象返回
@@ -264,6 +264,7 @@ public class StudentDaoImpl implements StudentDao{
 		}
 		return null;
 	}
+	
 	@Override
 	public String getStudentnumBys_id(int s_id) {
 		//创建连接
@@ -287,5 +288,27 @@ public class StudentDaoImpl implements StudentDao{
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	
+	@Override
+	public List<Integer> getStudentScore(int cid) {
+		// TODO Auto-generated method stub
+		StringBuffer sql = new StringBuffer();
+		List<Integer> list = new ArrayList<Integer>();
+		sql.append("select score from student where c_id =?");
+		Connection con = DBConnection.getConnection();
+		try {
+			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
+			pst.setInt(1, cid);
+			ResultSet re = pst.executeQuery();
+			while(re.next()){
+				list.add(re.getInt("score"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
 	}
 }

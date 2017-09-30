@@ -1,17 +1,16 @@
 package com.zr.dao.impl;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.omg.PortableServer.REQUEST_PROCESSING_POLICY_ID;
 
 import com.mysql.jdbc.PreparedStatement;
 import com.zr.connection.DBConnection;
 import com.zr.dao.DeanDao;
-import com.zr.model.Staff;
 import com.zr.model.Staff;
 
 public class DeanDaoImpl implements DeanDao{
@@ -122,6 +121,20 @@ public class DeanDaoImpl implements DeanDao{
 			e.printStackTrace();
 		}
 		return eid;
+	}
+
+	@Override
+	public void deleteDeanRole(int num) {
+		Connection conn = DBConnection.getConnection();
+		StringBuffer sql = new StringBuffer();
+		sql.append("call deleteDeanRole(?);");
+		try {
+			CallableStatement cst = conn.prepareCall(sql.toString());
+			cst.setInt(1, num);
+			cst.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -49,10 +49,11 @@ public class Student_SubmitOpenReportAction extends HttpServlet{
 		StudentDao dao = new StudentDaoImpl();
 		String s_num= dao.getStudentnumBys_id(s_id);
 		//获取文件属性
+
 		Integer l_id =new Integer(session.getAttribute("dept").toString());
-		
+
 		//System.out.println("l_id:"+l_id);
-		//为每个用户创建3个文件夹，方便用来存储他们的头像和微博内容
+		//为每个用户创建文件夹，
 		String savepath = this.getServletContext().getRealPath("/upload/" +s_num+ "/teacher/"+l_id);
 		File file = new File(savepath);
 		
