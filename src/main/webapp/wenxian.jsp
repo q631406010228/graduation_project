@@ -63,9 +63,9 @@
 							dataType : 'json',
 							success:function(data){
 								if(data.ok != "1"){
-									$.messager.alert('提示',"分配失败",'info',function(){})
+									$.messager.alert('提示',"审核失败",'info',function(){})
 								}else{
-									$.messager.alert('提示',"分配成功",'info',function(){
+									$.messager.alert('提示',"审核成功",'info',function(){
 										$('#tb').datagrid('reload');
 									})
 								}

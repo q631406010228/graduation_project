@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>学生选题</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>下载已上传的文献</title>
 <!-- 引入主题样式 -->
 <link href="themes/gray/easyui.css" rel="stylesheet">
 <!-- 引入图标的样式 -->
@@ -14,25 +14,23 @@
 <!-- 引入easyui -->
 <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="js/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript" src="js/student_selectsub.js"></script>
+<script type="text/javascript" src="js/downfile.js"></script>
 </head>
 <body>
-<table id="dg"></table> 
+<table id="dg"></table>
 
 <!-- 修改的窗口 -->
 	<div id="upwin">
 		<form id="ff"  method="post">  
 				<div  style="margin-left: 120px;margin-top: 100px">
-				选题的id: <input id="sub_id" name="sub_id" type="text" style="width:300px">
+				文献名: <input id="wx_name" name="wx_name" type="text" style="width:300px">
 				<br>
 				<br>
-				选题：<input id="sub_name" name="sub_name"  type="text" style="width:300px">
+				文献类型：<input id="wxlx_name" name="wxlx_name"  type="text" style="width:300px">
 				<br>
 				<br>
-				负责教师：<input id="e_name" name="e_name"  type="text" style="width:300px">
-				<br>
-				<br>
-				<a id="btn" href="#">提交</a>    
+				<input id="wx_content" name="wx_content"  type="text" style="width:300px;hidden:true" >
+				<a id="btn" href="#">确认下载</a>    
 				</div>
 		</form>
 	

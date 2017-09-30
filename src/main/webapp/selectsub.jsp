@@ -26,7 +26,9 @@
 				$('#subname').textbox('setValue','${sessionScope.subname}');
 				$('#subcontent').textbox('setValue','${sessionScope.subcontent}');
 				$('#subcount').textbox('setValue','${sessionScope.subcount}');
-				$('#state').textbox('setValue','${sessionScope.state}');	
+				$('#state').textbox('setValue','${sessionScope.state}');
+				return false;
+ +				location.href="selectsub.jsp";
 			}
 		})
 		//location.href="selectsub.jsp"
