@@ -24,6 +24,9 @@
 			url : 'showstudentscore',
 			title : '学生答辩成绩表',
 			singleSelect:true,
+		    pagination:true,
+		    pageSize:3,
+		    pageList:[3,6,9],
 			columns : [ [ {
 				field : 'che',
 				title : 'che',
