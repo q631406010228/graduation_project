@@ -455,4 +455,31 @@ public class TeacherDaoImpl implements TeacherDao {
 
 	
 	}
+
+	@Override
+	public int checkPapersOfStudent(int lwid, String state) {
+		StringBuffer sql = new StringBuffer();
+		Connection con = DBConnection.getConnection();
+		
+		sql.append("update paper set lw_state =? ");
+		sql.append("where lw_id = ? ");
+         
+	
+
+		try {
+			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
+			pst.setString(1, state);
+            pst.setInt(2, lwid);
+			
+			int i = pst.executeUpdate();
+		
+             return i;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		}
+		
+		return 0;
+	}
 }

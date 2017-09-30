@@ -90,6 +90,13 @@ public interface TeacherService {
 	 * @return
 	 */
 	public JSONObject showPapersofStudent(int eid,int page,int pageSize);
+	/**
+	 * 批改论文
+	 * @param lwid
+	 * @param state
+	 * @return
+	 */
+	 public Boolean checkPapers(int lwid , String state);
     
 
 }

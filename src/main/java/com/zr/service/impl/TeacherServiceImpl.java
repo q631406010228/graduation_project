@@ -118,5 +118,14 @@ public class TeacherServiceImpl implements TeacherService{
 		json.put("rows", list);
 		return json;
 	}
+	@Override
+	
+	public Boolean checkPapers(int lwid, String state) {
+		int i  = tdao.checkPapersOfStudent(lwid, state);
+		if(i==1){
+			return true;
+		}
+		return false;
+	}
 }
 

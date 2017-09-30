@@ -112,7 +112,11 @@ public interface TeacherDao {
 	 */
 	public int getPapersCount(int eid);
 	
-
+	/**
+	 * 批复学生
+	 * @return
+	 */
+    public int checkPapersOfStudent(int lwid , String state);
 	
 	
 	

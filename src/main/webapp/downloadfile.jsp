@@ -24,7 +24,7 @@
 			pagination:true,
 		    pageSize:10,
 		    pageList:[10,20,30,40,50,60],
-			title:'查看学生论文(双击记录论文批复状态)',
+			title:'查看学生论文(双击批复单击确认)',
 			 rowStyler: function(index,row){
 				if (row.lwstate=="未批复"){
 					return 'color:red;';
@@ -69,11 +69,11 @@
 					type:"post",
 					dataType : 'json',
 					success:function(data){
-						if(data.ok != "1"){
-							$.messager.alert('提示',"分配失败",'info',function(){})
+						if(data.s){
+							$.messager.alert('提示',"已批复",'info',function(){})
+								$('#dg').datagrid('reload');
 						}else{
-							$.messager.alert('提示',"分配成功",'info',function(){
-								$('#tb').datagrid('reload');
+							$.messager.alert('提示',"批复失败",'info',function(){
 							})
 						}
 			        }
