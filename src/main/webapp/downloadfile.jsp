@@ -29,6 +29,8 @@
 				if (row.lwstate=="未批复"){
 					return 'color:red;';
 
+				}else{
+					return 'color:blue';
 				}
 				}, 
 
