@@ -76,7 +76,6 @@ public class NoticeSoket {
 			rid = srd.getRidByEid((int) httpSession.getAttribute("e_id"));
 		}
 		cid = (int) httpSession.getAttribute("c_id");
-		System.out.println(111);
         //sessionMap.put(session.getId(), session);	
 	}
 
