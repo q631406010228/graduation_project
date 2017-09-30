@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.zr.model.Literature;
 
+import net.sf.json.JSONArray;
+
 public interface LiteratureService {
 	/**
 	 * 查询文献根据教师ID
@@ -27,4 +29,10 @@ public interface LiteratureService {
 	 * @return
 	 */
 	public Boolean setLiteratureInfo(int s_id,int wxlx_id,String wx_content,String wx_name);
+	/**
+	 * 根据学号获取该生的全部的文献
+	 * @param s_id 学号
+	 * @return
+	 */
+	public JSONArray getLiteratureBySid(Integer s_id);
 }
