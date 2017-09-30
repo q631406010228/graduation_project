@@ -21,7 +21,7 @@
 
 <!-- 修改的窗口 -->
 	<div id="upwin">
-		<form id="ff" enctype="multipart/form-data" method="post">  
+		<form id="ff"  method="post">  
 				<div  style="margin-left: 120px;margin-top: 100px">
 				选题的id: <input id="sub_id" name="sub_id" type="text" style="width:300px">
 				<br>
