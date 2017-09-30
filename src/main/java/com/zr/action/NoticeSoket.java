@@ -50,6 +50,8 @@ public class NoticeSoket {
 				ln = ns.getNotices(rid,1,cid);
 			}else if(rid == 2){
 				ln = ns.getNotices(rid,num,cid);
+			}else if(rid == 4){
+				ln = ns.getNotices(2, 1, cid);
 			}
 			JSONObject ja = new JSONObject();
 			ja.put("Notice", ln);
@@ -74,6 +76,7 @@ public class NoticeSoket {
 			rid = srd.getRidByEid((int) httpSession.getAttribute("e_id"));
 		}
 		cid = (int) httpSession.getAttribute("c_id");
+		System.out.println(111);
         //sessionMap.put(session.getId(), session);	
 	}
 
