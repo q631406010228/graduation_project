@@ -81,7 +81,7 @@ public class LiteratureDaoImpl implements LiteratureDao{
 		Connection con = DBConnection.getConnection();
 		StringBuffer sql = new StringBuffer();
 		
-<<<<<<< HEAD
+
 		if(wxlx_id ==7){
 			StringBuffer sql2 = new StringBuffer();
 			sql2.append("insert into paper(lw_name,s_id) values(?,?)");
@@ -96,9 +96,9 @@ public class LiteratureDaoImpl implements LiteratureDao{
 			}
 		}
 		sql.append("INSERT INTO literature VALUES(?,0,?,?,?); ");
-=======
+
 		sql.append("INSERT INTO literature VALUES(null,?,0,?,?,?);");
->>>>>>> master
+
 		try {
 			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
 			pst.setString(1, wx_content);
