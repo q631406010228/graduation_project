@@ -23,6 +23,7 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
+<<<<<<< HEAD
 	$(function(){  
 		$('#depts').form({    
 		    url:'getdept',    
@@ -37,6 +38,11 @@ $(document).ready(function() {
 
 	    $('#read').bind('click', function(){   
 	    	$('#depts').submit();  
+=======
+
+	$(function(){    
+	    $('#read').bind('click', function(){    
+>>>>>>> 8eebe8f00ac6de2c2b0dce85fd63e9d444af39b1
 	       //在线预览
 	    	$('#ff').form('submit', {    
 	    	    url:'Student_SubmitOpenReport',
@@ -77,12 +83,15 @@ $(document).ready(function() {
 	    });    
 	});   */
 	
+
+
 	
 	$('#cc').combobox({    
 	    url:'getLiteraturelxName',    
 	    valueField:'id',    
 	    textField:'text'   
-	}); 
+	});
+		
 });
  
 </script>
@@ -94,7 +103,17 @@ $(document).ready(function() {
 
 <form id='ff' enctype="multipart/form-data" method="post">
   		<input type="file" name="file"/>
+<<<<<<< HEAD
   		
+=======
+
+  		<label for="">文件类型选择:&nbsp;&nbsp;</label><input id="cc" name="dept" value="">
+
+  		<br>
+  		<br>
+  		<label for="">文件类型选择:&nbsp;&nbsp;</label><input id="cc" name="dept" value="1111">
+
+>>>>>>> 8eebe8f00ac6de2c2b0dce85fd63e9d444af39b1
   		<br>
   		<br>
   		<!-- <a id="upload" href="#" class="easyui-linkbutton" data-options="">上传</a>   --> 		
