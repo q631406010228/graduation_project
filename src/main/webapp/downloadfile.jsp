@@ -18,20 +18,74 @@
 </head>
 <script type="text/javascript">
 	$(function() {
+		
 		$('#dg').datagrid({
 			url : 'showstudentpapers',
-			title:'查看学生论文',
-			columns : [ [ {
-				field : 'snum',
-				title : '学生学号',
-				width : 100
-			}, {
-				field : 'filename',
-				title : '文件名称',
-				width : 100
-			},
+			pagination:true,
+		    pageSize:10,
+		    pageList:[10,20,30,40,50,60],
+			title:'查看学生论文(双击批复单击确认)',
+			 rowStyler: function(index,row){
+				if (row.lwstate=="未批复"){
+					return 'color:red;';
 
-			] ]
+				}else{
+					return 'color:blue';
+				}
+				}, 
+
+			columns : [ [ 
+                {field:'lwid',title:'论文id',width:100},
+			    {field:'lwname',title:'文件名',width:100},    
+			    {field:'sid',title:'学生id',width:100}, 
+			    {field:'snum',title:'学生学号',width:100}, 
+			    {field:'sname',title:'学生姓名',width:100},              
+			    {field:'lwstate',title:'状态',width:100},
+			    {field:'lwoperate',title:'批复',width:100,editor:{
+	            	type:'combobox',
+	            	options:{
+	                	url:'checkpaper',
+	            		valueField:'id',    
+	     		    	textField:'text',
+	     		    	prompt :'请审核',
+	                	method:'post',
+	                	required:true,
+	            		}
+	    			}},
+			    {field:'lwbackload',title:'批复文件',width:100}
+			] ],
+			onDblClickRow: function(index,value){
+				$(this).datagrid('beginEdit', index);
+				
+			},
+			onAfterEdit:function(index,row,changes){
+				$(this).datagrid('getEditors', index);
+				$(this).datagrid('beginEdit', index);
+				var ed = $("#dg").datagrid('getEditors',index);
+				var lwid = row.lwid;
+				var state = $(ed[0].target).data('textbox').options.value;
+				//$(this).datagrid('endEdit', index);
+				$.ajax({
+					url:"check",
+					data:"lwid="+lwid+"&state="+state,
+					type:"post",
+					dataType : 'json',
+					success:function(data){
+						if(data.s){
+							$.messager.alert('提示',"已批复",'info',function(){})
+								$('#dg').datagrid('reload');
+						}else{
+							$.messager.alert('提示',"批复失败",'info',function(){
+							})
+						}
+			        }
+				})
+				
+			},
+			onClickRow: function(index,value){
+				$(this).datagrid('endEdit', index);
+				
+			},
 		});
 
 	});

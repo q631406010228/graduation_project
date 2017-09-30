@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.json.JsonObject;
+
 import com.mysql.jdbc.PreparedStatement;
 import com.zr.connection.DBConnection;
 import com.zr.dao.TeacherDao;
@@ -26,10 +28,8 @@ import net.sf.json.JSONObject;
 
 public class TeacherDaoImpl implements TeacherDao {
 
-	
-
 	@Override
-	public JSONObject selectAllScores(int eid) {
+	public JSONObject selectAllScores(int eid, int page, int pageSize) {
 		JSONObject json = new JSONObject();
 		List<Student> list = new ArrayList<Student>();
 		StringBuffer sql = new StringBuffer();
@@ -39,10 +39,12 @@ public class TeacherDaoImpl implements TeacherDao {
 		sql.append("from student s ");
 		sql.append("join sub b ");
 		sql.append("on b.sub_id = s.sub_id ");
-		sql.append("where b.e_id = ? ");
+		sql.append("where b.e_id = ? limit ?,?");
 		try {
 			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
 			pst.setInt(1, eid);
+			pst.setInt(2, (page-1)*pageSize);
+			pst.setInt(3, pageSize);
 			ResultSet rst = pst.executeQuery();
 			while (rst.next()) {
 				Student stu = new Student();
@@ -59,7 +61,7 @@ public class TeacherDaoImpl implements TeacherDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        return json;
+		return json;
 	}
 
 	@Override
@@ -78,12 +80,11 @@ public class TeacherDaoImpl implements TeacherDao {
 			pst.setInt(2, sid);
 			pst.executeUpdate();
 
-     
-		}catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-}
 
 	@Override
 	public List<Staff> selectTeacher() {
@@ -133,7 +134,7 @@ public class TeacherDaoImpl implements TeacherDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-       return 0;
+		return 0;
 	}
 
 	@Override
@@ -178,7 +179,7 @@ public class TeacherDaoImpl implements TeacherDao {
 	public int updateTeacher(int eid, String ename, int colid, int emnum) {
 		// TODO Auto-generated method stub
 		StringBuffer sql = new StringBuffer();
-		int i=0;
+		int i = 0;
 		sql.append("update staff ");
 		sql.append("set e_name=?,e_col=?,e_num=? ");
 		sql.append("where e_id=? ");
@@ -189,8 +190,8 @@ public class TeacherDaoImpl implements TeacherDao {
 			pst.setInt(2, colid);
 			pst.setInt(3, emnum);
 			pst.setInt(4, eid);
-			 i = pst.executeUpdate();
-             return i;
+			i = pst.executeUpdate();
+			return i;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -234,7 +235,7 @@ public class TeacherDaoImpl implements TeacherDao {
 	@Override
 	public int insertTeacher(String ename, int colid, int emnum, String epsw) {
 		// TODO Auto-generated method stub
-		int i =0;
+		int i = 0;
 		StringBuffer sql = new StringBuffer();
 		sql.append("insert into staff (e_name,e_col,e_num,e_psw) ");
 		sql.append("value (?,?,?,?) ");
@@ -299,6 +300,186 @@ public class TeacherDaoImpl implements TeacherDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return 0;
+	}
+
+	@Override
+	public int getstudentcount(int eid) {
+
+		// TODO Auto-generated method stub
+		StringBuffer sql = new StringBuffer();
+		int count;
+		sql.append("select count(s_id) from student ");
+		sql.append("inner join sub b ");
+		sql.append("where b.e_id = ? ");
+		Connection con = DBConnection.getConnection();
+		try {
+			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
+			pst.setInt(1, eid);
+			ResultSet res = pst.executeQuery();
+			if (res.next()) {
+				count = res.getInt("count(s_id)");
+				return count;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+
+	}
+
+	@Override
+	public int[] selectSidsByEid(int eid) {
+		StringBuffer sql = new StringBuffer();
+		Connection con = DBConnection.getConnection();
+		int[] sids = new int[] {};
+		String s = "";
+		int sid;
+		sql.append("select s.s_id from student s ");
+		sql.append("inner join sub b ");
+		sql.append("where b.e_id = ?");
+
+		try {
+			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
+			pst.setInt(1, eid);
+			ResultSet st = pst.executeQuery();
+			while (st.next()) {
+				sid = (st.getInt("s_id"));
+				for (int i = 0; i < sids.length; i++) {
+					sids[i] = sid;
+				}
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		}
+		return sids;
+	}
+
+	@Override
+	public void getStudentPapers() {
+		StringBuffer sql = new StringBuffer();
+		Connection con = DBConnection.getConnection();
+		
+		sql.append("insert into paper(lw_name, s_id) ");
+		sql.append("select wx_name,s_id from literature l ");
+
+		sql.append("where l.wxlx_id = 7 ");
+
+		try {
+			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
+
+			pst.executeUpdate();
+            
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		}
+
+	}
+
+	@Override
+	public List<JSONObject> getAllPapersOfStudent(int eid, int page, int pageSize) {
+		StringBuffer sql = new StringBuffer();
+		Connection con = DBConnection.getConnection();
+		List<JSONObject> list = new ArrayList<JSONObject>();
+		sql.append("select p.lw_id, p.lw_name,p.s_id,s.s_num,s.s_name,p.lw_state,p.lw_operate,p.lw_backload from paper p ");
+		sql.append("join student s ");
+		sql.append("on s.s_id = p.s_id ");
+		sql.append("join sub b ");
+		sql.append("on b.sub_id= s.sub_id ");
+		sql.append("where b.e_id = ? limit ?,?" );
+
+		try {
+			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
+			pst.setInt(1, eid);
+			pst.setInt(2, (page-1)*pageSize);
+			pst.setInt(3,pageSize);
+			ResultSet st = pst.executeQuery();
+			while (st.next()) {
+				JSONObject json = new JSONObject();
+				int snum = st.getInt("s_num");
+				String lwname =st.getString("lw_name");
+				System.out.println(lwname);
+				//Paper p= new Paper();
+				json.put("lwid", st.getInt("lw_id"));
+				json.put("lwname","<a href ="+"\""+"/graduation_project/downloadfile?path1="+snum+"&path2="+lwname+"\""+">"+lwname+"</a>");
+				json.put("sid", st.getInt("s_id"));
+				json.put("snum", snum);
+				
+				json.put("sname",st.getString("s_name"));
+				json.put("lwstate",st.getString("lw_state"));
+				
+				json.put("lwoperate", st.getString("lw_operate"));
+				json.put("lwbackload",st.getString("lw_backload"));
+			    list.add(json);	
+             
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		}
+		return list;
+	}
+
+	@Override
+	public int getPapersCount(int eid) {
+		// TODO Auto-generated method stub
+		StringBuffer sql = new StringBuffer();
+		int count;
+		sql.append("select count(p.lw_id) from paper p ");
+		sql.append("join student s ");
+		sql.append("on s.s_id = p.s_id ");
+		sql.append("join sub b ");
+		sql.append("on b.sub_id= s.sub_id ");
+		sql.append("where b.e_id = ? " );
+		Connection con = DBConnection.getConnection();
+		try {
+			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
+			pst.setInt(1, eid);
+			ResultSet res = pst.executeQuery();
+			if (res.next()) {
+				count = res.getInt("count(p.lw_id)");
+				return count;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+
+	
+	}
+
+	@Override
+	public int checkPapersOfStudent(int lwid, String state) {
+		StringBuffer sql = new StringBuffer();
+		Connection con = DBConnection.getConnection();
+		
+		sql.append("update paper set lw_state =? ");
+		sql.append("where lw_id = ? ");
+         
+	
+
+		try {
+			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
+			pst.setString(1, state);
+            pst.setInt(2, lwid);
+			
+			int i = pst.executeUpdate();
+		
+             return i;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		}
+		
 		return 0;
 	}
 }

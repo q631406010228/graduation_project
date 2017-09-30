@@ -81,14 +81,7 @@
     <servlet-name>ShowPapersOfStudent</servlet-name>
     <url-pattern>/showpapersofstudent</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <servlet-name>downloadfile</servlet-name>
-    <servlet-class>com.zr.action.FileDownloadAction</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>downloadfile</servlet-name>
-    <url-pattern>/downloadfile</url-pattern>
-  </servlet-mapping>
+ 
   <servlet>
     <servlet-name>fileupload</servlet-name>
     <servlet-class>com.zr.action.FileUploadAction</servlet-class>

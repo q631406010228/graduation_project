@@ -35,7 +35,8 @@ public class FileUploadAction extends HttpServlet {
 
 		resp.setContentType("text/html; charset=UTF-8");
 		resp.setCharacterEncoding("utf8");
-
+         
+		
 		int id;
 
 		DiskFileItemFactory dfif = new DiskFileItemFactory();

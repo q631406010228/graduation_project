@@ -1,7 +1,5 @@
 package com.zr.action;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -12,17 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.io.IOUtils;
-
-import com.zr.dao.TeacherDao;
-import com.zr.dao.impl.TeacherDaoImpl;
 import com.zr.service.TeacherService;
 import com.zr.service.impl.TeacherServiceImpl;
 
 import net.sf.json.JSONObject;
 
-@WebServlet("/showstudentscore")
-public class CheckScoresOfStudent extends HttpServlet{
+@WebServlet("/check")
+public class CheckPapersOfStudent extends HttpServlet{
 	TeacherService tea = new TeacherServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -32,14 +26,19 @@ public class CheckScoresOfStudent extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		 HttpSession session = req.getSession();
-	    int eid = (int)session.getAttribute("e_id");
-		int page = Integer.parseInt(req.getParameter("page"));
-		int pageSize =  Integer.parseInt(req.getParameter("rows"));
-		resp.setCharacterEncoding("utf8");
-		JSONObject json = tea.getScoresOfStu(eid,page,pageSize);
-		PrintWriter pw = resp.getWriter();
-		pw.write(json.toString());
+		JSONObject json = new JSONObject();
+		 String state ="";
+		 int lwid = Integer.parseInt(req.getParameter("lwid"));
+		 String stateid = req.getParameter("state");
+		 if(stateid.equals("0")){
+			 state = "通过";
+		 }else{
+			 state = "责改";
+		 }
+	   Boolean b = tea.checkPapers(lwid, state);
+	   json.put("s",b);
+	   PrintWriter pw = resp.getWriter();
+			   pw.write(json.toString());
 	}	
 
 }

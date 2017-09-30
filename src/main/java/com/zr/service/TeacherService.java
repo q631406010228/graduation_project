@@ -13,7 +13,7 @@ public interface TeacherService {
 	 * 获取学生答辩成绩
 	 * @return json数据对象
 	 */
-    public JSONObject getScoresOfStu(int eid);
+    public JSONObject getScoresOfStu(int eid,int page,int pageSize);
     
    /**
     * 添加学生成绩    
@@ -47,7 +47,6 @@ public interface TeacherService {
 	 */
 	public List<Integer> deleteTeacher(List<Integer> eids);
 	/**
-<<<<<<< HEAD
 	 * 获取学生学号
 	 *  @return
 	 */
@@ -71,6 +70,33 @@ public interface TeacherService {
 	 * @return 是否成功的标志位
 	 */
 	public int insertTeacher(String ename,int colid,int emnum,String epsw);
-
+    
+	/**
+	 * 通过老师id获取其所有学生的id
+	 * @param eid
+	 * @return
+	 */
+	public int[] getSidsOfStudentByEid(int eid);
+	
+	/**
+	 * 获取学生论文
+	 */
+	public void insertStudentPapers();
+	
+	/**
+	 * 获取学生论文信息
+	 * @param page
+	 * @param pageSize
+	 * @return
+	 */
+	public JSONObject showPapersofStudent(int eid,int page,int pageSize);
+	/**
+	 * 批改论文
+	 * @param lwid
+	 * @param state
+	 * @return
+	 */
+	 public Boolean checkPapers(int lwid , String state);
+    
 
 }
