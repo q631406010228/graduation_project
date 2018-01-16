@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.zr.model.Staff;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 public interface TeacherService {
@@ -71,6 +72,8 @@ public interface TeacherService {
 	 * @return 是否成功的标志位
 	 */
 	public int insertTeacher(String ename,int colid,int emnum,String epsw);
+
+	public JSONArray getAllTeachers();
 
 
 }

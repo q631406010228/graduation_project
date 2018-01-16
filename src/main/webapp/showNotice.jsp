@@ -56,7 +56,7 @@ ul.test li span {
         };  
         //与WebSocket建立连接  
         webSocket.onopen = function(event) {  
-            webSocket.send('我是秦皓');  
+            webSocket.send('我是戴瀚奇');  
         };  
         //处理服务器返回的信息  
         webSocket.onmessage = function(event) {  

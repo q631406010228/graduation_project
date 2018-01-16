@@ -32,5 +32,19 @@ public class ReplyServiceImpl implements ReplyService {
 		// TODO Auto-generated method stub
 		rdao.alertReply(reply_id,reply_site, sub_id, reply_start, reply_end, e_id);
 	}
+	@Override
+	public int getEidByEname(String e_name) {
+		// TODO Auto-generated method stub
+		int Eid=rdao.getEidByEname(e_name);
+		return Eid;
+	}
+	@Override
+	public int getSubidByEid(int e_id) {
+		// TODO Auto-generated method stub
+		int Subid =rdao.getSubidByEid(e_id);
+		return Subid;
+	}
+	
+
 
 }

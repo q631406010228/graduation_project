@@ -16,5 +16,9 @@ public interface ReplyDao {
 
 	public void alertReply(int reply_id,String reply_site, int sub_id, String reply_start, String reply_end, int e_id);
 
+	public int getEidByEname(String e_name);
+
+	public int getSubidByEid(int e_id);
+
 
 }

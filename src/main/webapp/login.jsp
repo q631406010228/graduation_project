@@ -94,9 +94,7 @@
 								class="form-control" style="position: relative; left: 5px;"
 								id="yzm" name="yzm" value="" placeholder="请输入验证码">
 							<canvas id="num" width="120" height="40"
-								style="position: relative; top: 16px; left: 
-
-6px"></canvas>
+								style="position: relative; top: 16px; left: 6px"></canvas>
 						</div>
 
 						<!-- 下拉框选择角色 -->

@@ -28,29 +28,45 @@ public class SaveAction extends HttpServlet {
 		// TODO Auto-generated method stub
 		 resp.setCharacterEncoding("utf8");
 		 req.setCharacterEncoding("utf-8");
-		int flag = Integer.parseInt(req.getParameter("flag"));
-		System.out.println(flag);
-		System.out.println(req.getParameter("id"));
-		if (flag == 1) {
+		//int flag = Integer.parseInt(req.getParameter("flag"));
+//		System.out.println("id"+req.getParameter("id"));
+		System.out.println("uname5:"+req.getParameter("uname5"));
+		String u5=req.getParameter("uname5");
+		System.out.println(u5);
+		if ("1".equals(req.getParameter("flag"))) {
+			System.out.println("进入增加");
 			String reply_site = req.getParameter("uname1");
-			System.out.println(reply_site);
-			int sub_id = Integer.parseInt(req.getParameter("uname2"));
+			
+			
 			String reply_start = req.getParameter("uname3");
 			String reply_end = req.getParameter("uname4");
-			int e_id = Integer.parseInt(req.getParameter("uname5"));
+			
+			int  e_id = Integer.parseInt(req.getParameter("uname5"));
+			int sub_id = rs.getSubidByEid(e_id);
+			System.out.println("reply_site:"+reply_site);
+			System.out.println("sub_id:"+sub_id);
+			System.out.println("sub_id:"+reply_start);
+			System.out.println("reply_end:"+reply_end);
+			System.out.println("e_id:"+e_id);
+			
 			rs.addReply(reply_site, sub_id, reply_start, reply_end, e_id);
-		}
-		if (flag == 2) {
+		}else
+		if ("2".equals(req.getParameter("flag"))) {
+			System.out.println("进入修改");
 			int reply_id = Integer.parseInt(req.getParameter("id"));
 			String reply_site = req.getParameter("uname1");
-			System.out.println(reply_site);
-			int sub_id = Integer.parseInt(req.getParameter("uname2"));
+			
+			
 			String reply_start = req.getParameter("uname3");
 			String reply_end = req.getParameter("uname4");
-			int e_id = Integer.parseInt(req.getParameter("uname5"));
+			
+			int e_id = Integer.getInteger(req.getParameter("uname5"));
+			
+			int sub_id = rs.getSubidByEid(e_id);
 			rs.alertReply(reply_id, reply_site, sub_id, reply_start, reply_end, e_id);
-		}
-		if (flag == 3) {
+		}else
+		if ("3".equals(req.getParameter("flag"))) {
+			System.out.println("flag:"+Integer.parseInt(req.getParameter("flag")));
 			int reply_id = Integer.parseInt(req.getParameter("id"));
 			rs.deleteReply(reply_id);
 		}

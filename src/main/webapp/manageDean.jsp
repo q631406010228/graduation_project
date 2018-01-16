@@ -36,7 +36,7 @@
      				text:'添加',
      				handler: function(){
      					$('#win').window('open');
-     					$('#btn').off('click').on('click', function(){    
+     					$('#btn').off('click').on('click'	, function(){    
      				    	$('#ff').form('submit', {    
      				    	    url:'updateDean ',    
      				    	    onSubmit: function(param){    

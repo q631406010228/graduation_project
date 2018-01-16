@@ -18,20 +18,27 @@
 <script type="text/javascript" src="js/easyui-lang-zh_CN.js"></script>
 </head>
 <script type="text/javascript">
-var ar6 = new Array();
+
+
 	$(function() {
+		var ar6 = new Array();
+		
 		//保存按钮
 		$('#btn1').linkbutton({
 			iconCls : 'icon-add',
 			onClick : function() {
 				
 				$('#ff').submit();
+			
 				/* 	 	    	 url : 'save' */
 				$.messager.confirm('修改提示', 'OK', function(r) {
 					if(r){
 					$('#ff').form('reset');
 					$('#tt').tree('reload');
-					$('#shuru').hide();
+					
+					$('#add').show(),
+					$('#alert').show(),
+					$('#delete').show()
 					}
 				})
 
@@ -44,6 +51,10 @@ var ar6 = new Array();
 			iconCls : 'icon-cancel',
 			onClick : function() {
 				$('#shuru').hide()
+				$('#add').show(),
+					$('#alert').show(),
+					$('#delete').show(),
+					$('#ff').form('reset');
 
 			}
 		});
@@ -53,52 +64,85 @@ var ar6 = new Array();
 			prompt : '输入答辩地点',
 			height : 40
 		})
-		$('#uname2').textbox({
+	/* 	$('#uname2').textbox({
 			iconCls : 'icon-man',
 			iconAlign : 'left',
 			prompt : '输入选题ID',
 			height : 40
-		})
+		}) */
 		$('#uname3').datebox({
 			required : true
 		});
 		$('#uname4').datebox({
 			required : true
 		});
-		$('#uname5').textbox({
-			iconCls : 'icon-man',
-			iconAlign : 'left',
-			prompt : '输入教师ID',
-			height : 40
-		})
+		$('#uname5').combobox({    
+		    url:'showAllTeachers',    
+		    valueField:'id',    
+		    textField:'text'   
+		});  
+		
 
 		$("#add").linkbutton({
 			iconCls : 'icon-add',
 			onClick : function() {
 				$('#shuru').show(),
-				$('#ff').form('options').queryParams = {
-					flag : 1
-				};
+				$('#add').hide(),
+				$('#alert').hide(),
+				$('#delete').hide()
+				
+				$('#btn1').off('click').on('click', function(){    
+			    	$('#ff').form('submit', {    
+			    	    url:'save ',    
+			    	    onSubmit: function(param){ 
+			    	    	 param.uname5 = $('#uname5').combobox('getValue'); 
+			    	    	param.flag = '1';
+			    	    	
+			    	    },    
+			    	    success:function(data){  
+			    	    	$.messager.alert('警告','增加成功','info',function(){
+					    		$('#ff').form('clear');
+					    		$('#win').window('close');
+				    	    	$('#dg').datagrid('reload');
+					    	});   				    	    	
+			    	    }    
+			    	});
+			    });
 
 			}
 		});
 		$("#alert").linkbutton({
 			iconCls : 'icon-cut',
 			onClick : function() {
-				$('#shuru').show()
+				$('#shuru').show(),
+				$('#add').hide(),
+				$('#alert').hide(),
+				$('#delete').hide()
 				var selectedrows =$('#dg').datagrid('getChecked');
 				
 				
-				
+				/* 
 				$.each( selectedrows , function(i,n){
 							ar6[i] = n.reply_id;
-										});
-				$('#uname6').val(ar6[0]);
-				 $('#ff').form('options').queryParams = {
-					flag : 2,
-					id:ar6[0],
-
-				} ;
+										}); */
+				
+				$('#btn1').off('click').on('click', function(){    
+				    	$('#ff').form('submit', {    
+				    	    url:'save ',    
+				    	    onSubmit: function(param){ 
+				    	    	 param.uname5 = $('#uname5').combobox('getValue'); 
+				    	    	param.flag = '2';
+				    	    	param.id = $('#dg').datagrid('getChecked').reply_id;
+				    	    },    
+				    	    success:function(data){  
+				    	    	$.messager.alert('警告','修改成功','info',function(){
+						    		$('#ff').form('clear');
+						    		$('#win').window('close');
+ 				    	    	$('#dg').datagrid('reload');
+						    	});   				    	    	
+				    	    }    
+				    	});
+				    });
 				
 				
 				
@@ -181,7 +225,7 @@ var ar6 = new Array();
 				
 				
 			
-				$.messager.confirm('修改提示', 'OK', function(r) {
+				$.messager.confirm('修改提示', '已经删除', function(r) {
 					if(r){
 					$('#ff1').form('reset');
 					$('#tt').tree('reload');
@@ -242,15 +286,24 @@ var ar6 = new Array();
 		});
 		$('#ff').form({
 			url : 'save',
+			 onSubmit: function(param){    
+				 
+				 
+				 param.uname5 = $('#uname5').combobox('getValue'); 
+			    }, 
+			
 			
 			success : function(data) {
 
+				
 				$('#dg').datagrid('reload');
-
 			}
 		});
 		$('#ff1').form({
 			url : 'save',
+			 onSubmit: function(){    
+				 var uname5 = $('#uname5').combobox('getValue');   
+			    }, 
 			
 			success : function(data) {
 
@@ -270,12 +323,14 @@ var ar6 = new Array();
 		<div id="shuru"
 			style="z-index: 100; display: none; margin-left: 29%; margin-top: 10%; position: absolute; width: 100%; height: 100%;">
 			<input id="uname1" name="uname1" type="text" style="width: 300px">
-			<br> <input id="uname2" name="uname2" type="text"
-				style="width: 300px"> <br> 起始时间<input id="uname3"
-				name="uname3" type="text" style="width: 300px"></input> <br>
+			<br> 
+			
+			起始时间<input id="uname3" name="uname3" type="text" style="width: 300px"></input> <br>
 			终止时间<input id="uname4" name="uname4" type="text" style="width: 300px"></input>
-			<br> <input id="uname5" name="uname5" type="text"
-				style="width: 300px"> <br> <a id="btn1" href="#"
+			<br> 
+			<input id="uname5"  style="width: 300px"> 
+			<br> 
+				<a id="btn1" href="#"
 				style="margin-top: 10px">保存</a> <a id="btn2" href="#"
 				style="margin-top: 10px">取消</a>
 		</div>

@@ -28,7 +28,7 @@ public interface NoticeService {
 	
 	/**
 	 * 获取指定人的通知
-	 * @param role  发送人的eID
+	 * @param role  发送人的rID
 	 * @param num	接收者的号码
 	 * @return	返回接收者所有的通知
 	 */

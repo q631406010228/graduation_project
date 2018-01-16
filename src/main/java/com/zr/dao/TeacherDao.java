@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.zr.model.Staff;
 
-
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 public interface TeacherDao {
@@ -83,4 +83,6 @@ public interface TeacherDao {
 	 * @return 教师编号
 	 */
 	public int selectTeacherEidByEnum(int e_num);
+
+	public JSONArray getAllTeachers();
 }

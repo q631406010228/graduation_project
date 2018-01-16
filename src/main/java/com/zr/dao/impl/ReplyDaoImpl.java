@@ -172,6 +172,50 @@ List<Replys> replys = new ArrayList<Replys>();
 		
 	}
 
+	@Override
+	public int getEidByEname(String e_name) {
+		// TODO Auto-generated method stub
+		
+		StringBuffer sql = new StringBuffer();
+		sql.append("select * from staff ");
+		sql.append("where e_name = ?");
+		int eid = 0;
+		Connection con = DBConnection.getConnection();
+		try {
+			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
+			pst.setString(1, e_name);
+			ResultSet res = pst.executeQuery();
+			while(res.next()){
+				eid = res.getInt("e_id");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return eid;
+	}
+
+	@Override
+	public int getSubidByEid(int e_id) {
+		// TODO Auto-generated method stub
+		StringBuffer sql = new StringBuffer();
+		sql.append("select sub_id from sub ");
+		sql.append("where e_id = ?");
+		int subid = 0;
+		Connection con = DBConnection.getConnection();
+		try {
+			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql.toString());
+			pst.setInt(1, e_id);
+			ResultSet res = pst.executeQuery();
+			while(res.next()){
+				subid = res.getInt("sub_id");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return subid;
+		
+	}
+
 	
 	
 

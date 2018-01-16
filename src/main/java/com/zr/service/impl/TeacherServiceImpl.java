@@ -19,6 +19,7 @@ import com.zr.dao.impl.TeacherDaoImpl;
 import com.zr.model.Staff;
 import com.zr.service.TeacherService;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 public class TeacherServiceImpl implements TeacherService{
@@ -98,6 +99,12 @@ public class TeacherServiceImpl implements TeacherService{
 		int eid = tdao.selectTeacherEidByEnum(emnum);
 		srdao.insertTeacerRole(eid);
 		return i;
+	}
+	@Override
+	public JSONArray getAllTeachers() {
+		// TODO Auto-generated method stub
+		JSONArray json = tdao.getAllTeachers();
+		return json;
 	}
 }
 

@@ -22,6 +22,8 @@ import com.zr.model.Reply;
 import com.zr.model.Student;
 import com.zr.service.TeacherService;
 
+
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 public class TeacherDaoImpl implements TeacherDao {
@@ -300,5 +302,37 @@ public class TeacherDaoImpl implements TeacherDao {
 			e.printStackTrace();
 		}
 		return 0;
+	}
+
+	@Override
+	public JSONArray getAllTeachers() {
+		// TODO Auto-generated method stub
+		JSONArray   teachers =  new JSONArray();
+		Connection  con   =  DBConnection.getConnection();
+		StringBuffer  sql = new StringBuffer("select * from staff ");
+		PreparedStatement   pst = null;
+		try {
+			   pst =  (PreparedStatement) con.prepareStatement(sql.toString());
+			
+			ResultSet  rs  =  pst.executeQuery();
+			while(rs.next()){
+				  JSONObject  teacher =  new JSONObject();
+				  teacher.put("id", rs.getInt("e_id"));
+				  teacher.put("text", rs.getString("e_name"));
+				  
+				  teachers.add(teacher);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				DBConnection.closeJDBC(pst, con);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return teachers;
 	}
 }
